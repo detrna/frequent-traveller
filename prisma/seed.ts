@@ -13,8 +13,8 @@
 import { config as loadEnv } from "dotenv";
 import bcrypt from "bcryptjs";
 import { describeUrl, getDatabaseUrl, getDbTarget } from "../src/server/db-target";
-import { createPrismaClient } from "../src/server/prisma-client";
-import { Role, StatusBooking, StatusEmail, StatusTiket } from "../src/generated/prisma/enums";
+import { closeDb, createDb } from "../src/server/prisma-client";
+import { Role, StatusBooking, StatusEmail, StatusTiket } from "../src/lib/enums";
 
 loadEnv({ path: ".env.local", quiet: true });
 loadEnv({ quiet: true });
@@ -44,6 +44,8 @@ function tanggalUTC(y: number, m: number, d: number) {
 function tambahHari(d: Date, n: number) {
   return new Date(d.getTime() + n * MS_HARI);
 }
+/** Kolom DATE dibaca/ditulis Prisma 8 sebagai string "YYYY-MM-DD". */
+const tglString = (d: Date) => d.toISOString().slice(0, 10);
 function lamaHari(mulai: Date, selesai: Date) {
   return Math.round((selesai.getTime() - mulai.getTime()) / MS_HARI) + 1;
 }
@@ -110,27 +112,19 @@ async function main() {
   pastikanBolehSeed();
   const url = getDatabaseUrl();
   console.log(`Seed ke ${describeUrl(url)} (${getDbTarget()})`);
-  const db = createPrismaClient(url);
+  const db = createDb(url);
 
   try {
-    // ----- bersihkan (urutan mengikuti ketergantungan) -----
-    await db.notifikasiEmail.deleteMany();
-    await db.tiketPesawat.deleteMany();
-    await db.booking.deleteMany();
-    await db.penerbangan.deleteMany();
-    await db.maskapai.deleteMany();
-    await db.bandara.deleteMany();
-    await db.pengunjung.deleteMany();
-    await db.profilMember.deleteMany();
-    await db.user.deleteMany();
-    await db.riwayatCuti.deleteMany();
-    await db.permohonanCuti.deleteMany();
-    await db.pegawai.deleteMany();
+    // ----- bersihkan (satu perintah; CASCADE menangani urutan ketergantungan) -----
+    await db.execute(
+      db.raw.sql`TRUNCATE TABLE "public"."NotifikasiEmail", "public"."TiketPesawat", "public"."Booking", "public"."Penerbangan", "public"."Maskapai", "public"."Bandara", "public"."Pengunjung", "public"."ProfilMember", "public"."User", "public"."RiwayatCuti", "public"."PermohonanCuti", "public"."Pegawai" CASCADE`
+        .affectedCount()
+        .build(),
+    );
 
     // ----- pengguna & profil -----
     const passwordHash = await bcrypt.hash(PASSWORD_DEMO, 10);
-    const buatUser = (nama: string, email: string, role: Role) =>
-      db.user.create({ data: { nama, email, role, passwordHash } });
+    const buatUser = (nama: string, email: string, role: Role) => db.orm.public.User.create({ nama, email, role, passwordHash });
 
     await buatUser("Sari Wulandari", "hrd@aps.test", Role.HRD_MANAGER);
     const pengguna = await buatUser("Budi Santoso", "pengguna@aps.test", Role.PENGGUNA);
@@ -140,32 +134,30 @@ async function main() {
     const userPengunjung1 = await buatUser("Fajar Hidayat", "pengunjung1@aps.test", Role.PENGUNJUNG);
     const userPengunjung2 = await buatUser("Gita Permata", "pengunjung2@aps.test", Role.PENGUNJUNG);
 
-    await db.profilMember.create({
-      data: {
-        userId: member.id,
-        namaLengkap: "Citra Lestari Wijaya",
-        tglLahir: tanggalUTC(1992, 4, 17),
-        nik: "3174015705920001",
-        noPaspor: "C1234567",
-        telepon: "081234567890",
-        kewarganegaraan: "Indonesia",
-        alamat: "Jl. Melati No. 10, Jakarta Selatan",
-      },
+    await db.orm.public.ProfilMember.create({
+      userId: member.id,
+      namaLengkap: "Citra Lestari Wijaya",
+      tglLahir: tglString(tanggalUTC(1992, 4, 17)),
+      nik: "3174015705920001",
+      noPaspor: "C1234567",
+      telepon: "081234567890",
+      kewarganegaraan: "Indonesia",
+      alamat: "Jl. Melati No. 10, Jakarta Selatan",
     });
-    await db.profilMember.create({ data: { userId: member2.id } }); // kosong → profil tidak lengkap
+    await db.orm.public.ProfilMember.create({ userId: member2.id }); // kosong → profil tidak lengkap
 
-    const pengunjung1 = await db.pengunjung.create({
-      data: { userId: userPengunjung1.id, nama: "Fajar Hidayat", email: "pengunjung1@aps.test", telepon: "081300000001", nik: "3578010101900001" },
+    const pengunjung1 = await db.orm.public.Pengunjung.create({
+      userId: userPengunjung1.id, nama: "Fajar Hidayat", email: "pengunjung1@aps.test", telepon: "081300000001", nik: "3578010101900001",
     });
-    const pengunjung2 = await db.pengunjung.create({
-      data: { userId: userPengunjung2.id, nama: "Gita Permata", email: "pengunjung2@aps.test", telepon: "081300000002", nik: "3578010101900002" },
+    const pengunjung2 = await db.orm.public.Pengunjung.create({
+      userId: userPengunjung2.id, nama: "Gita Permata", email: "pengunjung2@aps.test", telepon: "081300000002", nik: "3578010101900002",
     });
 
     // ----- bandara, maskapai, penerbangan -----
-    await db.bandara.createMany({ data: BANDARA.map(({ kode, nama, kota }) => ({ kode, nama, kota })) });
-    await db.maskapai.createMany({ data: MASKAPAI.map(({ kode, nama }) => ({ kode, nama })) });
-    const bandaraRows = await db.bandara.findMany();
-    const maskapaiRows = await db.maskapai.findMany();
+    await db.orm.public.Bandara.createAndCount(BANDARA.map(({ kode, nama, kota }) => ({ kode, nama, kota })));
+    await db.orm.public.Maskapai.createAndCount(MASKAPAI.map(({ kode, nama }) => ({ kode, nama })));
+    const bandaraRows = await db.orm.public.Bandara.all();
+    const maskapaiRows = await db.orm.public.Maskapai.all();
     const idBandara = new Map(bandaraRows.map((b) => [b.kode, b.id]));
     const idMaskapai = new Map(maskapaiRows.map((m) => [m.kode, m.id]));
     const infoBandara = new Map<string, (typeof BANDARA)[number]>(BANDARA.map((b) => [b.kode, b]));
@@ -226,15 +218,17 @@ async function main() {
       return true;
     });
     for (let i = 0; i < unik.length; i += 1000) {
-      await db.penerbangan.createMany({ data: unik.slice(i, i + 1000) });
+      await db.orm.public.Penerbangan.createAndCount(unik.slice(i, i + 1000));
     }
 
     // ----- booking contoh di semua status -----
-    const ambilPenerbangan = (asal: string, tujuan: string, hari: number) =>
-      db.penerbangan.findFirstOrThrow({
-        where: { asalId: idBandara.get(asal)!, tujuanId: idBandara.get(tujuan)!, berangkat: { gte: tambahHari(hariIni, hari) } },
-        orderBy: { berangkat: "asc" },
-      });
+    const ambilPenerbangan = (asal: string, tujuan: string, hari: number) => {
+      const dari = tambahHari(hariIni, hari);
+      return db.orm.public.Penerbangan.where({ asalId: idBandara.get(asal)!, tujuanId: idBandara.get(tujuan)! })
+        .where((p) => p.berangkat.gte(dari))
+        .orderBy((p) => p.berangkat.asc())
+        .firstOrThrow();
+    };
 
     async function buatBooking(opts: {
       kode: string;
@@ -248,29 +242,27 @@ async function main() {
     }) {
       const statusTiket =
         opts.statusTiket ?? (opts.status === StatusBooking.DIBATALKAN ? StatusTiket.DIBATALKAN : StatusTiket.TERBIT);
-      const booking = await db.booking.create({
-        data: {
-          kodeBookingReference: opts.kode,
-          pemilikId: opts.pemilik.id,
-          dibuatOlehId: opts.dibuatOleh.id,
-          pengunjungId: opts.pengunjungId,
-          status: opts.status,
-          tiket: {
-            create: {
-              penerbanganId: opts.penerbanganId,
-              nomorTiket: `TKT-${opts.kode}-1`,
-              namaPenumpang: opts.namaPenumpang,
-              status: statusTiket,
-              validatedAt: statusTiket === StatusTiket.TERVALIDASI ? new Date() : null,
-            },
-          },
-        },
-        include: { tiket: true },
+      const booking = await db.orm.public.Booking.create({
+        kodeBookingReference: opts.kode,
+        pemilikId: opts.pemilik.id,
+        dibuatOlehId: opts.dibuatOleh.id,
+        pengunjungId: opts.pengunjungId ?? null,
+        status: opts.status,
+      });
+      const tiket = await db.orm.public.TiketPesawat.create({
+        bookingId: booking.id,
+        penerbanganId: opts.penerbanganId,
+        nomorTiket: `TKT-${opts.kode}-1`,
+        namaPenumpang: opts.namaPenumpang,
+        status: statusTiket,
+        validatedAt: statusTiket === StatusTiket.TERVALIDASI ? new Date() : null,
       });
       if (opts.status !== StatusBooking.DIBATALKAN) {
-        await db.penerbangan.update({ where: { id: opts.penerbanganId }, data: { kursiTersedia: { decrement: 1 } } });
+        await db.execute(
+          db.raw.sql`UPDATE "public"."Penerbangan" SET "kursiTersedia" = "kursiTersedia" - 1 WHERE "id" = ${opts.penerbanganId}`.affectedCount().build(),
+        );
       }
-      return booking;
+      return { booking, tiketId: tiket.id };
     }
 
     const f1 = await ambilPenerbangan("CGK", "DPS", 2);
@@ -292,13 +284,13 @@ async function main() {
     await buatBooking({ kode: "AP2G6S", pemilik: member2, dibuatOleh: member2, status: StatusBooking.BOOKED, penerbanganId: f7.id, namaPenumpang: member2.nama });
 
     const bk1 = await buatBooking({ kode: "AP8H2T", pemilik: userPengunjung1, dibuatOleh: travel, pengunjungId: pengunjung1.id, status: StatusBooking.CONFIRMED, penerbanganId: f8.id, namaPenumpang: pengunjung1.nama });
-    await db.notifikasiEmail.create({
-      data: { tiketId: bk1.tiket[0].id, kepada: pengunjung1.email, subjek: "E-tiket APS AP8H2T", status: StatusEmail.TERKIRIM, terkirimAt: new Date() },
+    await db.orm.public.NotifikasiEmail.create({
+      tiketId: bk1.tiketId, kepada: pengunjung1.email, subjek: "E-tiket APS AP8H2T", status: StatusEmail.TERKIRIM, error: null, percobaan: 1, terkirimAt: new Date(),
     });
     const f9 = await ambilPenerbangan("SUB", "DPS", 10);
     const bk2 = await buatBooking({ kode: "AP4J9V", pemilik: userPengunjung2, dibuatOleh: travel, pengunjungId: pengunjung2.id, status: StatusBooking.WAITING_FOR_PAYMENT, penerbanganId: f9.id, namaPenumpang: pengunjung2.nama });
-    await db.notifikasiEmail.create({
-      data: { tiketId: bk2.tiket[0].id, kepada: pengunjung2.email, subjek: "E-tiket APS AP4J9V", status: StatusEmail.GAGAL, error: "Contoh: SMTP tidak dapat dihubungi", percobaan: 1 },
+    await db.orm.public.NotifikasiEmail.create({
+      tiketId: bk2.tiketId, kepada: pengunjung2.email, subjek: "E-tiket APS AP4J9V", status: StatusEmail.GAGAL, error: "Contoh: SMTP tidak dapat dihubungi", percobaan: 1, terkirimAt: null,
     });
 
     // ----- cuti pegawai (US1) -----
@@ -312,8 +304,8 @@ async function main() {
     const bulan = hariIni.getUTCMonth();
 
     for (const [idx, [nama, jabatan]] of NAMA_PEGAWAI.entries()) {
-      const pegawai = await db.pegawai.create({
-        data: { nama, jabatan, nip: `19900${String(idx + 1).padStart(2, "0")}${tahun - 2}`, jatahCutiTahunan: 12 },
+      const pegawai = await db.orm.public.Pegawai.create({
+        nama, jabatan, nip: `19900${String(idx + 1).padStart(2, "0")}${tahun - 2}`, jatahCutiTahunan: 12,
       });
 
       // riwayat: tahun lalu + (sebagian) tahun berjalan yang sudah lewat
@@ -325,8 +317,8 @@ async function main() {
         riwayat.push({ mulai, selesai: tambahHari(mulai, antara(0, 3)) });
       }
       for (const r of riwayat) {
-        await db.riwayatCuti.create({
-          data: { pegawaiId: pegawai.id, tahun: r.mulai.getUTCFullYear(), tglMulai: r.mulai, tglSelesai: r.selesai, lamaHari: lamaHari(r.mulai, r.selesai) },
+        await db.orm.public.RiwayatCuti.create({
+          pegawaiId: pegawai.id, tahun: r.mulai.getUTCFullYear(), tglMulai: tglString(r.mulai), tglSelesai: tglString(r.selesai), lamaHari: lamaHari(r.mulai, r.selesai),
         });
       }
 
@@ -336,27 +328,27 @@ async function main() {
         for (let k = 0; k < jumlah; k++) {
           const mulai = tanggalUTC(tahun, bulan + antara(-1, 2), antara(1, 25));
           const selesai = tambahHari(mulai, antara(0, 5));
-          await db.permohonanCuti.create({
-            data: { pegawaiId: pegawai.id, tglMulai: mulai, tglSelesai: selesai, lamaHari: lamaHari(mulai, selesai), alasan: pilih(["Liburan keluarga", "Keperluan pribadi", "Acara keluarga", "Istirahat"]) },
+          await db.orm.public.PermohonanCuti.create({
+            pegawaiId: pegawai.id, tglMulai: tglString(mulai), tglSelesai: tglString(selesai), lamaHari: lamaHari(mulai, selesai), alasan: pilih(["Liburan keluarga", "Keperluan pribadi", "Acara keluarga", "Istirahat"]),
           });
         }
       }
     }
 
     const ringkasan = {
-      user: await db.user.count(),
-      bandara: await db.bandara.count(),
-      maskapai: await db.maskapai.count(),
-      penerbangan: await db.penerbangan.count(),
-      booking: await db.booking.count(),
-      pegawai: await db.pegawai.count(),
-      permohonanCuti: await db.permohonanCuti.count(),
-      riwayatCuti: await db.riwayatCuti.count(),
+      user: (await db.orm.public.User.aggregate((a) => ({ n: a.count() }))).n,
+      bandara: (await db.orm.public.Bandara.aggregate((a) => ({ n: a.count() }))).n,
+      maskapai: (await db.orm.public.Maskapai.aggregate((a) => ({ n: a.count() }))).n,
+      penerbangan: (await db.orm.public.Penerbangan.aggregate((a) => ({ n: a.count() }))).n,
+      booking: (await db.orm.public.Booking.aggregate((a) => ({ n: a.count() }))).n,
+      pegawai: (await db.orm.public.Pegawai.aggregate((a) => ({ n: a.count() }))).n,
+      permohonanCuti: (await db.orm.public.PermohonanCuti.aggregate((a) => ({ n: a.count() }))).n,
+      riwayatCuti: (await db.orm.public.RiwayatCuti.aggregate((a) => ({ n: a.count() }))).n,
     };
     console.table(ringkasan);
     console.log(`Akun demo: *@aps.test — kata sandi "${PASSWORD_DEMO}"`);
   } finally {
-    await db.$disconnect();
+    await closeDb(db);
   }
 }
 

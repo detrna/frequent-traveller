@@ -2,7 +2,7 @@
  * Peran, kemampuan (ability), dan aturan akses rute. Murni (tanpa database) agar mudah diuji
  * dan bisa dipakai oleh proxy.ts maupun server component.
  */
-import { Role } from "@/generated/prisma/enums";
+import { Role } from "@/lib/enums";
 
 export { Role };
 

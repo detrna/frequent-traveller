@@ -1,13 +1,14 @@
 /**
- * Pembungkus perintah database. Menjalankan Prisma terhadap target aktif (DB_TARGET) dan
+ * Pembungkus perintah database (Prisma ORM 8). Menjalankan CLI `prisma` terhadap target aktif (DB_TARGET) dan
  * menolak perintah destruktif ketika targetnya cloud.
  *
  *   npm run db:target                  tampilkan target aktif
- *   npm run db:migrate -- --name x     prisma migrate dev (hanya lokal)
- *   npm run db:deploy                  prisma migrate deploy (lokal maupun cloud)
+ *   npm run db:emit                    prisma contract emit (skema → src/prisma/contract.json + contract.d.ts)
+ *   npm run db:migrate -- --name x     emit + migration plan + db migrate (hanya lokal; setara `migrate dev`)
+ *   npm run db:deploy                  prisma db migrate (menerapkan migrasi yang ada; lokal maupun cloud)
+ *   npm run db:verify                  prisma db verify (apakah database cocok dengan kontrak)
  *   npm run db:seed [-- --force-cloud] isi data contoh (menghapus data lama!)
- *   npm run db:studio                  Prisma Studio
- *   npm run db:test:prepare            terapkan migrasi ke database tes
+ *   npm run db:test:prepare            samakan database tes (aps_test) dengan kontrak
  */
 import { spawnSync } from "node:child_process";
 import { config as loadEnv } from "dotenv";
@@ -27,6 +28,8 @@ function run(cmd: string, args: string[], env: NodeJS.ProcessEnv = process.env):
   const result = spawnSync(cmd, args, { stdio: "inherit", env, shell: process.platform === "win32" });
   if (result.status !== 0) process.exit(result.status ?? 1);
 }
+
+const prisma = (...args: string[]) => run("npx", ["prisma", ...args]);
 
 function activeTarget() {
   try {
@@ -57,16 +60,28 @@ switch (command) {
     console.log(`DB_TARGET = ${target}\nDatabase  = ${describeUrl(url)}`);
     break;
   }
+  case "emit": {
+    prisma("contract", "emit", ...rest);
+    break;
+  }
   case "migrate": {
     const { url } = requireLocal("migrate", rest);
     console.log(`Migrasi (dev) ke ${describeUrl(url)}`);
-    run("npx", ["prisma", "migrate", "dev", ...rest]);
+    prisma("contract", "emit");
+    prisma("migration", "plan", ...rest);
+    prisma("db", "migrate");
     break;
   }
   case "deploy": {
     const { target, url } = activeTarget();
     console.log(`Menerapkan migrasi (${target}) ke ${describeUrl(url)}`);
-    run("npx", ["prisma", "migrate", "deploy", ...rest]);
+    prisma("db", "migrate", ...rest);
+    break;
+  }
+  case "verify": {
+    const { url } = activeTarget();
+    console.log(`Memeriksa ${describeUrl(url)}`);
+    prisma("db", "verify", ...rest);
     break;
   }
   case "seed": {
@@ -75,20 +90,12 @@ switch (command) {
     run("npx", ["tsx", "prisma/seed.ts", ...rest.filter((a) => a !== "--force-cloud")]);
     break;
   }
-  case "studio": {
-    const { url } = activeTarget();
-    console.log(`Prisma Studio: ${describeUrl(url)}`);
-    run("npx", ["prisma", "studio", ...rest]);
-    break;
-  }
   case "test:prepare": {
     const url = getTestDatabaseUrl();
-    console.log(`Menerapkan migrasi ke database tes ${describeUrl(url)}`);
-    run("npx", ["prisma", "migrate", "deploy"], {
-      ...process.env,
-      DB_TARGET: "local",
-      DATABASE_URL_LOCAL: url,
-    });
+    console.log(`Menyamakan database tes ${describeUrl(url)} dengan kontrak`);
+    // Riwayat migrasi database tes tidak perlu dijaga, jadi cukup `db update` (tanpa menulis migrasi).
+    // `--advance-ref test` agar ref `db` (yang ikut di-commit dan menjadi asal `migration plan`) tidak ikut bergeser.
+    run("npx", ["prisma", "db", "update", "--yes", "--advance-ref", "test"], { ...process.env, DB_TARGET: "local", DATABASE_URL_LOCAL: url });
     break;
   }
   default:

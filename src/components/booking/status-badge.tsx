@@ -1,5 +1,5 @@
 import { LABEL_STATUS_BOOKING } from "@/lib/status";
-import type { StatusBooking } from "@/generated/prisma/enums";
+import type { StatusBooking } from "@/lib/enums";
 
 const WARNA: Record<StatusBooking, string> = {
   BOOKED: "bg-sky-100 text-sky-900 ring-sky-300 dark:bg-sky-950 dark:text-sky-200 dark:ring-sky-800",

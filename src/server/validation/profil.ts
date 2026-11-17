@@ -14,8 +14,7 @@ export const profilSkema = z.object({
       .trim()
       .refine(tanggalValid, { error: "Tanggal lahir tidak valid." })
       .refine((v) => v <= tanggalWIB(), { error: "Tanggal lahir tidak boleh di masa depan." })
-      .refine((v) => v >= "1900-01-01", { error: "Tanggal lahir tidak valid." })
-      .transform((v) => new Date(`${v}T00:00:00Z`)),
+      .refine((v) => v >= "1900-01-01", { error: "Tanggal lahir tidak valid." }),
   ),
   nik: isian(z.string().transform(hapusPemisah).pipe(z.string().regex(POLA_NIK, { error: "NIK harus 16 digit angka." }))),
   noPaspor: isian(

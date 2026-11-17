@@ -1,4 +1,4 @@
-import type { StatusBooking, StatusTiket } from "@/generated/prisma/enums";
+import type { StatusBooking, StatusTiket } from "@/lib/enums";
 
 /** Label status sesuai istilah user stories (US7): confirmed, booked, waiting for the payment. */
 export const LABEL_STATUS_BOOKING: Record<StatusBooking, string> = {
