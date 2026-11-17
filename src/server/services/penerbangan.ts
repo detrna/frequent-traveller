@@ -178,3 +178,9 @@ export async function cariMultiDestinasi(input: MultiDestinasiInput): Promise<Ha
   );
   return ringkasMultiDestinasi(ruas);
 }
+
+/** Satu penerbangan menurut id (untuk halaman pemesanan); null bila tidak ada. */
+export async function ambilPenerbanganById(id: string): Promise<HasilPenerbangan | null> {
+  const p = await db.penerbangan.findUnique({ where: { id }, include: INCLUDE });
+  return p ? keHasil(p) : null;
+}

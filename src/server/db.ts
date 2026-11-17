@@ -16,7 +16,10 @@ function getDb(): Db {
  * sehingga `next build` tidak membutuhkan database maupun kredensial cloud.
  */
 export const db = new Proxy({} as Db, {
-  get(_target, prop, receiver) {
-    return Reflect.get(getDb(), prop, receiver);
+  get(_target, prop) {
+    const klien = getDb();
+    const nilai = Reflect.get(klien, prop);
+    // metode seperti $transaction/$queryRaw harus dipanggil dengan `this` = klien asli, bukan proxy ini
+    return typeof nilai === "function" ? nilai.bind(klien) : nilai;
   },
 });
