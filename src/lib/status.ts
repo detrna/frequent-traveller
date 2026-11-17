@@ -16,3 +16,16 @@ export const LABEL_STATUS_TIKET: Record<StatusTiket, string> = {
 
 /** Status yang dapat dipilih sebagai filter pada US7 (DIBATALKAN bukan opsi filter). */
 export const STATUS_FILTER: readonly StatusBooking[] = ["CONFIRMED", "BOOKED", "WAITING_FOR_PAYMENT"];
+
+/** Nilai parameter query `?status=` untuk filter US7 → status booking. */
+export const PARAM_STATUS: Record<string, StatusBooking> = {
+  confirmed: "CONFIRMED",
+  booked: "BOOKED",
+  waiting_for_payment: "WAITING_FOR_PAYMENT",
+};
+
+export const PARAM_DARI_STATUS: Partial<Record<StatusBooking, string>> = {
+  CONFIRMED: "confirmed",
+  BOOKED: "booked",
+  WAITING_FOR_PAYMENT: "waiting_for_payment",
+};

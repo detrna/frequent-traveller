@@ -80,3 +80,47 @@ export async function buatPenerbanganTes(o: {
     },
   });
 }
+
+/** Membuat booking + satu tiket langsung lewat DB (tanpa aturan bisnis), untuk menyiapkan data status/jumlah. */
+export async function buatBookingTes(o: {
+  pemilikId: string;
+  dibuatOlehId?: string;
+  penerbanganId: string;
+  status?: "BOOKED" | "WAITING_FOR_PAYMENT" | "CONFIRMED" | "DIBATALKAN";
+  kode: string;
+  pengunjungId?: string;
+  namaPenumpang?: string;
+}) {
+  return db.booking.create({
+    data: {
+      kodeBookingReference: o.kode,
+      pemilikId: o.pemilikId,
+      dibuatOlehId: o.dibuatOlehId ?? o.pemilikId,
+      pengunjungId: o.pengunjungId,
+      status: o.status ?? "BOOKED",
+      tiket: {
+        create: {
+          penerbanganId: o.penerbanganId,
+          nomorTiket: `TKT-${o.kode}-1`,
+          namaPenumpang: o.namaPenumpang ?? "Penumpang Tes",
+          status: o.status === "DIBATALKAN" ? "DIBATALKAN" : "TERBIT",
+        },
+      },
+    },
+  });
+}
+
+/** Pengirim email palsu: merekam pesan, atau gagal bila `gagal` diisi. */
+export function buatDriverPalsu(gagal?: string) {
+  const terkirim: Array<{ dari: string; kepada: string; subjek: string; teks: string; html: string }> = [];
+  return {
+    terkirim,
+    driver: {
+      nama: "palsu",
+      async kirim(pesan: (typeof terkirim)[number]) {
+        if (gagal) throw new Error(gagal);
+        terkirim.push(pesan);
+      },
+    },
+  };
+}
