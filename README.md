@@ -1,6 +1,6 @@
 # APS — Aplikasi Pemesanan Tiket Pesawat
 
-Aplikasi fullstack (Next.js, Tailwind, Prisma, PostgreSQL) untuk pemesanan tiket pesawat dan manajemen perjalanan.
+Aplikasi fullstack (Next.js, Tailwind, Prisma ORM 8, PostgreSQL) untuk pemesanan tiket pesawat dan manajemen perjalanan.
 Dirancang dari user stories dan model konseptual di [`docs/`](docs/) — lihat [`docs/md/implementation-map.md`](docs/md/implementation-map.md)
 untuk pemetaan *user story → halaman → service → tes*.
 
@@ -24,10 +24,10 @@ Seluruh antarmuka dan pesan dalam **Bahasa Indonesia**. Waktu penerbangan ditamp
 ## Mulai cepat (database lokal)
 
 ```bash
-npm install                         # juga menjalankan `prisma generate`
+npm install
 cp .env.example .env.local          # lalu isi AUTH_SECRET (lihat di bawah)
 npm run db:up                       # PostgreSQL (port 5433) + Mailpit (UI http://localhost:8025)
-npm run db:migrate -- --name init   # terapkan migrasi ke database lokal
+npm run db:deploy                   # terapkan migrasi di migrations/ ke database lokal (Prisma 8: `db migrate`)
 npm run db:seed                     # data contoh: akun per peran, 2.400 penerbangan, cuti, booking
 npm run dev                         # http://localhost:3000
 ```
@@ -71,12 +71,12 @@ Menyiapkan Prisma Postgres:
 4. (Opsional) `npm run db:seed -- --force-cloud` — mengisi data contoh. **Menghapus data lama.**
 5. Kembali ke lokal: `DB_TARGET=local`.
 
-Pengaman: `db:migrate` (migrate dev) **selalu ditolak** saat `DB_TARGET=cloud`, dan `db:seed` ditolak kecuali dengan `--force-cloud`.
+Pengaman: `db:migrate` (membuat + menerapkan migrasi baru, setara `migrate dev`) **selalu ditolak** saat `DB_TARGET=cloud`, dan `db:seed` ditolak kecuali dengan `--force-cloud`. Untuk cloud hanya `db:deploy` (menerapkan migrasi yang sudah ada dan di-commit).
 Tes selalu memakai database terpisah `aps_test` dan menolak berjalan terhadap database lain.
 
 ## Deploy ke Vercel
 
-1. Impor repositori ke Vercel (framework terdeteksi otomatis; build: `next build`, install menjalankan `prisma generate`).
+1. Impor repositori ke Vercel (framework terdeteksi otomatis; build: `next build`). Tidak ada langkah generate: `src/prisma/contract.json` dan `contract.d.ts` sudah di-commit.
 2. Set *Environment Variables*:
 
    | Variabel | Nilai |
@@ -84,7 +84,7 @@ Tes selalu memakai database terpisah `aps_test` dan menolak berjalan terhadap da
    | `DB_TARGET` | `cloud` |
    | `DATABASE_URL_CLOUD` | URL langsung Prisma Postgres (`postgres://…`) |
    | `AUTH_SECRET` | hasil `openssl rand -base64 32` |
-   | `AUTH_URL` | URL produksi, mis. `https://aps.vercel.app` |
+   | `AUTH_URL` | URL produksi: `https://frequent-traveller.vercel.app` |
    | `EMAIL_DRIVER` | `resend` |
    | `RESEND_API_KEY` | API key Resend |
    | `EMAIL_FROM` | mis. `APS <tiket@domain-anda.com>` — domain harus terverifikasi di Resend |
@@ -113,10 +113,11 @@ dari halaman detail booking.
 | `npm test` | Vitest: unit + integrasi (butuh `db:up`; memakai database `aps_test`) |
 | `npm run test:e2e` | Playwright (butuh `db:up`; migrasi + seed ulang `aps_test`, port 3100, tidak mengganggu `next dev`) |
 | `npm run db:up` / `db:down` | Mulai / hentikan PostgreSQL + Mailpit |
-| `npm run db:migrate -- --name x` | Buat & terapkan migrasi (hanya lokal) |
+| `npm run db:emit` | `prisma contract emit`: skema → `src/prisma/contract.json` + `contract.d.ts` (commit hasilnya) |
+| `npm run db:migrate -- --name x` | emit + `migration plan` + `db migrate` (hanya lokal) |
 | `npm run db:deploy` | Terapkan migrasi yang ada (lokal atau cloud) |
 | `npm run db:seed` | Isi data contoh (menghapus data lama) |
-| `npm run db:studio` · `db:target` | Prisma Studio · tampilkan target database |
+| `npm run db:verify` · `db:target` | Cek database cocok dengan kontrak · tampilkan target database |
 
 ## Struktur
 
@@ -125,12 +126,14 @@ src/app/            halaman (App Router): (auth)/login, (app)/{dashboard,penerba
 src/components/     komponen UI dan komponen per domain (flight, booking, cuti)
 src/server/         db, db-target, auth, services (control), validation (zod), email
 src/lib/            fungsi murni: waktu WIB, kode booking, status, hitungan cuti
-prisma/             schema, migrations, seed
+prisma/             schema.prisma (sumber kontrak), seed.ts
+migrations/         migrasi Prisma 8 (`app/`) + snapshot kontrak
+src/prisma/         contract.json + contract.d.ts (hasil `contract emit`, di-commit)
 tests/              unit/, integration/, e2e/
 docs/               user stories dan model konseptual (DUMA)
 ```
 
-Lapisan mengikuti robustness diagram: *boundary* → halaman, *control* → fungsi di `src/server/services`, *entity* → model Prisma.
+Lapisan mengikuti robustness diagram: *boundary* → halaman, *control* → fungsi di `src/server/services`, *entity* → model di `prisma/schema.prisma`, diakses lewat klien Prisma ORM 8 (`db.orm.public.<Model>`).
 
 ## Asumsi yang tidak ditentukan user stories
 
