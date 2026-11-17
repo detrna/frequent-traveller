@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "APS — Pemesanan Tiket Pesawat",
-    template: "%s · APS",
+    default: "Frequent Traveller — Pemesanan Tiket Pesawat",
+    template: "%s · Frequent Traveller",
   },
   description:
     "Aplikasi pemesanan tiket pesawat dan manajemen perjalanan: cari penerbangan, pesan tiket, dan kelola booking.",

@@ -20,7 +20,7 @@ export function AppHeader({ pengguna }: { pengguna: SesiPengguna | null }) {
     <header className="border-b border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900">
       <div className="mx-auto flex w-full max-w-6xl flex-wrap items-center gap-x-6 gap-y-2 px-4 py-3">
         <Link href={pengguna ? "/dashboard" : "/jadwal"} className="text-lg font-semibold tracking-tight">
-          APS
+          Frequent Traveller
         </Link>
         <nav aria-label="Menu utama" className="flex flex-1 flex-wrap items-center gap-x-4 gap-y-1 text-sm">
           {menu.map((item) => (

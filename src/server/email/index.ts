@@ -13,5 +13,5 @@ export function ambilDriverEmail(env: Record<string, string | undefined> = proce
 }
 
 export function alamatPengirim(env: Record<string, string | undefined> = process.env): string {
-  return env.EMAIL_FROM || "APS <no-reply@aps.test>";
+  return env.EMAIL_FROM || "Frequent Traveller <no-reply@aps.test>";
 }

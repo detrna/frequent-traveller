@@ -1,4 +1,4 @@
-# APS — Aplikasi Pemesanan Tiket Pesawat
+# Frequent Traveller — Aplikasi Pemesanan Tiket Pesawat
 
 Aplikasi fullstack (Next.js, Tailwind, Prisma ORM 8, PostgreSQL) untuk pemesanan tiket pesawat dan manajemen perjalanan.
 Dirancang dari user stories dan model konseptual di [`docs/`](docs/) — lihat [`docs/md/implementation-map.md`](docs/md/implementation-map.md)
@@ -87,7 +87,7 @@ Tes selalu memakai database terpisah `aps_test` dan menolak berjalan terhadap da
    | `AUTH_URL` | URL produksi: `https://frequent-traveller.vercel.app` |
    | `EMAIL_DRIVER` | `resend` |
    | `RESEND_API_KEY` | API key Resend |
-   | `EMAIL_FROM` | mis. `APS <tiket@domain-anda.com>` — domain harus terverifikasi di Resend |
+   | `EMAIL_FROM` | mis. `Frequent Traveller <tiket@domain-anda.com>` — domain harus terverifikasi di Resend |
 
    Integrasi Vercel × Prisma Postgres menyediakan `POSTGRES_URL`; aplikasi memakainya bila `DATABASE_URL_CLOUD` kosong.
 3. Terapkan migrasi dari mesin Anda terhadap database cloud: `npm run db:deploy` (dengan `DB_TARGET=cloud` di `.env.local`).

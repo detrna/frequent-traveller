@@ -114,7 +114,7 @@ test.describe("US8 — mencari dan memesan tiket untuk pengunjung", () => {
     // US8-d: e-tiket benar-benar sampai di kotak masuk (Mailpit)
     await expect.poll(async () => (await pesanMailpit(request, email)).length).toBe(1);
     const [surat] = await pesanMailpit(request, email);
-    expect(surat.Subject).toMatch(/^E-tiket APS TKT-/);
+    expect(surat.Subject).toMatch(/^E-tiket Frequent Traveller TKT-/);
     const isi = await isiPesan(request, surat.ID);
     expect(isi.Text).toContain(kode);
     expect(isi.Text).toContain("Jakarta (CGK) → Surabaya (SUB)");

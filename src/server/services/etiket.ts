@@ -35,15 +35,15 @@ export function buatEtiket(booking: Pick<BookingEtiket, "kodeBookingReference">,
     ["Berangkat – tiba", `${formatJam(p.berangkat)} – ${formatJam(p.tiba)} WIB (${formatDurasi(p.berangkat, p.tiba)})`],
     ["Harga", formatRupiah(p.harga)],
   ];
-  const teks = [`E-tiket APS`, "", ...baris.map(([k, v]) => `${k}: ${v}`), "", "Tunjukkan kode booking ini saat check-in. Terima kasih telah memesan melalui APS."].join("\n");
+  const teks = [`E-tiket Frequent Traveller`, "", ...baris.map(([k, v]) => `${k}: ${v}`), "", "Tunjukkan kode booking ini saat check-in. Terima kasih telah memesan melalui Frequent Traveller."].join("\n");
   const html = `<!doctype html><html lang="id"><body style="font-family:system-ui,sans-serif;color:#171717">
-<h1 style="font-size:20px">E-tiket APS</h1>
+<h1 style="font-size:20px">E-tiket Frequent Traveller</h1>
 <table role="presentation" cellpadding="6" style="border-collapse:collapse">
 ${baris.map(([k, v]) => `<tr><th align="left" style="color:#52525b;font-weight:500">${escapeHtml(k)}</th><td>${escapeHtml(v)}</td></tr>`).join("\n")}
 </table>
-<p>Tunjukkan kode booking ini saat check-in. Terima kasih telah memesan melalui APS.</p>
+<p>Tunjukkan kode booking ini saat check-in. Terima kasih telah memesan melalui Frequent Traveller.</p>
 </body></html>`;
-  return { subjek: `E-tiket APS ${tiket.nomorTiket}`, teks, html };
+  return { subjek: `E-tiket Frequent Traveller ${tiket.nomorTiket}`, teks, html };
 }
 
 export interface RincianKirim {

@@ -136,7 +136,7 @@ describe("pesanUntukPengunjung (US8-b) dan e-tiket (US8-d)", () => {
     // e-tiket terkirim ke email terdaftar
     expect(terkirim).toHaveLength(1);
     expect(terkirim[0].kepada).toBe("pengunjung1@aps.test");
-    expect(terkirim[0].subjek).toBe(`E-tiket APS ${hasil.booking.tiket[0].nomorTiket}`);
+    expect(terkirim[0].subjek).toBe(`E-tiket Frequent Traveller ${hasil.booking.tiket[0].nomorTiket}`);
     expect(terkirim[0].teks).toContain(hasil.booking.kodeBookingReference);
     expect(terkirim[0].teks).toContain("Jakarta (CGK) → Denpasar (DPS)");
     expect(terkirim[0].teks).toContain("Garuda Indonesia GA100");
@@ -271,6 +271,6 @@ describe("buatEtiket", () => {
     expect(terkirim[0].html).not.toContain("<script>");
     expect(terkirim[0].html).toContain("&lt;script&gt;");
     const pesan = buatEtiket(hasil.booking, hasil.booking.tiket[0]);
-    expect(pesan.html).toContain("E-tiket APS");
+    expect(pesan.html).toContain("E-tiket Frequent Traveller");
   });
 });
