@@ -1,0 +1,34 @@
+# Layanan lokal untuk pengembangan: PostgreSQL (database lokal) dan Mailpit (menangkap e-tiket).
+# Port host bisa diubah lewat POSTGRES_PORT / MAILPIT_SMTP_PORT / MAILPIT_UI_PORT bila bentrok.
+name: aps
+
+services:
+  postgres:
+    image: postgres:17-alpine
+    container_name: aps-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: aps
+      POSTGRES_PASSWORD: aps
+      POSTGRES_DB: aps
+    ports:
+      - "127.0.0.1:${POSTGRES_PORT:-5433}:5432"
+    volumes:
+      - aps_pgdata:/var/lib/postgresql/data
+      - ./docker/initdb:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U aps -d aps"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+
+  mailpit:
+    image: axllent/mailpit:latest
+    container_name: aps-mailpit
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:${MAILPIT_SMTP_PORT:-1025}:1025"
+      - "127.0.0.1:${MAILPIT_UI_PORT:-8025}:8025"
+
+volumes:
+  aps_pgdata:
