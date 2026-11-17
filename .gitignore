@@ -38,3 +38,5 @@ migrations/app/refs/test.json
 
 # direktori build tes e2e
 .next-e2e/
+.prisma-composer/
+.alchemy/
