@@ -1,6 +1,8 @@
 import { describe, expect, it } from "vitest";
 import { validasi } from "@/server/validation/common";
 import {
+  jadwalSkema,
+  MAKS_TANGGAL_JADWAL,
   multiDestinasiSkema,
   multiTujuanSkema,
   pencarianSkema,
@@ -76,5 +78,24 @@ describe("multiDestinasiSkema (US4)", () => {
   it("menolak ruas dengan asal = tujuan dan melaporkan indeksnya", () => {
     const h = validasi(multiDestinasiSkema, { ruas: [ruas("CGK", "DPS"), ruas("DPS", "DPS")] });
     expect(!h.ok && h.galat["ruas.1.tujuan"]).toBe("Keberangkatan dan tujuan tidak boleh sama.");
+  });
+});
+
+describe("jadwalSkema (US10-a)", () => {
+  it("semua filter opsional: masukan kosong valid", () => {
+    expect(validasi(jadwalSkema, { asal: "", tujuan: "", tanggal: [] })).toMatchObject({ ok: true, data: { tanggal: [] } });
+  });
+  it("menerima beberapa tanggal, menghapus duplikat, dan mengurutkannya", () => {
+    const lusa = tanggalWIB(new Date(Date.now() + 2 * 86_400_000));
+    const h = validasi(jadwalSkema, { asal: "", tujuan: "dps", tanggal: [lusa, besok, lusa] });
+    expect(h).toMatchObject({ ok: true, data: { tujuan: "DPS", tanggal: [besok, lusa] } });
+  });
+  it("menolak tanggal di masa lalu dan terlalu banyak tanggal", () => {
+    expect(validasi(jadwalSkema, { asal: "", tujuan: "", tanggal: [kemarin] })).toMatchObject({ ok: false });
+    const banyak = Array.from({ length: MAKS_TANGGAL_JADWAL + 1 }, (_, i) => tanggalWIB(new Date(Date.now() + (i + 1) * 86_400_000)));
+    expect(validasi(jadwalSkema, { asal: "", tujuan: "", tanggal: banyak })).toMatchObject({ ok: false, galat: { tanggal: `Maksimal ${MAKS_TANGGAL_JADWAL} tanggal.` } });
+  });
+  it("menolak kode bandara tidak valid", () => {
+    expect(validasi(jadwalSkema, { tujuan: "ZZZZ", tanggal: [] })).toMatchObject({ ok: false, galat: { tujuan: "Kode bandara tujuan tidak valid." } });
   });
 });

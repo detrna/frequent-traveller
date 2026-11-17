@@ -2,9 +2,11 @@
  * Control untuk pencarian penerbangan (robustness RB04, RB05, RB06, RB11, RB12, RB14).
  * Fungsi di sini menganggap masukan SUDAH divalidasi oleh skema di src/server/validation/penerbangan.ts.
  */
+import { and, or } from "@prisma/orm-postgres/orm-client";
 import { db } from "@/server/db";
 import { akhirHariWIB, awalHariWIB, jamWIB } from "@/lib/waktu";
 import type {
+  JadwalInput,
   MultiDestinasiInput,
   MultiTujuanInput,
   PencarianInput,
@@ -93,6 +95,45 @@ async function ambilPenerbangan(k: Kriteria, batas = 200): Promise<HasilPenerban
       return (k.jamMulai === undefined || jam >= k.jamMulai) && (k.jamSelesai === undefined || jam <= k.jamSelesai);
     })
     .map(keHasil);
+}
+
+export const UKURAN_HALAMAN_JADWAL = 20;
+
+export interface HasilJadwal {
+  penerbangan: HasilPenerbangan[];
+  total: number;
+  halaman: number;
+  totalHalaman: number;
+}
+
+/**
+ * US10-a — jadwal publik: penerbangan yang belum berangkat, urut jam berangkat, per halaman.
+ * Semua filter opsional (tanpa filter = semua penerbangan); beberapa tanggal digabung dengan OR.
+ */
+export async function jelajahiJadwal(input: JadwalInput, halamanMinta = 1): Promise<HasilJadwal> {
+  const kosong = { penerbangan: [], total: 0, halaman: 1, totalHalaman: 1 };
+  const idBandara = async (kode?: string) => (kode ? ((await db.orm.public.Bandara.where({ kode }).select("id").first())?.id ?? null) : undefined);
+  const [asalId, tujuanId] = await Promise.all([idBandara(input.asal), idBandara(input.tujuan)]);
+  if (asalId === null || tujuanId === null) return kosong; // bandara yang tidak ada → tidak ada penerbangan
+
+  const sekarang = new Date();
+  const rentang = input.tanggal.map((t) => ({ awal: awalHariWIB(t), akhir: akhirHariWIB(t) }));
+  let dasar = kueriPenerbangan().where((p) => p.berangkat.gt(sekarang));
+  if (asalId) dasar = dasar.where({ asalId });
+  if (tujuanId) dasar = dasar.where({ tujuanId });
+  if (rentang.length > 0) {
+    dasar = dasar.where((p) => or(...rentang.map((r) => and(p.berangkat.gte(r.awal), p.berangkat.lt(r.akhir)))));
+  }
+
+  const { total } = await dasar.aggregate((a) => ({ total: a.count() }));
+  const totalHalaman = Math.max(1, Math.ceil(total / UKURAN_HALAMAN_JADWAL));
+  const halaman = Math.min(Math.max(1, halamanMinta), totalHalaman);
+  const baris = await dasar
+    .orderBy((p) => p.berangkat.asc())
+    .offset((halaman - 1) * UKURAN_HALAMAN_JADWAL)
+    .limit(UKURAN_HALAMAN_JADWAL)
+    .all();
+  return { penerbangan: baris.map(keHasil), total, halaman, totalHalaman };
 }
 
 /** US2-a / US8-a — "Mencari Penerbangan". */

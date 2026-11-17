@@ -6,6 +6,7 @@ import {
   cariMultiDestinasi,
   cariPenerbangan,
   cariSesuaiPreferensi,
+  jelajahiJadwal,
   ringkasMultiDestinasi,
   susunPerbandingan,
 } from "@/server/services/penerbangan";
@@ -136,5 +137,32 @@ describe("ringkasMultiDestinasi", () => {
   it("ruas kosong semua → total 0 dan tidak lengkap", () => {
     const r = ringkasMultiDestinasi([{ asal: "A", tujuan: "B", tanggal: "2030-01-01", penerbangan: [], termurah: null }]);
     expect(r).toMatchObject({ lengkap: false, totalHargaTermurah: 0, jumlahPenerbangan: 0, jumlahPilihan: 0 });
+  });
+});
+
+describe("jelajahiJadwal (US10-a)", () => {
+  it("tanpa filter menampilkan semua penerbangan yang belum berangkat, urut jam berangkat", async () => {
+    const hasil = await jelajahiJadwal({ tanggal: [] });
+    expect(hasil.total).toBe(7);
+    expect(hasil.halaman).toBe(1);
+    const waktu = hasil.penerbangan.map((p) => p.berangkat.getTime());
+    expect(waktu).toEqual([...waktu].sort((a, b) => a - b));
+  });
+  it("beberapa tanggal digabung (OR)", async () => {
+    const hasil = await jelajahiJadwal({ asal: "CGK", tujuan: "DPS", tanggal: [besok, lusa] });
+    expect(kode(hasil.penerbangan).sort()).toEqual(["GA201", "JT101", "JT102", "JT103"]);
+    expect((await jelajahiJadwal({ asal: "CGK", tujuan: "DPS", tanggal: [lusa] })).total).toBe(1);
+  });
+  it("filter tujuan atau asal saja", async () => {
+    expect((await jelajahiJadwal({ tujuan: "SUB", tanggal: [] })).total).toBe(2);
+    expect((await jelajahiJadwal({ asal: "SUB", tanggal: [] })).total).toBe(1);
+  });
+  it("bandara yang tidak ada → kosong", async () => {
+    expect(await jelajahiJadwal({ tujuan: "XXX", tanggal: [] })).toMatchObject({ total: 0, penerbangan: [] });
+  });
+  it("halaman di luar rentang dirapikan ke halaman terakhir", async () => {
+    const hasil = await jelajahiJadwal({ tanggal: [] }, 99);
+    expect(hasil.halaman).toBe(hasil.totalHalaman);
+    expect(hasil.penerbangan.length).toBeGreaterThan(0);
   });
 });

@@ -220,6 +220,7 @@
 
 - **a.** Tamu dapat mencari jadwal penerbangan (satu tujuan maupun beberapa tujuan) tanpa login.
   - *Sistem* menampilkan jadwal penerbangan, maskapai, dan harga tiket yang sama seperti untuk pengguna yang login.
+  - Tanpa filter, *Sistem* menampilkan semua penerbangan yang belum berangkat (per halaman); tamu dapat mempersempitnya menurut bandara asal, tujuan, dan satu atau lebih tanggal.
 - **b.** Tamu dapat mendaftarkan akun dengan nama, email, dan kata sandi.
   - *Sistem* membuat akun berperan Pengguna, langsung memasukkan tamu ke akunnya, dan menolak email yang sudah terdaftar dengan pesan **"Email sudah terdaftar."**
 - **c.** Tamu yang memilih memesan sebuah penerbangan diminta login terlebih dahulu.
@@ -227,6 +228,6 @@
 
 ### Acceptance Criteria
 
-- **a.** Tamu dapat melihat jadwal, maskapai, dan harga penerbangan tanpa login.
+- **a.** Tamu dapat melihat jadwal, maskapai, dan harga penerbangan tanpa login, tanpa harus mengisi filter apa pun, dan dapat memilih beberapa tanggal sekaligus.
 - **b.** Tamu dapat mendaftar akun; akun baru selalu berperan Pengguna.
 - **c.** Pemesanan, pembatalan, dan seluruh halaman selain jadwal tetap hanya dapat diakses setelah login.

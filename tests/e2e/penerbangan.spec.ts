@@ -4,15 +4,19 @@ import { masuk, PASSWORD, tanggalWIB } from "./helpers";
 const besok = tanggalWIB(1);
 const lusa = tanggalWIB(2);
 
+/** Label checkbox tanggal di /jadwal (format sama dengan tabel hasil). */
+const formatTanggalPilihan = (t: string) =>
+  new Intl.DateTimeFormat("id-ID", { weekday: "short", day: "numeric", month: "short", year: "numeric", timeZone: "Asia/Jakarta" }).format(new Date(`${t}T00:00:00+07:00`));
+
 test.describe("Pengguna — cari penerbangan (US2-a, US3)", () => {
   test.beforeEach(async ({ page }) => masuk(page, "pengguna@aps.test"));
 
   test("mencari menurut tujuan dan tanggal menampilkan jadwal, maskapai, dan harga", async ({ page }) => {
     await page.goto("/jadwal");
-    await page.getByLabel("Dari (opsional)").selectOption("CGK");
+    await page.getByLabel("Dari", { exact: true }).selectOption("CGK");
     await page.getByLabel("Tujuan").selectOption("DPS");
-    await page.getByLabel("Tanggal").fill(besok);
-    await page.getByRole("button", { name: "Cari penerbangan" }).click();
+    await page.getByRole("checkbox", { name: formatTanggalPilihan(besok) }).check();
+    await page.getByRole("button", { name: "Terapkan filter" }).click();
 
     await expect(page.getByRole("heading", { name: "2 penerbangan ditemukan" })).toBeVisible();
     const baris = page.getByRole("table").locator("tbody tr");
@@ -26,6 +30,35 @@ test.describe("Pengguna — cari penerbangan (US2-a, US3)", () => {
     await page.goto(`/jadwal?tujuan=DPS&tanggal=${tanggalWIB(-3)}`);
     await expect(page.getByText("Tanggal tidak boleh di masa lalu.")).toBeVisible();
     await expect(page.getByRole("table")).toHaveCount(0);
+  });
+
+  test("tanpa filter /jadwal menampilkan semua penerbangan, per halaman", async ({ page }) => {
+    await page.goto("/jadwal");
+    await expect(page.getByRole("heading", { name: /penerbangan tersedia/ })).toBeVisible();
+    await expect(page.getByRole("table").locator("tbody tr")).toHaveCount(20);
+    await expect(page.getByText(/Halaman 1 dari \d+/)).toBeVisible();
+
+    await page.getByRole("link", { name: "Berikutnya" }).click();
+    await expect(page).toHaveURL(/halaman=2/);
+    await expect(page.getByText(/Halaman 2 dari \d+/)).toBeVisible();
+    await expect(page.getByRole("link", { name: "Sebelumnya" })).toBeVisible();
+  });
+
+  test("beberapa tanggal dapat dipilih sekaligus", async ({ page }) => {
+    await page.goto("/jadwal");
+    await page.getByLabel("Dari", { exact: true }).selectOption("CGK");
+    await page.getByLabel("Tujuan").selectOption("DPS");
+    await page.getByRole("checkbox", { name: formatTanggalPilihan(besok) }).check();
+    await page.getByRole("checkbox", { name: formatTanggalPilihan(lusa) }).check();
+    await page.getByRole("button", { name: "Terapkan filter" }).click();
+
+    await expect(page).toHaveURL(new RegExp(`tanggal=${besok}&tanggal=${lusa}`));
+    await expect(page.getByRole("checkbox", { name: formatTanggalPilihan(besok) })).toBeChecked();
+    await expect(page.getByRole("checkbox", { name: formatTanggalPilihan(lusa) })).toBeChecked();
+    const satuTanggal = page.getByRole("table").locator("tbody tr");
+    await expect(satuTanggal.first()).toBeVisible();
+    // dua hari → lebih banyak daripada satu hari (2 penerbangan CGK→DPS per hari)
+    await expect(page.getByRole("heading", { name: "4 penerbangan ditemukan" })).toBeVisible();
   });
 
   test("tidak ada penerbangan → pesan kosong", async ({ page }) => {

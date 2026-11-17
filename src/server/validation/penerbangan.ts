@@ -18,6 +18,20 @@ export const pencarianWajibTanggalSkema = pencarianSkema.extend({
   tanggal: tanggalWajib(),
 });
 
+/** Jumlah maksimum tanggal yang dapat dipilih sekaligus pada jadwal publik. */
+export const MAKS_TANGGAL_JADWAL = 14;
+
+/** US10-a: jadwal publik. Semua filter opsional; tanpa filter = semua penerbangan yang belum berangkat. Tanggal boleh lebih dari satu. */
+export const jadwalSkema = z.object({
+  asal: asalOpsional,
+  tujuan: z.union([z.literal("").transform(() => undefined), kodeBandara("Kode bandara tujuan tidak valid.")]).optional(),
+  tanggal: z
+    .array(tanggalWajib(), { error: "Tanggal tidak valid." })
+    .max(MAKS_TANGGAL_JADWAL, { error: `Maksimal ${MAKS_TANGGAL_JADWAL} tanggal.` })
+    .transform((v) => [...new Set(v)].sort()),
+});
+export type JadwalInput = z.output<typeof jadwalSkema>;
+
 /** US3: beberapa tujuan + tanggal. */
 export const multiTujuanSkema = z.object({
   asal: asalOpsional,
