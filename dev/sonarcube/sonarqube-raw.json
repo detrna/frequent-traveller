@@ -1,0 +1,546 @@
+{
+  "measures": {
+    "complexity": "1430",
+    "reliability_rating": "4.0",
+    "code_smells": "2",
+    "duplicated_lines_density": "0.0",
+    "functions": "883",
+    "security_rating": "3.0",
+    "comment_lines_density": "4.5",
+    "security_hotspots": "0",
+    "sqale_index": "10",
+    "sqale_rating": "1.0",
+    "alert_status": "OK",
+    "bugs": "2",
+    "cognitive_complexity": "603",
+    "duplicated_blocks": "0",
+    "ncloc": "6947",
+    "files": "133",
+    "vulnerabilities": "7"
+  },
+  "qualityGate": {
+    "projectStatus": {
+      "status": "OK",
+      "conditions": [],
+      "ignoredConditions": false,
+      "caycStatus": "compliant"
+    }
+  },
+  "issues": [
+    {
+      "key": "83dd543f-3bda-497a-90d9-fc165eb71d7b",
+      "rule": "typescript:S2871",
+      "severity": "CRITICAL",
+      "component": "aps:src/server/validation/penerbangan.ts",
+      "project": "aps",
+      "line": 31,
+      "hash": "83e8ac0d95aa833d2f1e43e5c0dce50b",
+      "textRange": {
+        "startLine": 31,
+        "endLine": 31,
+        "startOffset": 38,
+        "endOffset": 42
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Provide a compare function that depends on \"String.localeCompare\", to reliably sort elements alphabetically.",
+      "effort": "10min",
+      "debt": "10min",
+      "author": "dzakiy1801@student.ub.ac.id",
+      "tags": [
+        "type-dependent",
+        "bad-practice"
+      ],
+      "creationDate": "2026-11-17T04:38:46+0000",
+      "updateDate": "2026-11-17T14:22:05+0000",
+      "type": "BUG",
+      "scope": "MAIN",
+      "quickFixAvailable": true,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "HIGH"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "c4f3ba4b-9f84-4708-bbde-e0c3ad79d819",
+      "rule": "typescript:S4036",
+      "severity": "MINOR",
+      "component": "aps:tests/e2e/global-setup.ts",
+      "project": "aps",
+      "line": 8,
+      "hash": "d1c7b8ab994528d44c6cf57348311eb1",
+      "textRange": {
+        "startLine": 8,
+        "endLine": 8,
+        "startOffset": 13,
+        "endOffset": 60
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Make sure the \"PATH\" variable only contains fixed, unwriteable directories.",
+      "effort": "15min",
+      "debt": "15min",
+      "author": "dzakiy1801@student.ub.ac.id",
+      "tags": [
+        "cwe",
+        "former-hotspot"
+      ],
+      "creationDate": "2026-11-17T01:57:33+0000",
+      "updateDate": "2026-11-17T14:22:05+0000",
+      "type": "VULNERABILITY",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "COMPLETE",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "SECURITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "aab4ad05-6934-4401-b548-218b497b72b5",
+      "rule": "typescript:S4036",
+      "severity": "MINOR",
+      "component": "aps:tests/global-setup.ts",
+      "project": "aps",
+      "line": 8,
+      "hash": "cea9cfce4adfc90d36acac783b627cc0",
+      "textRange": {
+        "startLine": 8,
+        "endLine": 8,
+        "startOffset": 13,
+        "endOffset": 60
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Make sure the \"PATH\" variable only contains fixed, unwriteable directories.",
+      "effort": "15min",
+      "debt": "15min",
+      "author": "dzakiy1801@student.ub.ac.id",
+      "tags": [
+        "cwe",
+        "former-hotspot"
+      ],
+      "creationDate": "2026-11-17T01:57:33+0000",
+      "updateDate": "2026-11-17T14:22:05+0000",
+      "type": "VULNERABILITY",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "COMPLETE",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "SECURITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "cfcc8679-ccd2-42d0-a6b2-7e81a446ffb8",
+      "rule": "typescript:S2137",
+      "severity": "MAJOR",
+      "component": "aps:src/app/error.tsx",
+      "project": "aps",
+      "line": 6,
+      "hash": "eced8e1bfe92119459a1c16c3ddafc86",
+      "textRange": {
+        "startLine": 6,
+        "endLine": 6,
+        "startOffset": 24,
+        "endOffset": 29
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Do not use \"Error\" to declare a function - use another name.",
+      "effort": "10min",
+      "debt": "10min",
+      "author": "dzakiy1801@student.ub.ac.id",
+      "tags": [
+        "pitfall"
+      ],
+      "creationDate": "2026-11-17T01:38:43+0000",
+      "updateDate": "2026-11-17T14:22:05+0000",
+      "type": "BUG",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "eed2539c-767d-4a7f-aff4-a2e91805c5f8",
+      "rule": "typescript:S4036",
+      "severity": "MINOR",
+      "component": "aps:tests/e2e/global-setup.ts",
+      "project": "aps",
+      "line": 9,
+      "hash": "b2277cb507db6f1aec887cc03a78dc32",
+      "textRange": {
+        "startLine": 9,
+        "endLine": 9,
+        "startOffset": 13,
+        "endOffset": 37
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Make sure the \"PATH\" variable only contains fixed, unwriteable directories.",
+      "effort": "15min",
+      "debt": "15min",
+      "author": "dzakiy1801@student.ub.ac.id",
+      "tags": [
+        "cwe",
+        "former-hotspot"
+      ],
+      "creationDate": "2026-11-17T01:21:36+0000",
+      "updateDate": "2026-11-17T14:22:05+0000",
+      "type": "VULNERABILITY",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "COMPLETE",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "SECURITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "87591de3-c07f-42b6-be5f-882beb39e614",
+      "rule": "typescript:S2068",
+      "severity": "MAJOR",
+      "component": "aps:tests/e2e/helpers.ts",
+      "project": "aps",
+      "line": 3,
+      "hash": "b526fb1679db366afd703722ba22f41f",
+      "textRange": {
+        "startLine": 3,
+        "endLine": 3,
+        "startOffset": 24,
+        "endOffset": 36
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Review this potentially hard-coded password.",
+      "effort": "30min",
+      "debt": "30min",
+      "author": "dzakiy1801@student.ub.ac.id",
+      "tags": [
+        "cwe",
+        "secret",
+        "former-hotspot"
+      ],
+      "creationDate": "2026-11-17T01:16:26+0000",
+      "updateDate": "2026-11-17T14:22:05+0000",
+      "type": "VULNERABILITY",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "TRUSTWORTHY",
+      "cleanCodeAttributeCategory": "RESPONSIBLE",
+      "impacts": [
+        {
+          "softwareQuality": "SECURITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "da699907-5756-43ab-be6b-dc126b0cddd6",
+      "rule": "typescript:S2245",
+      "severity": "MAJOR",
+      "component": "aps:tests/integration/helpers.ts",
+      "project": "aps",
+      "line": 114,
+      "hash": "b587304cd9642f7cf10f05ee19b6205f",
+      "textRange": {
+        "startLine": 114,
+        "endLine": 114,
+        "startOffset": 61,
+        "endOffset": 74
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Make sure that using this pseudorandom number generator is safe here.",
+      "effort": "10min",
+      "debt": "10min",
+      "author": "dzakiy1801@student.ub.ac.id",
+      "tags": [
+        "cwe",
+        "cryptography",
+        "former-hotspot"
+      ],
+      "creationDate": "2026-11-17T01:16:26+0000",
+      "updateDate": "2026-11-17T14:22:05+0000",
+      "type": "VULNERABILITY",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "TRUSTWORTHY",
+      "cleanCodeAttributeCategory": "RESPONSIBLE",
+      "impacts": [
+        {
+          "softwareQuality": "SECURITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "51776656-a467-4232-8000-af0e5b235858",
+      "rule": "typescript:S2068",
+      "severity": "MAJOR",
+      "component": "aps:tests/integration/helpers.ts",
+      "project": "aps",
+      "line": 62,
+      "hash": "d360a78bd93fd3e10eaab3ef8e04725d",
+      "textRange": {
+        "startLine": 62,
+        "endLine": 62,
+        "startOffset": 28,
+        "endOffset": 41
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Review this potentially hard-coded password.",
+      "effort": "30min",
+      "debt": "30min",
+      "author": "dzakiy1801@student.ub.ac.id",
+      "tags": [
+        "cwe",
+        "secret",
+        "former-hotspot"
+      ],
+      "creationDate": "2026-11-17T01:11:52+0000",
+      "updateDate": "2026-11-17T14:22:05+0000",
+      "type": "VULNERABILITY",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "TRUSTWORTHY",
+      "cleanCodeAttributeCategory": "RESPONSIBLE",
+      "impacts": [
+        {
+          "softwareQuality": "SECURITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "44e458e9-75bd-4741-b038-5e24ab101307",
+      "rule": "typescript:S2068",
+      "severity": "MAJOR",
+      "component": "aps:prisma/seed.ts",
+      "project": "aps",
+      "line": 22,
+      "hash": "c530cff5db4ee57b4dd186ef30fec996",
+      "textRange": {
+        "startLine": 22,
+        "endLine": 22,
+        "startOffset": 22,
+        "endOffset": 34
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Review this potentially hard-coded password.",
+      "effort": "30min",
+      "debt": "30min",
+      "author": "dzakiy1801@student.ub.ac.id",
+      "tags": [
+        "cwe",
+        "secret",
+        "former-hotspot"
+      ],
+      "creationDate": "2026-11-17T01:07:40+0000",
+      "updateDate": "2026-11-17T14:22:05+0000",
+      "type": "VULNERABILITY",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "TRUSTWORTHY",
+      "cleanCodeAttributeCategory": "RESPONSIBLE",
+      "impacts": [
+        {
+          "softwareQuality": "SECURITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "d6f8825b-e68e-4213-9df2-1b2bd30a148d",
+      "rule": "typescript:S7767",
+      "severity": "MAJOR",
+      "component": "aps:prisma/seed.ts",
+      "project": "aps",
+      "line": 30,
+      "hash": "3d4e3893d0fc531c37d095fd65a75796",
+      "textRange": {
+        "startLine": 30,
+        "endLine": 30,
+        "startOffset": 4,
+        "endOffset": 10
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Use `Math.trunc` instead of `|= 0`.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "dzakiy1801@student.ub.ac.id",
+      "tags": [
+        "es2015",
+        "confusing"
+      ],
+      "creationDate": "2026-11-17T01:07:40+0000",
+      "updateDate": "2026-11-17T14:22:05+0000",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": true,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "HIGH"
+        },
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "HIGH"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "e2394c69-dc5a-4c96-87f5-373a4910a6ca",
+      "rule": "typescript:S7767",
+      "severity": "MAJOR",
+      "component": "aps:prisma/seed.ts",
+      "project": "aps",
+      "line": 31,
+      "hash": "9e52efc36ea6a8ef6684cedae7f65f5f",
+      "textRange": {
+        "startLine": 31,
+        "endLine": 31,
+        "startOffset": 8,
+        "endOffset": 28
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Use `Math.trunc` instead of `| 0`.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "dzakiy1801@student.ub.ac.id",
+      "tags": [
+        "es2015",
+        "confusing"
+      ],
+      "creationDate": "2026-11-17T01:07:40+0000",
+      "updateDate": "2026-11-17T14:22:05+0000",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": true,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "HIGH"
+        },
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "HIGH"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    }
+  ],
+  "rules": {
+    "typescript:S2068": "Credentials should not be hard-coded",
+    "typescript:S4036": "OS commands should not rely on PATH resolution",
+    "typescript:S7767": "Bitwise operators should not be used to truncate numbers",
+    "typescript:S2245": "Pseudorandom number generators (PRNGs) should not be used in security contexts",
+    "typescript:S2871": "\"Array.prototype.sort()\" and \"Array.prototype.toSorted()\" should use a compare function",
+    "typescript:S2137": "Special identifiers should not be bound or assigned"
+  },
+  "hotspots": []
+}
