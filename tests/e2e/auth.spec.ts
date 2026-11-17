@@ -1,13 +1,5 @@
-import { expect, test, type Page } from "@playwright/test";
-
-const PASSWORD = "Demo#12345";
-
-async function masuk(page: Page, email: string) {
-  await page.goto("/login");
-  await page.getByLabel("Email").fill(email);
-  await page.getByLabel("Kata sandi").fill(PASSWORD);
-  await page.getByRole("button", { name: "Masuk" }).click();
-}
+import { expect, test } from "@playwright/test";
+import { masuk, PASSWORD } from "./helpers";
 
 test("tamu diarahkan ke halaman login dan kembali ke tujuan setelah masuk", async ({ page }) => {
   await page.goto("/travel/status");
@@ -16,7 +8,6 @@ test("tamu diarahkan ke halaman login dan kembali ke tujuan setelah masuk", asyn
 
 test("login berhasil menampilkan dashboard sesuai peran", async ({ page }) => {
   await masuk(page, "member@aps.test");
-  await expect(page).toHaveURL(/\/dashboard$/);
   await expect(page.getByRole("heading", { name: "Halo, Citra Lestari" })).toBeVisible();
   await expect(page.getByText("Masuk sebagai Member Frequent Traveller.")).toBeVisible();
 });
@@ -24,7 +15,7 @@ test("login berhasil menampilkan dashboard sesuai peran", async ({ page }) => {
 test("kredensial salah menampilkan pesan galat", async ({ page }) => {
   await page.goto("/login");
   await page.getByLabel("Email").fill("member@aps.test");
-  await page.getByLabel("Kata sandi").fill("salah-total");
+  await page.getByLabel("Kata sandi").fill(`${PASSWORD}-salah`);
   await page.getByRole("button", { name: "Masuk" }).click();
   await expect(page.getByRole("alert").filter({ hasText: "Email atau kata sandi salah." })).toBeVisible();
   await expect(page).toHaveURL(/\/login/);

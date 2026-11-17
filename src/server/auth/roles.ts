@@ -74,7 +74,13 @@ export interface NavItem {
 }
 
 /** Menu navigasi. Tambahkan entri di sini saat sebuah halaman selesai dibuat. */
-export const NAV_ITEMS: readonly NavItem[] = [];
+export const NAV_ITEMS: readonly NavItem[] = [
+  { href: "/penerbangan/cari", label: "Cari Penerbangan", deskripsi: "Lihat jadwal, maskapai, dan harga tiket sesuai tujuan dan tanggal.", roles: ["PENGGUNA", "MEMBER"] },
+  { href: "/penerbangan/multi-tujuan", label: "Beberapa Tujuan", deskripsi: "Cari penerbangan ke beberapa kota tujuan sekaligus.", roles: ["PENGGUNA", "MEMBER"] },
+  { href: "/member/preferensi", label: "Preferensi", deskripsi: "Cari penerbangan sesuai tujuan, tanggal, dan jam keberangkatan.", roles: ["MEMBER"] },
+  { href: "/member/bandingkan", label: "Bandingkan Harga", deskripsi: "Bandingkan harga tiket yang sesuai preferensi Anda.", roles: ["MEMBER"] },
+  { href: "/member/multi-destinasi", label: "Multi-Destinasi", deskripsi: "Susun perjalanan beberapa kota dan bandingkan total harganya.", roles: ["MEMBER"] },
+];
 
 export function navUntuk(role: Role): NavItem[] {
   return NAV_ITEMS.filter((item) => item.roles.includes(role));
