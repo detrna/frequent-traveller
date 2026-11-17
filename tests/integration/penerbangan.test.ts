@@ -1,5 +1,5 @@
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
-import { db } from "@/server/db";
+import { tutupDb } from "@/server/db";
 import {
   bandingkanHarga,
   cariBeberapaTujuan,
@@ -27,7 +27,7 @@ beforeAll(async () => {
   await buatPenerbanganTes({ asal: "DPS", tujuan: "SUB", tanggal: lusa, jam: 10, harga: 650_000, maskapai: "JT", kode: "JT501" });
 });
 afterAll(async () => {
-  await db.$disconnect();
+  await tutupDb();
 });
 
 const kode = (h: { kodePenerbangan: string }[]) => h.map((p) => p.kodePenerbangan);

@@ -1,11 +1,25 @@
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from "vitest";
-import { db } from "@/server/db";
+import { db, tutupDb } from "@/server/db";
 import { GalatBisnis, GalatValidasi } from "@/server/errors";
 import { verifikasiKredensial } from "@/server/services/auth";
 import { buatEtiket, kirimEtiket } from "@/server/services/etiket";
 import { ambilTiketMilik } from "@/server/services/tiket";
 import { ambilStatusBooking, kirimUlangEtiket, otorisasiKodeBooking, pesanUntukPengunjung, PESAN_KODE_TIDAK_SESUAI } from "@/server/services/travel";
-import { besokWIB, buatBookingTes, buatDriverPalsu, buatPenerbanganTes, buatUserTes, resetDb, siapkanReferensi } from "./helpers";
+import {
+  ambilPenerbanganTes,
+  bersihkanPengunjung,
+  bersihkanTransaksi,
+  besokWIB,
+  buatBookingTes,
+  buatDriverPalsu,
+  buatPenerbanganTes,
+  buatUserTes,
+  jumlahBooking,
+  jumlahPengunjung,
+  jumlahUserPengunjung,
+  resetDb,
+  siapkanReferensi,
+} from "./helpers";
 
 let manager: { id: string };
 let pengguna: { id: string };
@@ -30,15 +44,11 @@ beforeAll(async () => {
   pengguna = await buatUserTes("PENGGUNA", "pengguna@tes.test", "Budi");
 });
 afterAll(async () => {
-  await db.$disconnect();
+  await tutupDb();
 });
 beforeEach(async () => {
-  await db.notifikasiEmail.deleteMany();
-  await db.tiketPesawat.deleteMany();
-  await db.booking.deleteMany();
-  await db.pengunjung.deleteMany();
-  await db.user.deleteMany({ where: { role: "PENGUNJUNG" } });
-  await db.penerbangan.deleteMany();
+  await bersihkanTransaksi();
+  await bersihkanPengunjung();
   penerbanganId = (await buatPenerbanganTes({ asal: "CGK", tujuan: "DPS", tanggal: besokWIB(1), jam: 8, harga: 900_000, kursi: 5, maskapai: "GA", kode: "GA100" })).id;
 });
 
@@ -114,11 +124,11 @@ describe("pesanUntukPengunjung (US8-b) dan e-tiket (US8-d)", () => {
     expect(hasil.booking).toMatchObject({ status: "BOOKED", dibuatOlehId: manager.id });
     expect(hasil.booking.tiket[0]).toMatchObject({ namaPenumpang: "Fajar Hidayat", status: "TERBIT" });
     expect(hasil.booking.pemilikId).not.toBe(manager.id);
-    expect((await db.penerbangan.findUniqueOrThrow({ where: { id: penerbanganId } })).kursiTersedia).toBe(4);
+    expect((await ambilPenerbanganTes(penerbanganId)).kursiTersedia).toBe(4);
 
     // kata sandi sementara benar-benar dapat dipakai login, dan tidak tersimpan sebagai teks asli
     expect(hasil.kataSandiSementara).toMatch(/^[\w-]{12}$/);
-    const akun = await db.user.findUniqueOrThrow({ where: { email: "pengunjung1@aps.test" } });
+    const akun = await db.orm.public.User.where({ email: "pengunjung1@aps.test" }).firstOrThrow();
     expect(akun.role).toBe("PENGUNJUNG");
     expect(akun.passwordHash).not.toContain(hasil.kataSandiSementara!);
     expect(await verifikasiKredensial({ email: "pengunjung1@aps.test", password: hasil.kataSandiSementara })).toMatchObject({ role: "PENGUNJUNG" });
@@ -131,7 +141,7 @@ describe("pesanUntukPengunjung (US8-b) dan e-tiket (US8-d)", () => {
     expect(terkirim[0].teks).toContain("Jakarta (CGK) → Denpasar (DPS)");
     expect(terkirim[0].teks).toContain("Garuda Indonesia GA100");
     expect(hasil.etiket).toMatchObject({ terkirim: 1, gagal: 0 });
-    const notif = await db.notifikasiEmail.findMany();
+    const notif = await db.orm.public.NotifikasiEmail.all();
     expect(notif).toHaveLength(1);
     expect(notif[0]).toMatchObject({ status: "TERKIRIM", kepada: "pengunjung1@aps.test", percobaan: 1, error: null });
     expect(notif[0].terkirimAt).toBeInstanceOf(Date);
@@ -156,8 +166,8 @@ describe("pesanUntukPengunjung (US8-b) dan e-tiket (US8-d)", () => {
     expect(hasil.kataSandiSementara).toBeUndefined();
     expect(hasil.pengunjung.id).toBe(pertama.pengunjung.id);
     expect(hasil.pengunjung.nama).toBe("Fajar Hidayat"); // data tersimpan tidak ditimpa
-    expect(await db.pengunjung.count()).toBe(1);
-    expect(await db.user.count({ where: { role: "PENGUNJUNG" } })).toBe(1);
+    expect(await jumlahPengunjung()).toBe(1);
+    expect(await jumlahUserPengunjung()).toBe(1);
   });
 
   it("data pengunjung tidak lengkap/tidak valid ditolak per kolom dan tidak membuat apa pun", async () => {
@@ -171,22 +181,22 @@ describe("pesanUntukPengunjung (US8-b) dan e-tiket (US8-d)", () => {
     });
     expect((await galat<GalatValidasi>(pesanUntukPengunjung(manager, { penerbanganId, pengunjung: {} }))).galat.nik).toBe("NIK pengunjung wajib diisi.");
     expect((await galat(pesanUntukPengunjung(manager, { penerbanganId: " ", pengunjung: DATA }))).message).toBe("Pilih penerbangan terlebih dahulu.");
-    expect(await db.pengunjung.count()).toBe(0);
-    expect(await db.booking.count()).toBe(0);
+    expect(await jumlahPengunjung()).toBe(0);
+    expect(await jumlahBooking()).toBe(0);
   });
 
   it("menolak email yang sudah dipakai akun non-pengunjung", async () => {
     const e = await galat(pesanUntukPengunjung(manager, { penerbanganId, pengunjung: { ...DATA, email: "pengguna@tes.test" } }));
     expect(e.kode).toBe("EMAIL_DIPAKAI");
-    expect(await db.booking.count()).toBe(0);
+    expect(await jumlahBooking()).toBe(0);
   });
 
   it("kursi penuh: pemesanan gagal dan tidak meninggalkan akun pengunjung (transaksi dibatalkan)", async () => {
     const penuh = await buatPenerbanganTes({ asal: "CGK", tujuan: "SUB", tanggal: besokWIB(1), jam: 9, harga: 500_000, kursi: 0 });
     const e = await galat(pesanUntukPengunjung(manager, { penerbanganId: penuh.id, pengunjung: DATA }));
     expect(e.kode).toBe("PENUH");
-    expect(await db.pengunjung.count()).toBe(0);
-    expect(await db.user.count({ where: { email: "pengunjung1@aps.test" } })).toBe(0);
+    expect(await jumlahPengunjung()).toBe(0);
+    expect(await jumlahUserPengunjung("pengunjung1@aps.test")).toBe(0);
   });
 
   it("pesanan yang sama untuk pengunjung yang sama ditolak sebagai duplikat", async () => {
@@ -203,7 +213,7 @@ describe("pengiriman e-tiket gagal dan kirim ulang (alternatif RB18)", () => {
 
     expect(hasil.booking.status).toBe("BOOKED"); // pesanan tetap ada
     expect(hasil.etiket).toMatchObject({ terkirim: 0, gagal: 1 });
-    let notif = await db.notifikasiEmail.findMany();
+    let notif = await db.orm.public.NotifikasiEmail.all();
     expect(notif).toHaveLength(1);
     expect(notif[0]).toMatchObject({ status: "GAGAL", error: "SMTP tidak dapat dihubungi", percobaan: 1, terkirimAt: null });
 
@@ -211,7 +221,7 @@ describe("pengiriman e-tiket gagal dan kirim ulang (alternatif RB18)", () => {
     const ulang = await kirimUlangEtiket(hasil.booking.id, baik.driver);
     expect(ulang).toMatchObject({ terkirim: 1, gagal: 0 });
     expect(baik.terkirim).toHaveLength(1);
-    notif = await db.notifikasiEmail.findMany();
+    notif = await db.orm.public.NotifikasiEmail.all();
     expect(notif).toHaveLength(1); // baris yang sama diperbarui, bukan menumpuk
     expect(notif[0]).toMatchObject({ status: "TERKIRIM", error: null, percobaan: 2 });
 
@@ -225,7 +235,7 @@ describe("pengiriman e-tiket gagal dan kirim ulang (alternatif RB18)", () => {
     const rusak = buatDriverPalsu("timeout");
     const hasil = await pesanUntukPengunjung(manager, { penerbanganId, pengunjung: DATA }, { driverEmail: rusak.driver });
     await kirimUlangEtiket(hasil.booking.id, rusak.driver);
-    const notif = await db.notifikasiEmail.findMany();
+    const notif = await db.orm.public.NotifikasiEmail.all();
     expect(notif).toHaveLength(1);
     expect(notif[0]).toMatchObject({ status: "GAGAL", percobaan: 2 });
   });
@@ -233,7 +243,7 @@ describe("pengiriman e-tiket gagal dan kirim ulang (alternatif RB18)", () => {
   it("email terdaftar tidak tersedia → dicatat gagal dengan alasan yang jelas", async () => {
     const { driver, terkirim } = buatDriverPalsu();
     const hasil = await pesanUntukPengunjung(manager, { penerbanganId, pengunjung: DATA }, { driverEmail: buatDriverPalsu("x").driver });
-    await db.pengunjung.update({ where: { id: hasil.pengunjung.id }, data: { email: "  " } });
+    await db.orm.public.Pengunjung.where({ id: hasil.pengunjung.id }).update({ email: "  " });
     const ulang = await kirimUlangEtiket(hasil.booking.id, driver);
     expect(ulang.gagal).toBe(1);
     expect(ulang.rincian[0].error).toBe("Email terdaftar pengunjung tidak tersedia.");
@@ -243,7 +253,7 @@ describe("pengiriman e-tiket gagal dan kirim ulang (alternatif RB18)", () => {
   it("tiket yang dibatalkan dilewati, dan booking non-pengunjung ditolak", async () => {
     const { driver, terkirim } = buatDriverPalsu();
     const hasil = await pesanUntukPengunjung(manager, { penerbanganId, pengunjung: DATA }, { driverEmail: buatDriverPalsu("x").driver });
-    await db.tiketPesawat.updateMany({ where: { bookingId: hasil.booking.id }, data: { status: "DIBATALKAN" } });
+    await db.orm.public.TiketPesawat.where({ bookingId: hasil.booking.id }).updateAndCount({ status: "DIBATALKAN" });
     expect(await kirimEtiket(hasil.booking.id, driver)).toMatchObject({ terkirim: 0, dilewati: 1 });
     expect(terkirim).toHaveLength(0);
 

@@ -1,5 +1,5 @@
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from "vitest";
-import { db } from "@/server/db";
+import { tutupDb } from "@/server/db";
 import { GalatBisnis } from "@/server/errors";
 import {
   ambilDataPesanan,
@@ -11,14 +11,14 @@ import {
   prosesPemesanan,
   transisiStatus,
 } from "@/server/services/booking";
-import { besokWIB, buatPenerbanganTes, buatUserTes, resetDb, siapkanReferensi } from "./helpers";
+import { ambilPenerbanganTes, bersihkanTransaksi, besokWIB, buatPenerbanganTes, buatUserTes, jumlahBooking, resetDb, siapkanReferensi } from "./helpers";
 
 let pengguna: { id: string; nama: string };
 let lain: { id: string };
 let penerbanganId: string;
 
 async function kursi(id = penerbanganId) {
-  return (await db.penerbangan.findUniqueOrThrow({ where: { id } })).kursiTersedia;
+  return (await ambilPenerbanganTes(id)).kursiTersedia;
 }
 
 async function galat(janji: Promise<unknown>): Promise<GalatBisnis> {
@@ -38,13 +38,11 @@ beforeAll(async () => {
   lain = await buatUserTes("MEMBER", "member@tes.test", "Citra");
 });
 afterAll(async () => {
-  await db.$disconnect();
+  await tutupDb();
 });
 
 beforeEach(async () => {
-  await db.tiketPesawat.deleteMany();
-  await db.booking.deleteMany();
-  await db.penerbangan.deleteMany();
+  await bersihkanTransaksi();
   const p = await buatPenerbanganTes({ asal: "CGK", tujuan: "DPS", tanggal: besokWIB(1), jam: 8, harga: 900_000, kursi: 3, maskapai: "JT", kode: "JT100" });
   penerbanganId = p.id;
 });
@@ -106,7 +104,7 @@ describe("prosesPemesanan (US2-b, US6-c)", () => {
     const penuh = await buatPenerbanganTes({ asal: "CGK", tujuan: "SUB", tanggal: besokWIB(1), jam: 9, harga: 500_000, kursi: 0 });
     const e = await galat(prosesPemesanan(pengguna, { penerbanganId: penuh.id, namaPenumpang: "Budi" }));
     expect(e.message).toBe("Kursi pada penerbangan ini sudah penuh.");
-    expect(await db.booking.count()).toBe(0);
+    expect(await jumlahBooking()).toBe(0);
   });
 
   it("tidak pernah menjual melebihi kapasitas saat banyak pengguna memesan bersamaan", async () => {
@@ -118,13 +116,13 @@ describe("prosesPemesanan (US2-b, US6-c)", () => {
     expect(ditolak).toHaveLength(5);
     expect(ditolak.every((h) => h.reason instanceof GalatBisnis && h.reason.kode === "PENUH")).toBe(true);
     expect(await kursi()).toBe(0);
-    expect(await db.booking.count()).toBe(3);
+    expect(await jumlahBooking()).toBe(3);
   });
 
   it("permintaan identik yang bersamaan hanya menghasilkan satu booking", async () => {
     const hasil = await Promise.allSettled(Array.from({ length: 4 }, () => prosesPemesanan(pengguna, { penerbanganId, namaPenumpang: "Budi Santoso" })));
     expect(hasil.filter((h) => h.status === "fulfilled")).toHaveLength(1);
-    expect(await db.booking.count({ where: { pemilikId: pengguna.id } })).toBe(1);
+    expect(await jumlahBooking(pengguna.id)).toBe(1);
     expect(await kursi()).toBe(2);
   });
 });

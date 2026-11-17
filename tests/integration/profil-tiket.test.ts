@@ -1,10 +1,10 @@
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from "vitest";
-import { db } from "@/server/db";
+import { tutupDb } from "@/server/db";
 import { GalatBisnis } from "@/server/errors";
 import { ambilProfil, perbaruiProfil } from "@/server/services/profil";
 import { prosesPemesanan, batalkanPesanan } from "@/server/services/booking";
 import { ambilTiketMilik, PESAN_PROFIL_TIDAK_LENGKAP, validasiTiket } from "@/server/services/tiket";
-import { besokWIB, buatPenerbanganTes, buatUserTes, resetDb, siapkanReferensi } from "./helpers";
+import { ambilTiketTes, bersihkanProfil, bersihkanTransaksi, besokWIB, buatPenerbanganTes, buatUserTes, jumlahProfil, resetDb, siapkanReferensi } from "./helpers";
 
 const PROFIL_LENGKAP = {
   namaLengkap: "Citra Lestari Wijaya",
@@ -42,13 +42,11 @@ beforeAll(async () => {
   lain = await buatUserTes("MEMBER", "member2@tes.test", "Dimas");
 });
 afterAll(async () => {
-  await db.$disconnect();
+  await tutupDb();
 });
 beforeEach(async () => {
-  await db.tiketPesawat.deleteMany();
-  await db.booking.deleteMany();
-  await db.profilMember.deleteMany();
-  await db.penerbangan.deleteMany();
+  await bersihkanTransaksi();
+  await bersihkanProfil();
   penerbanganId = (await buatPenerbanganTes({ asal: "CGK", tujuan: "DPS", tanggal: besokWIB(1), jam: 8, harga: 900_000, kursi: 20 })).id;
 });
 
@@ -59,7 +57,7 @@ describe("perbaruiProfil (US5-a)", () => {
     expect(a.ok && a.profil.alamat).toBeNull();
     const b = await perbaruiProfil(member.id, PROFIL_LENGKAP);
     expect(b.ok && b.profil).toMatchObject({ namaLengkap: "Citra Lestari Wijaya", nik: "3174015705920001", alamat: "Jl. Melati No. 10, Jakarta" });
-    expect(await db.profilMember.count()).toBe(1);
+    expect(await jumlahProfil()).toBe(1);
   });
   it("tidak menyimpan apa pun bila ada galat format", async () => {
     const hasil = await perbaruiProfil(member.id, { ...PROFIL_LENGKAP, nik: "123" });
@@ -79,7 +77,7 @@ describe("validasiTiket (US5-b, US5-c)", () => {
     expect(e.message).toBe("data profil tidak lengkap");
     expect(e.message).toBe(PESAN_PROFIL_TIDAK_LENGKAP);
     expect(e.kode).toBe("PROFIL_TIDAK_LENGKAP");
-    expect((await db.tiketPesawat.findUniqueOrThrow({ where: { id: tiketId } })).status).toBe("TERBIT");
+    expect((await ambilTiketTes(tiketId)).status).toBe("TERBIT");
   });
 
   it("menolak bila profil terisi sebagian, lalu menerima setelah dilengkapi", async () => {
@@ -119,7 +117,7 @@ describe("validasiTiket (US5-b, US5-c)", () => {
     const { tiketId } = await pesan(lain);
     await perbaruiProfil(member.id, PROFIL_LENGKAP);
     expect((await galat(validasiTiket(member.id, tiketId))).kode).toBe("TIDAK_DITEMUKAN");
-    expect((await db.tiketPesawat.findUniqueOrThrow({ where: { id: tiketId } })).status).toBe("TERBIT");
+    expect((await ambilTiketTes(tiketId)).status).toBe("TERBIT");
   });
 
   it("id tiket yang tidak ada", async () => {

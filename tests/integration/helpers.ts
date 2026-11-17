@@ -1,20 +1,63 @@
 import bcrypt from "bcryptjs";
 import { db } from "@/server/db";
 import { getDatabaseUrl } from "@/server/db-target";
-import type { Role } from "@/generated/prisma/enums";
+import type { Role } from "@/lib/enums";
 
-/** Mengosongkan semua tabel. Menolak jalan bila bukan database tes, agar data pengembangan/cloud tidak terhapus. */
-export async function resetDb() {
+const jalankan = (rencana: { build(): never } | { build(): unknown }) => db.execute(rencana.build() as never);
+
+/** Menolak jalan bila bukan database tes, agar data pengembangan/cloud tidak terhapus. */
+function pastikanDatabaseTes() {
   const nama = new URL(getDatabaseUrl()).pathname.replace(/^\//, "");
   if (!/test/i.test(nama)) {
-    throw new Error(`resetDb ditolak: database "${nama}" bukan database tes.`);
+    throw new Error(`Pembersihan ditolak: database "${nama}" bukan database tes.`);
   }
-  const tabel = await db.$queryRaw<Array<{ tablename: string }>>`
-    SELECT tablename FROM pg_tables WHERE schemaname = 'public' AND tablename <> '_prisma_migrations'`;
-  if (tabel.length === 0) return;
-  const daftar = tabel.map((t) => `"${t.tablename}"`).join(", ");
-  await db.$executeRawUnsafe(`TRUNCATE TABLE ${daftar} RESTART IDENTITY CASCADE`);
 }
+
+/** Mengosongkan semua tabel data. */
+export async function resetDb() {
+  pastikanDatabaseTes();
+  await jalankan(
+    db.raw.sql`TRUNCATE TABLE "public"."NotifikasiEmail", "public"."TiketPesawat", "public"."Booking", "public"."Penerbangan", "public"."Maskapai", "public"."Bandara", "public"."Pengunjung", "public"."ProfilMember", "public"."User", "public"."RiwayatCuti", "public"."PermohonanCuti", "public"."Pegawai" CASCADE`.affectedCount(),
+  );
+}
+
+/** Mengosongkan data transaksi (notifikasi, tiket, booking, penerbangan) tanpa menyentuh pengguna dan referensi. */
+export async function bersihkanTransaksi() {
+  pastikanDatabaseTes();
+  await jalankan(
+    db.raw.sql`TRUNCATE TABLE "public"."NotifikasiEmail", "public"."TiketPesawat", "public"."Booking", "public"."Penerbangan" CASCADE`.affectedCount(),
+  );
+}
+
+export async function bersihkanProfil() {
+  pastikanDatabaseTes();
+  await jalankan(db.raw.sql`TRUNCATE TABLE "public"."ProfilMember" CASCADE`.affectedCount());
+}
+
+/** Menghapus semua data pengunjung beserta akun loginnya. */
+export async function bersihkanPengunjung() {
+  pastikanDatabaseTes();
+  await jalankan(db.raw.sql`TRUNCATE TABLE "public"."Pengunjung" CASCADE`.affectedCount());
+  await db.orm.public.User.where({ role: "PENGUNJUNG" }).deleteAndCount();
+}
+
+// ---- penghitung & pembacaan kecil yang dipakai berulang oleh tes ----
+export async function jumlahBooking(pemilikId?: string) {
+  const koleksi = pemilikId ? db.orm.public.Booking.where({ pemilikId }) : db.orm.public.Booking;
+  return (await koleksi.aggregate((a) => ({ n: a.count() }))).n;
+}
+export async function jumlahPengunjung() {
+  return (await db.orm.public.Pengunjung.aggregate((a) => ({ n: a.count() }))).n;
+}
+export async function jumlahProfil() {
+  return (await db.orm.public.ProfilMember.aggregate((a) => ({ n: a.count() }))).n;
+}
+export async function jumlahUserPengunjung(email?: string) {
+  const koleksi = email ? db.orm.public.User.where({ role: "PENGUNJUNG", email }) : db.orm.public.User.where({ role: "PENGUNJUNG" });
+  return (await koleksi.aggregate((a) => ({ n: a.count() }))).n;
+}
+export const ambilPenerbanganTes = (id: string) => db.orm.public.Penerbangan.where({ id }).firstOrThrow();
+export const ambilTiketTes = (id: string) => db.orm.public.TiketPesawat.where({ id }).firstOrThrow();
 
 export const PASSWORD_TES = "Rahasia#123";
 
@@ -22,7 +65,7 @@ let hashTes: string | undefined;
 
 export async function buatUserTes(role: Role, email = `${role.toLowerCase()}@tes.test`, nama = `Tes ${role}`) {
   hashTes ??= await bcrypt.hash(PASSWORD_TES, 4);
-  return db.user.create({ data: { email, nama, role, passwordHash: hashTes } });
+  return db.orm.public.User.create({ email, nama, role, passwordHash: hashTes });
 }
 
 /** Besok menurut WIB, format YYYY-MM-DD (selalu di masa depan, jadi lolos validasi tanggal). */
@@ -39,13 +82,13 @@ export async function siapkanReferensi() {
       ["DPS", "Denpasar"],
       ["SUB", "Surabaya"],
       ["UPG", "Makassar"],
-    ].map(([kode, kota]) => db.bandara.create({ data: { kode, kota, nama: `Bandara ${kota}` } })),
+    ].map(([kode, kota]) => db.orm.public.Bandara.create({ kode, kota, nama: `Bandara ${kota}` })),
   );
   const maskapai = await Promise.all(
     [
       ["GA", "Garuda Indonesia"],
       ["JT", "Lion Air"],
-    ].map(([kode, nama]) => db.maskapai.create({ data: { kode, nama } })),
+    ].map(([kode, nama]) => db.orm.public.Maskapai.create({ kode, nama })),
   );
   return { bandara, maskapai };
 }
@@ -62,22 +105,20 @@ export async function buatPenerbanganTes(o: {
   kode?: string;
 }) {
   const [asal, tujuan, maskapai] = await Promise.all([
-    db.bandara.findUniqueOrThrow({ where: { kode: o.asal } }),
-    db.bandara.findUniqueOrThrow({ where: { kode: o.tujuan } }),
-    db.maskapai.findUniqueOrThrow({ where: { kode: o.maskapai ?? "GA" } }),
+    db.orm.public.Bandara.where({ kode: o.asal }).firstOrThrow(),
+    db.orm.public.Bandara.where({ kode: o.tujuan }).firstOrThrow(),
+    db.orm.public.Maskapai.where({ kode: o.maskapai ?? "GA" }).firstOrThrow(),
   ]);
   const berangkat = new Date(`${o.tanggal}T${String(o.jam).padStart(2, "0")}:00:00+07:00`);
-  return db.penerbangan.create({
-    data: {
-      kodePenerbangan: o.kode ?? `${maskapai.kode}${Math.floor(Math.random() * 9000 + 1000)}`,
-      maskapaiId: maskapai.id,
-      asalId: asal.id,
-      tujuanId: tujuan.id,
-      berangkat,
-      tiba: new Date(berangkat.getTime() + 90 * 60_000),
-      harga: o.harga,
-      kursiTersedia: o.kursi ?? 10,
-    },
+  return db.orm.public.Penerbangan.create({
+    kodePenerbangan: o.kode ?? `${maskapai.kode}${Math.floor(Math.random() * 9000 + 1000)}`,
+    maskapaiId: maskapai.id,
+    asalId: asal.id,
+    tujuanId: tujuan.id,
+    berangkat,
+    tiba: new Date(berangkat.getTime() + 90 * 60_000),
+    harga: o.harga,
+    kursiTersedia: o.kursi ?? 10,
   });
 }
 
@@ -91,23 +132,22 @@ export async function buatBookingTes(o: {
   pengunjungId?: string;
   namaPenumpang?: string;
 }) {
-  return db.booking.create({
-    data: {
-      kodeBookingReference: o.kode,
-      pemilikId: o.pemilikId,
-      dibuatOlehId: o.dibuatOlehId ?? o.pemilikId,
-      pengunjungId: o.pengunjungId,
-      status: o.status ?? "BOOKED",
-      tiket: {
-        create: {
-          penerbanganId: o.penerbanganId,
-          nomorTiket: `TKT-${o.kode}-1`,
-          namaPenumpang: o.namaPenumpang ?? "Penumpang Tes",
-          status: o.status === "DIBATALKAN" ? "DIBATALKAN" : "TERBIT",
-        },
-      },
-    },
+  const booking = await db.orm.public.Booking.create({
+    kodeBookingReference: o.kode,
+    pemilikId: o.pemilikId,
+    dibuatOlehId: o.dibuatOlehId ?? o.pemilikId,
+    pengunjungId: o.pengunjungId ?? null,
+    status: o.status ?? "BOOKED",
   });
+  await db.orm.public.TiketPesawat.create({
+    bookingId: booking.id,
+    penerbanganId: o.penerbanganId,
+    nomorTiket: `TKT-${o.kode}-1`,
+    namaPenumpang: o.namaPenumpang ?? "Penumpang Tes",
+    status: o.status === "DIBATALKAN" ? "DIBATALKAN" : "TERBIT",
+    validatedAt: null,
+  });
+  return booking;
 }
 
 /** Pengirim email palsu: merekam pesan, atau gagal bila `gagal` diisi. */

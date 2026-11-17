@@ -20,7 +20,7 @@ describe("profilSkema", () => {
     if (h.ok) {
       expect(h.data.noPaspor).toBe("C1234567");
       expect(h.data.telepon).toBe("081234567890");
-      expect(h.data.tglLahir).toEqual(new Date("1992-05-17T00:00:00Z"));
+      expect(h.data.tglLahir).toBe("1992-05-17"); // kolom DATE tetap string "YYYY-MM-DD"
     }
   });
   it("kolom kosong menjadi null (boleh disimpan sebagian)", () => {

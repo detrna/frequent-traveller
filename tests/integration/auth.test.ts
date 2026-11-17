@@ -1,5 +1,5 @@
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
-import { db } from "@/server/db";
+import { tutupDb } from "@/server/db";
 import { verifikasiKredensial } from "@/server/services/auth";
 import { buatUserTes, PASSWORD_TES, resetDb } from "./helpers";
 
@@ -9,7 +9,7 @@ describe("verifikasiKredensial", () => {
     await buatUserTes("MEMBER", "member@tes.test", "Citra");
   });
   afterAll(async () => {
-    await db.$disconnect();
+    await tutupDb();
   });
 
   it("mengembalikan pengguna beserta perannya bila kredensial benar", async () => {

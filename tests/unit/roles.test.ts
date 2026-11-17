@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { can, putuskanAkses, ROUTE_ACCESS, ROLE_LABEL } from "@/server/auth/roles";
-import { Role } from "@/generated/prisma/enums";
+import { Role } from "@/lib/enums";
 
 const SEMUA_ROLE = Object.values(Role);
 

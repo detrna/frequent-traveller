@@ -1,5 +1,5 @@
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
-import { db } from "@/server/db";
+import { db, tutupDb } from "@/server/db";
 import { GalatBisnis, GalatValidasi } from "@/server/errors";
 import { ambilJadwalCuti, ambilPengajuanCuti, ambilRiwayatCuti, daftarPegawai } from "@/server/services/cuti";
 import { resetDb } from "./helpers";
@@ -10,10 +10,16 @@ let budi: string;
 let tanpaCuti: string;
 
 async function buatPegawai(nama: string, nip: string, jatah = 12) {
-  return (await db.pegawai.create({ data: { nama, nip, jabatan: "Staf", jatahCutiTahunan: jatah } })).id;
+  return (await db.orm.public.Pegawai.create({ nama, nip, jabatan: "Staf", jatahCutiTahunan: jatah })).id;
 }
 const permohonan = (pegawaiId: string, mulai: string, selesai: string) =>
-  db.permohonanCuti.create({ data: { pegawaiId, tglMulai: d(mulai), tglSelesai: d(selesai), lamaHari: Math.round((d(selesai).getTime() - d(mulai).getTime()) / 86_400_000) + 1 } });
+  db.orm.public.PermohonanCuti.create({
+    pegawaiId,
+    tglMulai: mulai, // kolom DATE ditulis sebagai string "YYYY-MM-DD"
+    tglSelesai: selesai,
+    lamaHari: Math.round((d(selesai).getTime() - d(mulai).getTime()) / 86_400_000) + 1,
+    alasan: null,
+  });
 
 async function galat<T extends Error = GalatBisnis>(janji: Promise<unknown>): Promise<T> {
   try {
@@ -36,16 +42,14 @@ beforeAll(async () => {
   await permohonan(budi, "2026-10-28", "2026-11-02"); // menyeberang dari Oktober
   await permohonan(budi, "2026-12-20", "2026-12-24"); // Desember saja
 
-  await db.riwayatCuti.createMany({
-    data: [
-      { pegawaiId: sari, tahun: 2025, tglMulai: d("2025-08-04"), tglSelesai: d("2025-08-08"), lamaHari: 5 },
-      { pegawaiId: sari, tahun: 2026, tglMulai: d("2026-02-02"), tglSelesai: d("2026-02-04"), lamaHari: 3 },
-      { pegawaiId: sari, tahun: 2026, tglMulai: d("2026-06-15"), tglSelesai: d("2026-06-16"), lamaHari: 2 },
-    ],
-  });
+  await db.orm.public.RiwayatCuti.createAndCount([
+    { pegawaiId: sari, tahun: 2025, tglMulai: "2025-08-04", tglSelesai: "2025-08-08", lamaHari: 5 },
+    { pegawaiId: sari, tahun: 2026, tglMulai: "2026-02-02", tglSelesai: "2026-02-04", lamaHari: 3 },
+    { pegawaiId: sari, tahun: 2026, tglMulai: "2026-06-15", tglSelesai: "2026-06-16", lamaHari: 2 },
+  ]);
 });
 afterAll(async () => {
-  await db.$disconnect();
+  await tutupDb();
 });
 
 describe("ambilJadwalCuti (US1-a)", () => {
