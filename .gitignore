@@ -1,0 +1,37 @@
+# dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# next.js
+.next/
+out/
+next-env.d.ts
+
+# build / test output
+build/
+coverage/
+playwright-report/
+test-results/
+*.tsbuildinfo
+
+# env files (keep the example)
+.env
+.env.*
+!.env.example
+
+# logs / OS / editor
+*.log
+npm-debug.log*
+.DS_Store
+.vscode/*
+!.vscode/extensions.json
+
+# vercel
+.vercel/
+
+# prisma generated client
+src/generated/
+
+# claude local settings
+.claude/settings.local.json

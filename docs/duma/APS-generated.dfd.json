@@ -1,0 +1,6098 @@
+{
+  "schema": "dfd/1",
+  "id": "doc_aps_generated",
+  "title": "APS (generated)",
+  "notation": {
+    "dfd": "gane-sarson",
+    "erd": "crows-foot",
+    "usecase": "uml-usecase",
+    "activity": "uml-activity",
+    "flowchart": "flowchart-iso",
+    "class": "uml-class",
+    "bpmn": "bpmn-2",
+    "wireframe": "wireframe-lofi",
+    "sequence": "uml-sequence",
+    "state": "uml-state",
+    "sitemap": "sitemap",
+    "robustness": "robustness-iconix"
+  },
+  "rootId": "dg_mwiv2tk21yxh5",
+  "diagrams": [
+    {
+      "id": "dg_mwiv2tk21yxh5",
+      "kind": "class",
+      "title": "Eksprimen APS",
+      "level": 0,
+      "parentProcessId": null,
+      "parentDiagramId": null,
+      "nodes": [
+        {
+          "id": "cl_mwivkrlm7m8hoy",
+          "type": "cls-class",
+          "label": "User",
+          "number": "",
+          "x": -24,
+          "y": -756,
+          "w": 200,
+          "h": 82,
+          "childDiagramId": null,
+          "meta": {
+            "attributes": [],
+            "methods": []
+          }
+        },
+        {
+          "id": "cl_mwivl1et7niamg",
+          "type": "cls-class",
+          "label": "HRD Manager",
+          "number": "",
+          "x": -804,
+          "y": -588,
+          "w": 200,
+          "h": 82,
+          "childDiagramId": null,
+          "meta": {
+            "attributes": [],
+            "methods": []
+          }
+        },
+        {
+          "id": "cl_mwivl68k7oqh5w",
+          "type": "cls-class",
+          "label": "Pegawai",
+          "number": "",
+          "x": -492,
+          "y": -588,
+          "w": 200,
+          "h": 82,
+          "childDiagramId": null,
+          "meta": {
+            "attributes": [],
+            "methods": []
+          }
+        },
+        {
+          "id": "cl_mwivlfmf7puklq",
+          "type": "cls-class",
+          "label": "Permohonan Cuti",
+          "number": "",
+          "x": -648,
+          "y": -348,
+          "w": 200,
+          "h": 82,
+          "childDiagramId": null,
+          "meta": {
+            "attributes": [],
+            "methods": []
+          }
+        },
+        {
+          "id": "cl_mwivlr9c7qzlll",
+          "type": "cls-class",
+          "label": "Riwayat Cuti",
+          "number": "",
+          "x": -334,
+          "y": -348,
+          "w": 200,
+          "h": 82,
+          "childDiagramId": null,
+          "meta": {
+            "attributes": [],
+            "methods": []
+          }
+        },
+        {
+          "id": "cl_mwivlxaf7rwt7f",
+          "type": "cls-class",
+          "label": "Member Frequent Traveller",
+          "number": "",
+          "x": -192,
+          "y": -588,
+          "w": 228,
+          "h": 84,
+          "childDiagramId": null,
+          "meta": {
+            "attributes": [],
+            "methods": []
+          }
+        },
+        {
+          "id": "cl_mwivmmep7susrm",
+          "type": "cls-class",
+          "label": "Tiket Pesawat",
+          "number": "",
+          "x": 264,
+          "y": -348,
+          "w": 200,
+          "h": 82,
+          "childDiagramId": null,
+          "meta": {
+            "attributes": [],
+            "methods": []
+          }
+        },
+        {
+          "id": "cl_mwivmy0u7u5bay",
+          "type": "cls-class",
+          "label": "Penerbangan",
+          "number": "",
+          "x": -24,
+          "y": -348,
+          "w": 200,
+          "h": 82,
+          "childDiagramId": null,
+          "meta": {
+            "attributes": [],
+            "methods": []
+          }
+        },
+        {
+          "id": "cl_mwiwoc5x7pb94h",
+          "type": "cls-class",
+          "label": "Pengunjung",
+          "number": "",
+          "x": 132,
+          "y": -588,
+          "w": 200,
+          "h": 82,
+          "childDiagramId": null,
+          "meta": {
+            "attributes": [],
+            "methods": []
+          }
+        },
+        {
+          "id": "cl_mwiwolnb7qxv2h",
+          "type": "cls-class",
+          "label": "Manager Traveller",
+          "number": "",
+          "x": 420,
+          "y": -588,
+          "w": 200,
+          "h": 82,
+          "childDiagramId": null,
+          "meta": {
+            "attributes": [],
+            "methods": []
+          }
+        },
+        {
+          "id": "cl_mwj62yj297ydz3",
+          "type": "cls-class",
+          "label": "Pengguna",
+          "number": "",
+          "x": 720,
+          "y": -588,
+          "w": 200,
+          "h": 82,
+          "childDiagramId": null,
+          "meta": {
+            "attributes": [],
+            "methods": []
+          }
+        },
+        {
+          "id": "cl_mwj63xyv99p0ad",
+          "type": "cls-class",
+          "label": "Booking",
+          "number": "",
+          "x": 564,
+          "y": -348,
+          "w": 200,
+          "h": 82,
+          "childDiagramId": null,
+          "meta": {
+            "attributes": [],
+            "methods": []
+          }
+        }
+      ],
+      "edges": []
+    },
+    {
+      "id": "dg_mwivng3g7vsty0",
+      "kind": "usecase",
+      "title": "Use Case Diagram",
+      "level": 0,
+      "parentProcessId": null,
+      "parentDiagramId": null,
+      "nodes": [
+        {
+          "id": "uc_mwjuvcph7m0u1l",
+          "type": "uc-system",
+          "label": "",
+          "number": "",
+          "x": 204,
+          "y": -324,
+          "w": 1200,
+          "h": 1380,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwivnlsm7wpwlw",
+          "type": "uc-actor",
+          "label": "HRD Manager",
+          "number": "",
+          "x": -24,
+          "y": 408,
+          "w": 74,
+          "h": 104,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwivo7z87xt9gy",
+          "type": "uc-actor",
+          "label": "Pengguna",
+          "number": "",
+          "x": 1440,
+          "y": 552,
+          "w": 74,
+          "h": 104,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwivp0up7yz0r8",
+          "type": "uc-actor",
+          "label": "Member Frequent Traveller",
+          "number": "",
+          "x": 1440,
+          "y": 240,
+          "w": 74,
+          "h": 104,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwivq00p7zzne8",
+          "type": "uc-case",
+          "label": "Melihat jadwal cuti pegawai",
+          "number": "",
+          "x": 276,
+          "y": 328,
+          "w": 168,
+          "h": 68,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwivqzst807gdo",
+          "type": "uc-case",
+          "label": "Melihat pengajuan cuti pegawai",
+          "number": "",
+          "x": 276,
+          "y": 444,
+          "w": 168,
+          "h": 68,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwivr4ug81gfdn",
+          "type": "uc-case",
+          "label": "Melihat riwayat cuti pegawai",
+          "number": "",
+          "x": 588,
+          "y": 468,
+          "w": 168,
+          "h": 68,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwivrfeu82oo02",
+          "type": "uc-case",
+          "label": "Membatalkan tiket pesawat",
+          "number": "",
+          "x": 1140,
+          "y": 760,
+          "w": 168,
+          "h": 68,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwivtg9a8bouee",
+          "type": "uc-case",
+          "label": "Melihat jadwal penerbangan",
+          "number": "",
+          "x": 1140,
+          "y": 552,
+          "w": 168,
+          "h": 68,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwiw1uq48i20k8",
+          "type": "uc-case",
+          "label": "Mengupdate Data Profile",
+          "number": "",
+          "x": 1176,
+          "y": 322,
+          "w": 168,
+          "h": 68,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwiw2ays8lgx5v",
+          "type": "uc-case",
+          "label": "Melakukan Validasi Tiket",
+          "number": "",
+          "x": 1176,
+          "y": 120,
+          "w": 168,
+          "h": 68,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwiwcs858tcdiz",
+          "type": "uc-case",
+          "label": "Melihat penerbangan sesuai preferensi",
+          "number": "",
+          "x": 1176,
+          "y": -124,
+          "w": 168,
+          "h": 68,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwiwd0dq8vwl78",
+          "type": "uc-case",
+          "label": "Membandingkan harga tiket Penerbangan",
+          "number": "",
+          "x": 1176,
+          "y": 28,
+          "w": 168,
+          "h": 68,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwiwdc6o8x3eqe",
+          "type": "uc-case",
+          "label": "Memesan tiket pesawat",
+          "number": "",
+          "x": 1140,
+          "y": 678,
+          "w": 168,
+          "h": 68,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwiwdxsj8zcq47",
+          "type": "uc-case",
+          "label": "Memeriksa otorisasi travel",
+          "number": "",
+          "x": 288,
+          "y": 36,
+          "w": 168,
+          "h": 68,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwiweaol93i9nz",
+          "type": "uc-case",
+          "label": "Filter berdasarkan status",
+          "number": "",
+          "x": 600,
+          "y": -74,
+          "w": 168,
+          "h": 68,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwiwey8u96400j",
+          "type": "uc-case",
+          "label": "Mencari tiket penerbangan",
+          "number": "",
+          "x": 288,
+          "y": -192,
+          "w": 168,
+          "h": 68,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwiwfj6v9aygnm",
+          "type": "uc-case",
+          "label": "Memesan tiket menggunakan data pengunjung",
+          "number": "",
+          "x": 600,
+          "y": -180,
+          "w": 168,
+          "h": 68,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwiwgesu9e19og",
+          "type": "uc-actor",
+          "label": "",
+          "number": "",
+          "x": -24,
+          "y": 782,
+          "w": 74,
+          "h": 104,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwiwgfg19f76kx",
+          "type": "uc-actor",
+          "label": "Pengunjung",
+          "number": "",
+          "x": -24,
+          "y": 782,
+          "w": 74,
+          "h": 104,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwiwi7fl9gwaom",
+          "type": "uc-case",
+          "label": "Melihat tiket yang terpesan Manager Traveller",
+          "number": "",
+          "x": 288,
+          "y": 916,
+          "w": 168,
+          "h": 68,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwiwiyni9jzt1m",
+          "type": "uc-case",
+          "label": "Menerima e-tiket",
+          "number": "",
+          "x": 288,
+          "y": 804,
+          "w": 168,
+          "h": 68,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwiwjh5a9l7t4b",
+          "type": "uc-actor",
+          "label": "Manager Travell",
+          "number": "",
+          "x": -61,
+          "y": -92,
+          "w": 74,
+          "h": 104,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwiwkkw59p7ogk",
+          "type": "uc-case",
+          "label": "Mengotorisasi tiket yang sudah dibooking",
+          "number": "",
+          "x": 288,
+          "y": 124,
+          "w": 168,
+          "h": 68,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwiwkv549rk9w1",
+          "type": "uc-case",
+          "label": "Melihat status booking",
+          "number": "",
+          "x": 288,
+          "y": -74,
+          "w": 168,
+          "h": 68,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwj4yeka7ltkne",
+          "type": "uc-case",
+          "label": "Melihat jadwal cuti pegawal berdasarkan periode waktu",
+          "number": "",
+          "x": 588,
+          "y": 276,
+          "w": 168,
+          "h": 68,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwj50rb77qlu1m",
+          "type": "uc-case",
+          "label": "Melihat jadwal cuti pegawai berdasarkan nama",
+          "number": "",
+          "x": 588,
+          "y": 374,
+          "w": 168,
+          "h": 68,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwj5avfj86cygm",
+          "type": "uc-case",
+          "label": "Melihat jadwal penerbangan berdasarkan tujuan",
+          "number": "",
+          "x": 792,
+          "y": 536,
+          "w": 168,
+          "h": 68,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwj5b83a88a5vh",
+          "type": "uc-case",
+          "label": "Melihat harga tiket jadwal penerbangan",
+          "number": "",
+          "x": 792,
+          "y": 648,
+          "w": 168,
+          "h": 68,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwj5cqk38av69i",
+          "type": "uc-case",
+          "label": "Mencari jadwal penerbangan untuk beberapa tujuan penerbangan",
+          "number": "",
+          "x": 792,
+          "y": 768,
+          "w": 168,
+          "h": 68,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwj5flfy8ecfwp",
+          "type": "uc-case",
+          "label": "Mencari penerbangan multi-destinasi",
+          "number": "",
+          "x": 1176,
+          "y": 408,
+          "w": 168,
+          "h": 68,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwj5g3rh8g13o5",
+          "type": "uc-case",
+          "label": "Mencari  berdasarkan periode waktu",
+          "number": "",
+          "x": 792,
+          "y": 322,
+          "w": 168,
+          "h": 68,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwj5h7sj8i2pdt",
+          "type": "uc-case",
+          "label": "Mencari berdasarkan lokasi tujuan dan keberangatan",
+          "number": "",
+          "x": 792,
+          "y": 434,
+          "w": 168,
+          "h": 60,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwj5jwlk8kh6g2",
+          "type": "uc-case",
+          "label": "Melengkapi data personal",
+          "number": "",
+          "x": 1176,
+          "y": 240,
+          "w": 168,
+          "h": 68,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwj5wv8r8zrxgz",
+          "type": "uc-case",
+          "label": "Mencari berdasarkan tujuan",
+          "number": "",
+          "x": 600,
+          "y": -288,
+          "w": 168,
+          "h": 68,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwj5z4zq919rxi",
+          "type": "uc-case",
+          "label": "Konfirmasi otorisasi travel",
+          "number": "",
+          "x": 600,
+          "y": 36,
+          "w": 168,
+          "h": 68,
+          "childDiagramId": null,
+          "meta": {}
+        }
+      ],
+      "edges": [
+        {
+          "id": "fl_mwivsrt885779e",
+          "from": {
+            "node": "uc_mwivnlsm7wpwlw",
+            "side": "right"
+          },
+          "to": {
+            "node": "uc_mwivq00p7zzne8",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwivst8986u57x",
+          "from": {
+            "node": "uc_mwivnlsm7wpwlw",
+            "side": "right"
+          },
+          "to": {
+            "node": "uc_mwivqzst807gdo",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwivsybr888o24",
+          "from": {
+            "node": "uc_mwivo7z87xt9gy",
+            "side": "left"
+          },
+          "to": {
+            "node": "uc_mwivrfeu82oo02",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwivu5ak8f0oes",
+          "from": {
+            "node": "uc_mwivo7z87xt9gy",
+            "side": "left"
+          },
+          "to": {
+            "node": "uc_mwivtg9a8bouee",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwiw25my8kpv2g",
+          "from": {
+            "node": "uc_mwiw1uq48i20k8",
+            "side": "right"
+          },
+          "to": {
+            "node": "uc_mwivp0up7yz0r8",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwiw2vp38opsr0",
+          "from": {
+            "node": "uc_mwiw2ays8lgx5v",
+            "side": "right"
+          },
+          "to": {
+            "node": "uc_mwivp0up7yz0r8",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwiwirke9hzxfw",
+          "from": {
+            "node": "uc_mwiwi7fl9gwaom",
+            "side": "left"
+          },
+          "to": {
+            "node": "uc_mwiwgfg19f76kx",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwiwiynj9kwb83",
+          "from": {
+            "node": "uc_mwiwgfg19f76kx",
+            "side": "right"
+          },
+          "to": {
+            "node": "uc_mwiwiyni9jzt1m",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwiwlyu09tfc4g",
+          "from": {
+            "node": "uc_mwiwjh5a9l7t4b",
+            "side": "right"
+          },
+          "to": {
+            "node": "uc_mwiwdxsj8zcq47",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwiwm4se9v46dt",
+          "from": {
+            "node": "uc_mwiwjh5a9l7t4b",
+            "side": "right"
+          },
+          "to": {
+            "node": "uc_mwiwey8u96400j",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwiwsihb7londs",
+          "from": {
+            "node": "uc_mwiwkkw59p7ogk",
+            "side": "left"
+          },
+          "to": {
+            "node": "uc_mwiwjh5a9l7t4b",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwiwsszr7n3kau",
+          "from": {
+            "node": "uc_mwiwkv549rk9w1",
+            "side": "left"
+          },
+          "to": {
+            "node": "uc_mwiwjh5a9l7t4b",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj4z1xv7pk2wx",
+          "from": {
+            "node": "uc_mwj4yeka7ltkne",
+            "side": "top"
+          },
+          "to": {
+            "node": "uc_mwivq00p7zzne8",
+            "side": "right"
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "extend",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj50rb77rdbdn",
+          "from": {
+            "node": "uc_mwj50rb77qlu1m",
+            "side": null
+          },
+          "to": {
+            "node": "uc_mwivq00p7zzne8",
+            "side": "right"
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "extend",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj57mdx80fcta",
+          "from": {
+            "node": "uc_mwivp0up7yz0r8",
+            "side": "bottom"
+          },
+          "to": {
+            "node": "uc_mwivtg9a8bouee",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj58pj8826rx7",
+          "from": {
+            "node": "uc_mwivtg9a8bouee",
+            "side": "top"
+          },
+          "to": {
+            "node": "uc_mwiwdc6o8x3eqe",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "include",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj59edb8359xt",
+          "from": {
+            "node": "uc_mwivq00p7zzne8",
+            "side": "right"
+          },
+          "to": {
+            "node": "uc_mwivr4ug81gfdn",
+            "side": "bottom"
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "include",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj5avfk87ycn3",
+          "from": {
+            "node": "uc_mwj5avfj86cygm",
+            "side": null
+          },
+          "to": {
+            "node": "uc_mwivtg9a8bouee",
+            "side": "left"
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "extend",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj5b83b895c6s",
+          "from": {
+            "node": "uc_mwj5b83a88a5vh",
+            "side": null
+          },
+          "to": {
+            "node": "uc_mwivtg9a8bouee",
+            "side": "left"
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "extend",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj5cqk38bs1ry",
+          "from": {
+            "node": "uc_mwj5cqk38av69i",
+            "side": null
+          },
+          "to": {
+            "node": "uc_mwivtg9a8bouee",
+            "side": "left"
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "extend",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj5eap78c0ye1",
+          "from": {
+            "node": "uc_mwivp0up7yz0r8",
+            "side": "top"
+          },
+          "to": {
+            "node": "uc_mwiwcs858tcdiz",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj5flfy8fml7j",
+          "from": {
+            "node": "uc_mwivp0up7yz0r8",
+            "side": "left"
+          },
+          "to": {
+            "node": "uc_mwj5flfy8ecfwp",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj5g3rh8hjpl3",
+          "from": {
+            "node": "uc_mwj5g3rh8g13o5",
+            "side": null
+          },
+          "to": {
+            "node": "uc_mwj5flfy8ecfwp",
+            "side": "left"
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "extend",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj5halr8jdjqr",
+          "from": {
+            "node": "uc_mwj5h7sj8i2pdt",
+            "side": "right"
+          },
+          "to": {
+            "node": "uc_mwj5flfy8ecfwp",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "extend",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj5jwll8lxuat",
+          "from": {
+            "node": "uc_mwivp0up7yz0r8",
+            "side": "left"
+          },
+          "to": {
+            "node": "uc_mwj5jwlk8kh6g2",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj5lc1q8m3yoz",
+          "from": {
+            "node": "uc_mwj5jwlk8kh6g2",
+            "side": "top"
+          },
+          "to": {
+            "node": "uc_mwiw2ays8lgx5v",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "include",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj5mx568pyv9q",
+          "from": {
+            "node": "uc_mwiwd0dq8vwl78",
+            "side": "right"
+          },
+          "to": {
+            "node": "uc_mwivp0up7yz0r8",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj5v81g8ve11j",
+          "from": {
+            "node": "uc_mwiweaol93i9nz",
+            "side": null
+          },
+          "to": {
+            "node": "uc_mwiwkv549rk9w1",
+            "side": "right"
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "extend",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj5wkz08yxe36",
+          "from": {
+            "node": "uc_mwiwey8u96400j",
+            "side": "right"
+          },
+          "to": {
+            "node": "uc_mwiwfj6v9aygnm",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "include",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj5wv8s90kj9d",
+          "from": {
+            "node": "uc_mwj5wv8r8zrxgz",
+            "side": null
+          },
+          "to": {
+            "node": "uc_mwiwey8u96400j",
+            "side": "right"
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "extend",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj5z4zq92ih8q",
+          "from": {
+            "node": "uc_mwiwdxsj8zcq47",
+            "side": "right"
+          },
+          "to": {
+            "node": "uc_mwj5z4zq919rxi",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "include",
+          "meta": {}
+        }
+      ]
+    },
+    {
+      "id": "rb_01",
+      "kind": "robustness",
+      "title": "Robustness - Melihat Jadwal Cuti Pegawai (US1-a)",
+      "level": 0,
+      "parentProcessId": null,
+      "parentDiagramId": null,
+      "nodes": [
+        {
+          "id": "r01_a",
+          "type": "rb-actor",
+          "label": "HRD Manager",
+          "x": 80,
+          "y": 310
+        },
+        {
+          "id": "r01_b",
+          "type": "rb-boundary",
+          "label": "Halaman Jadwal Cuti",
+          "x": 400,
+          "y": 310
+        },
+        {
+          "id": "r01_c1",
+          "type": "rb-control",
+          "label": "Validasi Periode Cuti",
+          "x": 720,
+          "y": 120
+        },
+        {
+          "id": "r01_c2",
+          "type": "rb-control",
+          "label": "Mengambil Jadwal Cuti",
+          "x": 720,
+          "y": 500
+        },
+        {
+          "id": "r01_e1",
+          "type": "rb-entity",
+          "label": "Permohonan Cuti",
+          "x": 1360,
+          "y": 310
+        },
+        {
+          "id": "r01_e2",
+          "type": "rb-entity",
+          "label": "Pegawai",
+          "x": 1360,
+          "y": 690
+        },
+        {
+          "id": "r01_note",
+          "type": "note",
+          "label": "Use case: Melihat jadwal cuti pegawai (US1-a).\nAlur utama: HRD Manager memilih tanggal, bulan, dan tahun pada Halaman Jadwal Cuti. Halaman meminta Validasi Periode Cuti; bila valid, Mengambil Jadwal Cuti membaca Permohonan Cuti sesuai periode dan data Pegawai, lalu Halaman menampilkan pegawai yang mengajukan cuti.\nAlternatif: periode tidak valid (mis. bulan/tahun kosong), Halaman menampilkan pesan kesalahan. Pemilihan berdasarkan periode atau nama (extend) memakai objek yang sama.",
+          "x": 80,
+          "y": 880,
+          "w": 1400,
+          "h": 200
+        }
+      ],
+      "edges": [
+        {
+          "id": "r01_i1",
+          "from": "r01_a",
+          "to": "r01_b",
+          "relation": "association",
+          "label": "pilih tanggal, bulan, tahun / lihat daftar pegawai cuti"
+        },
+        {
+          "id": "r01_i2",
+          "from": "r01_b",
+          "to": "r01_c1",
+          "relation": "association",
+          "label": "kirim periode / tampilkan error bila periode tidak valid"
+        },
+        {
+          "id": "r01_i3",
+          "from": "r01_c1",
+          "to": "r01_c2",
+          "relation": "association",
+          "label": "periode valid"
+        },
+        {
+          "id": "r01_i4",
+          "from": "r01_c2",
+          "to": "r01_b",
+          "relation": "association",
+          "label": "kirim daftar pegawai yang mengajukan cuti"
+        },
+        {
+          "id": "r01_i5",
+          "from": "r01_c2",
+          "to": "r01_e1",
+          "relation": "association",
+          "label": "ambil permohonan cuti sesuai periode"
+        },
+        {
+          "id": "r01_i6",
+          "from": "r01_c2",
+          "to": "r01_e2",
+          "relation": "association",
+          "label": "ambil data pegawai"
+        }
+      ]
+    },
+    {
+      "id": "rb_02",
+      "kind": "robustness",
+      "title": "Robustness - Melihat Pengajuan Cuti Pegawai (US1-b)",
+      "level": 0,
+      "parentProcessId": null,
+      "parentDiagramId": null,
+      "nodes": [
+        {
+          "id": "r02_a",
+          "type": "rb-actor",
+          "label": "HRD Manager",
+          "x": 80,
+          "y": 310
+        },
+        {
+          "id": "r02_b",
+          "type": "rb-boundary",
+          "label": "Halaman Pengajuan Cuti",
+          "x": 400,
+          "y": 310
+        },
+        {
+          "id": "r02_c1",
+          "type": "rb-control",
+          "label": "Validasi Periode Cuti",
+          "x": 720,
+          "y": 120
+        },
+        {
+          "id": "r02_c2",
+          "type": "rb-control",
+          "label": "Mengambil Pengajuan Cuti",
+          "x": 720,
+          "y": 500
+        },
+        {
+          "id": "r02_e1",
+          "type": "rb-entity",
+          "label": "Permohonan Cuti",
+          "x": 1360,
+          "y": 310
+        },
+        {
+          "id": "r02_e2",
+          "type": "rb-entity",
+          "label": "Pegawai",
+          "x": 1360,
+          "y": 690
+        },
+        {
+          "id": "r02_note",
+          "type": "note",
+          "label": "Use case: Melihat pengajuan cuti pegawai (US1-b).\nAlur utama: HRD Manager memilih periode pada Halaman Pengajuan Cuti. Setelah Validasi Periode Cuti lolos, Mengambil Pengajuan Cuti membaca Permohonan Cuti dan Pegawai; Halaman menampilkan nama pegawai, periode cuti, dan lama cuti yang diajukan.\nAlternatif: periode tidak valid, Halaman menampilkan pesan kesalahan.",
+          "x": 80,
+          "y": 880,
+          "w": 1400,
+          "h": 200
+        }
+      ],
+      "edges": [
+        {
+          "id": "r02_i1",
+          "from": "r02_a",
+          "to": "r02_b",
+          "relation": "association",
+          "label": "pilih periode / lihat pengajuan cuti"
+        },
+        {
+          "id": "r02_i2",
+          "from": "r02_b",
+          "to": "r02_c1",
+          "relation": "association",
+          "label": "kirim periode / tampilkan error bila periode tidak valid"
+        },
+        {
+          "id": "r02_i3",
+          "from": "r02_c1",
+          "to": "r02_c2",
+          "relation": "association",
+          "label": "periode valid"
+        },
+        {
+          "id": "r02_i4",
+          "from": "r02_c2",
+          "to": "r02_b",
+          "relation": "association",
+          "label": "kirim nama pegawai, periode, dan lama cuti"
+        },
+        {
+          "id": "r02_i5",
+          "from": "r02_c2",
+          "to": "r02_e1",
+          "relation": "association",
+          "label": "ambil periode dan lama cuti yang diajukan"
+        },
+        {
+          "id": "r02_i6",
+          "from": "r02_c2",
+          "to": "r02_e2",
+          "relation": "association",
+          "label": "ambil nama pegawai"
+        }
+      ]
+    },
+    {
+      "id": "rb_03",
+      "kind": "robustness",
+      "title": "Robustness - Melihat Riwayat Cuti Pegawai (US1-c)",
+      "level": 0,
+      "parentProcessId": null,
+      "parentDiagramId": null,
+      "nodes": [
+        {
+          "id": "r03_a",
+          "type": "rb-actor",
+          "label": "HRD Manager",
+          "x": 80,
+          "y": 310
+        },
+        {
+          "id": "r03_b",
+          "type": "rb-boundary",
+          "label": "Halaman Riwayat Cuti",
+          "x": 400,
+          "y": 310
+        },
+        {
+          "id": "r03_c1",
+          "type": "rb-control",
+          "label": "Mengambil Riwayat Cuti",
+          "x": 720,
+          "y": 310
+        },
+        {
+          "id": "r03_c2",
+          "type": "rb-control",
+          "label": "Menghitung Sisa Cuti",
+          "x": 1040,
+          "y": 120
+        },
+        {
+          "id": "r03_e1",
+          "type": "rb-entity",
+          "label": "Pegawai",
+          "x": 1360,
+          "y": 500
+        },
+        {
+          "id": "r03_e2",
+          "type": "rb-entity",
+          "label": "Riwayat Cuti",
+          "x": 1360,
+          "y": 120
+        },
+        {
+          "id": "r03_note",
+          "type": "note",
+          "label": "Use case: Melihat riwayat cuti pegawai (US1-c).\nAlur utama: HRD Manager memilih nama pegawai pada Halaman Riwayat Cuti. Mengambil Riwayat Cuti mencari Pegawai dan membaca Riwayat Cuti, Menghitung Sisa Cuti menghitung sisa cuti tahun berjalan, lalu Halaman menampilkan riwayat dan sisa cuti.\nAlternatif: pegawai tidak ditemukan, Halaman menampilkan pesan kesalahan.",
+          "x": 80,
+          "y": 690,
+          "w": 1400,
+          "h": 200
+        }
+      ],
+      "edges": [
+        {
+          "id": "r03_i1",
+          "from": "r03_a",
+          "to": "r03_b",
+          "relation": "association",
+          "label": "pilih nama pegawai / lihat riwayat dan sisa cuti"
+        },
+        {
+          "id": "r03_i2",
+          "from": "r03_b",
+          "to": "r03_c1",
+          "relation": "association",
+          "label": "minta riwayat cuti / terima riwayat dan sisa cuti, atau error"
+        },
+        {
+          "id": "r03_i3",
+          "from": "r03_c1",
+          "to": "r03_e1",
+          "relation": "association",
+          "label": "cari pegawai"
+        },
+        {
+          "id": "r03_i4",
+          "from": "r03_c1",
+          "to": "r03_e2",
+          "relation": "association",
+          "label": "ambil riwayat cuti pegawai"
+        },
+        {
+          "id": "r03_i5",
+          "from": "r03_c1",
+          "to": "r03_c2",
+          "relation": "association",
+          "label": "hitung sisa cuti tahun berjalan"
+        }
+      ]
+    },
+    {
+      "id": "rb_04",
+      "kind": "robustness",
+      "title": "Robustness - Melihat Jadwal Penerbangan (US2-a)",
+      "level": 0,
+      "parentProcessId": null,
+      "parentDiagramId": null,
+      "nodes": [
+        {
+          "id": "r04_a0",
+          "type": "rb-actor",
+          "label": "Pengguna",
+          "x": 80,
+          "y": 120
+        },
+        {
+          "id": "r04_a1",
+          "type": "rb-actor",
+          "label": "Member Frequent Traveller",
+          "x": 80,
+          "y": 500
+        },
+        {
+          "id": "r04_b",
+          "type": "rb-boundary",
+          "label": "Halaman Pencarian Penerbangan",
+          "x": 400,
+          "y": 310
+        },
+        {
+          "id": "r04_c1",
+          "type": "rb-control",
+          "label": "Validasi Input Pencarian",
+          "x": 720,
+          "y": 120
+        },
+        {
+          "id": "r04_c2",
+          "type": "rb-control",
+          "label": "Mencari Penerbangan",
+          "x": 720,
+          "y": 500
+        },
+        {
+          "id": "r04_e",
+          "type": "rb-entity",
+          "label": "Penerbangan",
+          "x": 1360,
+          "y": 500
+        },
+        {
+          "id": "r04_note",
+          "type": "note",
+          "label": "Use case: Melihat jadwal penerbangan (US2-a, US3-b).\nAlur utama: Pengguna atau Member Frequent Traveller mengisi tujuan dan tanggal pada Halaman Pencarian Penerbangan. Setelah Validasi Input Pencarian lolos, Mencari Penerbangan membaca Penerbangan; Halaman menampilkan jadwal, maskapai, dan harga tiket.\nAlternatif: input tidak valid, Halaman menampilkan pesan kesalahan; tidak ada penerbangan, Halaman menampilkan daftar kosong.",
+          "x": 80,
+          "y": 690,
+          "w": 1400,
+          "h": 200
+        }
+      ],
+      "edges": [
+        {
+          "id": "r04_i1",
+          "from": "r04_a0",
+          "to": "r04_b",
+          "relation": "association",
+          "label": "isi tujuan dan tanggal / lihat hasil pencarian"
+        },
+        {
+          "id": "r04_i2",
+          "from": "r04_a1",
+          "to": "r04_b",
+          "relation": "association",
+          "label": "isi tujuan dan tanggal / lihat hasil pencarian"
+        },
+        {
+          "id": "r04_i3",
+          "from": "r04_b",
+          "to": "r04_c1",
+          "relation": "association",
+          "label": "kirim tujuan dan tanggal / tampilkan error bila input tidak valid"
+        },
+        {
+          "id": "r04_i4",
+          "from": "r04_c1",
+          "to": "r04_c2",
+          "relation": "association",
+          "label": "input valid"
+        },
+        {
+          "id": "r04_i5",
+          "from": "r04_c2",
+          "to": "r04_b",
+          "relation": "association",
+          "label": "kirim jadwal, maskapai, dan harga tiket"
+        },
+        {
+          "id": "r04_i6",
+          "from": "r04_c2",
+          "to": "r04_e",
+          "relation": "association",
+          "label": "ambil penerbangan sesuai tujuan dan tanggal"
+        }
+      ]
+    },
+    {
+      "id": "rb_05",
+      "kind": "robustness",
+      "title": "Robustness - Mencari Penerbangan Beberapa Tujuan (US3)",
+      "level": 0,
+      "parentProcessId": null,
+      "parentDiagramId": null,
+      "nodes": [
+        {
+          "id": "r05_a",
+          "type": "rb-actor",
+          "label": "Pengguna",
+          "x": 80,
+          "y": 310
+        },
+        {
+          "id": "r05_b",
+          "type": "rb-boundary",
+          "label": "Halaman Pencarian Multi Tujuan",
+          "x": 400,
+          "y": 310
+        },
+        {
+          "id": "r05_c1",
+          "type": "rb-control",
+          "label": "Validasi Daftar Tujuan",
+          "x": 720,
+          "y": 120
+        },
+        {
+          "id": "r05_c2",
+          "type": "rb-control",
+          "label": "Mencari Penerbangan per Tujuan",
+          "x": 720,
+          "y": 500
+        },
+        {
+          "id": "r05_c3",
+          "type": "rb-control",
+          "label": "Menggabungkan Hasil Pencarian",
+          "x": 1040,
+          "y": 310
+        },
+        {
+          "id": "r05_e",
+          "type": "rb-entity",
+          "label": "Penerbangan",
+          "x": 1360,
+          "y": 500
+        },
+        {
+          "id": "r05_note",
+          "type": "note",
+          "label": "Use case: Mencari jadwal penerbangan untuk beberapa tujuan (US3).\nAlur utama: Pengguna mengisi beberapa tujuan pada Halaman Pencarian Multi Tujuan. Validasi Daftar Tujuan lolos, Mencari Penerbangan per Tujuan membaca Penerbangan untuk tiap tujuan, Menggabungkan Hasil Pencarian menyatukannya, dan Halaman menampilkan jadwal, maskapai, dan harga tiket.\nAlternatif: daftar tujuan kosong/tidak valid, Halaman menampilkan pesan kesalahan.",
+          "x": 80,
+          "y": 690,
+          "w": 1400,
+          "h": 200
+        }
+      ],
+      "edges": [
+        {
+          "id": "r05_i1",
+          "from": "r05_a",
+          "to": "r05_b",
+          "relation": "association",
+          "label": "isi beberapa tujuan / lihat daftar penerbangan"
+        },
+        {
+          "id": "r05_i2",
+          "from": "r05_b",
+          "to": "r05_c1",
+          "relation": "association",
+          "label": "kirim daftar tujuan / tampilkan error bila tidak valid"
+        },
+        {
+          "id": "r05_i3",
+          "from": "r05_c1",
+          "to": "r05_c2",
+          "relation": "association",
+          "label": "daftar tujuan valid"
+        },
+        {
+          "id": "r05_i4",
+          "from": "r05_c2",
+          "to": "r05_e",
+          "relation": "association",
+          "label": "ambil penerbangan tiap tujuan"
+        },
+        {
+          "id": "r05_i5",
+          "from": "r05_c2",
+          "to": "r05_c3",
+          "relation": "association",
+          "label": "serahkan hasil per tujuan"
+        },
+        {
+          "id": "r05_i6",
+          "from": "r05_c3",
+          "to": "r05_b",
+          "relation": "association",
+          "label": "kirim jadwal, maskapai, dan harga tiket"
+        }
+      ]
+    },
+    {
+      "id": "rb_06",
+      "kind": "robustness",
+      "title": "Robustness - Mencari Penerbangan Multi-Destinasi (US4)",
+      "level": 0,
+      "parentProcessId": null,
+      "parentDiagramId": null,
+      "nodes": [
+        {
+          "id": "r06_a",
+          "type": "rb-actor",
+          "label": "Member Frequent Traveller",
+          "x": 80,
+          "y": 310
+        },
+        {
+          "id": "r06_b",
+          "type": "rb-boundary",
+          "label": "Halaman Pencarian Multi-Destinasi",
+          "x": 400,
+          "y": 310
+        },
+        {
+          "id": "r06_c1",
+          "type": "rb-control",
+          "label": "Validasi Kriteria Pencarian",
+          "x": 720,
+          "y": 120
+        },
+        {
+          "id": "r06_c2",
+          "type": "rb-control",
+          "label": "Mencari Penerbangan Multi-Destinasi",
+          "x": 720,
+          "y": 500
+        },
+        {
+          "id": "r06_c3",
+          "type": "rb-control",
+          "label": "Menghitung Total Harga dan Jumlah Penerbangan",
+          "x": 1040,
+          "y": 310
+        },
+        {
+          "id": "r06_e",
+          "type": "rb-entity",
+          "label": "Penerbangan",
+          "x": 1360,
+          "y": 500
+        },
+        {
+          "id": "r06_note",
+          "type": "note",
+          "label": "Use case: Mencari penerbangan multi-destinasi (US4-a/b/c).\nAlur utama: Member Frequent Traveller mengisi tanggal, lokasi keberangkatan, dan tujuan. Setelah Validasi Kriteria Pencarian lolos, Mencari Penerbangan Multi-Destinasi membaca Penerbangan tiap rute, Menghitung Total Harga dan Jumlah Penerbangan menyusun perbandingannya, dan Halaman menampilkan jadwal serta harga multi-destinasi.\nAlternatif: kriteria tidak lengkap, Halaman menampilkan pesan kesalahan. Pencarian berdasarkan tanggal, keberangkatan, atau tujuan (extend) memakai objek yang sama.",
+          "x": 80,
+          "y": 690,
+          "w": 1400,
+          "h": 200
+        }
+      ],
+      "edges": [
+        {
+          "id": "r06_i1",
+          "from": "r06_a",
+          "to": "r06_b",
+          "relation": "association",
+          "label": "isi tanggal, lokasi keberangkatan, tujuan / lihat hasil"
+        },
+        {
+          "id": "r06_i2",
+          "from": "r06_b",
+          "to": "r06_c1",
+          "relation": "association",
+          "label": "kirim kriteria / tampilkan error bila tidak valid"
+        },
+        {
+          "id": "r06_i3",
+          "from": "r06_c1",
+          "to": "r06_c2",
+          "relation": "association",
+          "label": "kriteria valid"
+        },
+        {
+          "id": "r06_i4",
+          "from": "r06_c2",
+          "to": "r06_e",
+          "relation": "association",
+          "label": "ambil penerbangan tiap rute"
+        },
+        {
+          "id": "r06_i5",
+          "from": "r06_c2",
+          "to": "r06_c3",
+          "relation": "association",
+          "label": "serahkan rute hasil pencarian"
+        },
+        {
+          "id": "r06_i6",
+          "from": "r06_c3",
+          "to": "r06_b",
+          "relation": "association",
+          "label": "kirim jadwal, harga, dan jumlah penerbangan"
+        }
+      ]
+    },
+    {
+      "id": "rb_07",
+      "kind": "robustness",
+      "title": "Robustness - Memesan Tiket Pesawat (US2-b, US6-c)",
+      "level": 0,
+      "parentProcessId": null,
+      "parentDiagramId": null,
+      "nodes": [
+        {
+          "id": "r07_a1",
+          "type": "rb-actor",
+          "label": "Pengguna",
+          "x": 80,
+          "y": 120
+        },
+        {
+          "id": "r07_a2",
+          "type": "rb-actor",
+          "label": "Member Frequent Traveller",
+          "x": 80,
+          "y": 500
+        },
+        {
+          "id": "r07_b",
+          "type": "rb-boundary",
+          "label": "Halaman Pemesanan",
+          "x": 400,
+          "y": 310
+        },
+        {
+          "id": "r07_c1",
+          "type": "rb-control",
+          "label": "Memproses Pemesanan",
+          "x": 720,
+          "y": 310
+        },
+        {
+          "id": "r07_c2",
+          "type": "rb-control",
+          "label": "Memeriksa Duplikat Booking",
+          "x": 1040,
+          "y": 120
+        },
+        {
+          "id": "r07_c3",
+          "type": "rb-control",
+          "label": "Membuat Booking",
+          "x": 1040,
+          "y": 500
+        },
+        {
+          "id": "r07_e1",
+          "type": "rb-entity",
+          "label": "Penerbangan",
+          "x": 1360,
+          "y": 310
+        },
+        {
+          "id": "r07_e2",
+          "type": "rb-entity",
+          "label": "Booking",
+          "x": 1360,
+          "y": 120
+        },
+        {
+          "id": "r07_e3",
+          "type": "rb-entity",
+          "label": "Tiket Pesawat",
+          "x": 1360,
+          "y": 690
+        },
+        {
+          "id": "r07_note",
+          "type": "note",
+          "label": "Use case: Memesan tiket pesawat (US2-b, US6-c).\nAlur utama: Pengguna/Member memilih penerbangan dan mengisi data pesanan pada Halaman Pemesanan. Memproses Pemesanan memeriksa ketersediaan Penerbangan, Memeriksa Duplikat Booking mencari Booking yang sama, lalu Membuat Booking menyimpan Booking (status awal booked) dan menerbitkan Tiket Pesawat. Halaman menampilkan data pesanan beserta maskapai.\nAlternatif: input tidak valid, penerbangan tidak tersedia, atau booking duplikat; Halaman menampilkan pesan kesalahan.",
+          "x": 80,
+          "y": 880,
+          "w": 1400,
+          "h": 200
+        }
+      ],
+      "edges": [
+        {
+          "id": "r07_i1",
+          "from": "r07_a1",
+          "to": "r07_b",
+          "relation": "association",
+          "label": "pilih penerbangan & isi data pesanan / lihat data pesanan"
+        },
+        {
+          "id": "r07_i2",
+          "from": "r07_a2",
+          "to": "r07_b",
+          "relation": "association",
+          "label": "pilih penerbangan & isi data pesanan / lihat data pesanan"
+        },
+        {
+          "id": "r07_i3",
+          "from": "r07_b",
+          "to": "r07_c1",
+          "relation": "association",
+          "label": "kirim pesanan / terima data pesanan atau pesan error"
+        },
+        {
+          "id": "r07_i4",
+          "from": "r07_c1",
+          "to": "r07_e1",
+          "relation": "association",
+          "label": "periksa ketersediaan penerbangan"
+        },
+        {
+          "id": "r07_i5",
+          "from": "r07_c1",
+          "to": "r07_c2",
+          "relation": "association",
+          "label": "periksa duplikat"
+        },
+        {
+          "id": "r07_i6",
+          "from": "r07_c2",
+          "to": "r07_e2",
+          "relation": "association",
+          "label": "cari booking yang sama"
+        },
+        {
+          "id": "r07_i7",
+          "from": "r07_c1",
+          "to": "r07_c3",
+          "relation": "association",
+          "label": "tidak duplikat, buat booking"
+        },
+        {
+          "id": "r07_i8",
+          "from": "r07_c3",
+          "to": "r07_e2",
+          "relation": "association",
+          "label": "simpan booking"
+        },
+        {
+          "id": "r07_i9",
+          "from": "r07_c3",
+          "to": "r07_e3",
+          "relation": "association",
+          "label": "terbitkan tiket"
+        }
+      ]
+    },
+    {
+      "id": "rb_08",
+      "kind": "robustness",
+      "title": "Robustness - Membatalkan Tiket Pesawat (US2-c)",
+      "level": 0,
+      "parentProcessId": null,
+      "parentDiagramId": null,
+      "nodes": [
+        {
+          "id": "r08_a",
+          "type": "rb-actor",
+          "label": "Pengguna",
+          "x": 80,
+          "y": 310
+        },
+        {
+          "id": "r08_b1",
+          "type": "rb-boundary",
+          "label": "Halaman Data Pesanan",
+          "x": 400,
+          "y": 120
+        },
+        {
+          "id": "r08_b2",
+          "type": "rb-boundary",
+          "label": "Halaman Konfirmasi Pembatalan",
+          "x": 400,
+          "y": 500
+        },
+        {
+          "id": "r08_c1",
+          "type": "rb-control",
+          "label": "Mengambil Data Pesanan",
+          "x": 720,
+          "y": 120
+        },
+        {
+          "id": "r08_c2",
+          "type": "rb-control",
+          "label": "Membatalkan Pesanan",
+          "x": 720,
+          "y": 500
+        },
+        {
+          "id": "r08_e1",
+          "type": "rb-entity",
+          "label": "Booking",
+          "x": 1360,
+          "y": 310
+        },
+        {
+          "id": "r08_e2",
+          "type": "rb-entity",
+          "label": "Tiket Pesawat",
+          "x": 1360,
+          "y": 690
+        },
+        {
+          "id": "r08_note",
+          "type": "note",
+          "label": "Use case: Membatalkan tiket pesawat (US2-c).\nAlur utama: Pengguna membuka Halaman Data Pesanan; Mengambil Data Pesanan membaca Booking milik pengguna. Pengguna memilih pesanan dan mengonfirmasi di Halaman Konfirmasi Pembatalan; Membatalkan Pesanan mengubah status Booking menjadi dibatalkan dan membatalkan Tiket Pesawat.\nAlternatif: pesanan tidak dapat dibatalkan (mis. sudah dibatalkan), Halaman menampilkan pesan kesalahan.",
+          "x": 80,
+          "y": 880,
+          "w": 1400,
+          "h": 200
+        }
+      ],
+      "edges": [
+        {
+          "id": "r08_i1",
+          "from": "r08_a",
+          "to": "r08_b1",
+          "relation": "association",
+          "label": "buka data pesanan / lihat pesanan tersedia"
+        },
+        {
+          "id": "r08_i2",
+          "from": "r08_a",
+          "to": "r08_b2",
+          "relation": "association",
+          "label": "pilih pesanan & konfirmasi / lihat hasil pembatalan"
+        },
+        {
+          "id": "r08_i3",
+          "from": "r08_b1",
+          "to": "r08_c1",
+          "relation": "association",
+          "label": "minta data pesanan / terima daftar pesanan"
+        },
+        {
+          "id": "r08_i4",
+          "from": "r08_c1",
+          "to": "r08_e1",
+          "relation": "association",
+          "label": "ambil booking milik pengguna"
+        },
+        {
+          "id": "r08_i5",
+          "from": "r08_b2",
+          "to": "r08_c2",
+          "relation": "association",
+          "label": "kirim pembatalan / terima hasil atau error"
+        },
+        {
+          "id": "r08_i6",
+          "from": "r08_c2",
+          "to": "r08_e1",
+          "relation": "association",
+          "label": "periksa dan ubah status booking menjadi dibatalkan"
+        },
+        {
+          "id": "r08_i7",
+          "from": "r08_c2",
+          "to": "r08_e2",
+          "relation": "association",
+          "label": "batalkan tiket"
+        }
+      ]
+    },
+    {
+      "id": "rb_09",
+      "kind": "robustness",
+      "title": "Robustness - Mengupdate Data Profil (US5-a)",
+      "level": 0,
+      "parentProcessId": null,
+      "parentDiagramId": null,
+      "nodes": [
+        {
+          "id": "r09_a",
+          "type": "rb-actor",
+          "label": "Member Frequent Traveller",
+          "x": 80,
+          "y": 310
+        },
+        {
+          "id": "r09_b",
+          "type": "rb-boundary",
+          "label": "Halaman Profil",
+          "x": 400,
+          "y": 310
+        },
+        {
+          "id": "r09_c1",
+          "type": "rb-control",
+          "label": "Validasi Input Profil",
+          "x": 720,
+          "y": 120
+        },
+        {
+          "id": "r09_c2",
+          "type": "rb-control",
+          "label": "Memperbarui Data Profil",
+          "x": 720,
+          "y": 500
+        },
+        {
+          "id": "r09_e",
+          "type": "rb-entity",
+          "label": "Profil Member",
+          "x": 1360,
+          "y": 500
+        },
+        {
+          "id": "r09_note",
+          "type": "note",
+          "label": "Use case: Mengupdate / melengkapi data profil (US5-a).\nAlur utama: Member Frequent Traveller mengubah data profil pada Halaman Profil. Validasi Input Profil lolos, Memperbarui Data Profil menyimpan ke Profil Member, dan Halaman menampilkan profil yang tersimpan.\nAlternatif: input tidak valid, Halaman menampilkan pesan kesalahan.",
+          "x": 80,
+          "y": 690,
+          "w": 1400,
+          "h": 200
+        }
+      ],
+      "edges": [
+        {
+          "id": "r09_i1",
+          "from": "r09_a",
+          "to": "r09_b",
+          "relation": "association",
+          "label": "ubah data profil / lihat profil tersimpan"
+        },
+        {
+          "id": "r09_i2",
+          "from": "r09_b",
+          "to": "r09_c1",
+          "relation": "association",
+          "label": "kirim data profil / tampilkan error bila tidak valid"
+        },
+        {
+          "id": "r09_i3",
+          "from": "r09_c1",
+          "to": "r09_c2",
+          "relation": "association",
+          "label": "data valid"
+        },
+        {
+          "id": "r09_i4",
+          "from": "r09_c2",
+          "to": "r09_b",
+          "relation": "association",
+          "label": "kirim konfirmasi profil tersimpan"
+        },
+        {
+          "id": "r09_i5",
+          "from": "r09_c2",
+          "to": "r09_e",
+          "relation": "association",
+          "label": "simpan data profil"
+        }
+      ]
+    },
+    {
+      "id": "rb_10",
+      "kind": "robustness",
+      "title": "Robustness - Melakukan Validasi Tiket (US5-b, US5-c)",
+      "level": 0,
+      "parentProcessId": null,
+      "parentDiagramId": null,
+      "nodes": [
+        {
+          "id": "r10_a",
+          "type": "rb-actor",
+          "label": "Member Frequent Traveller",
+          "x": 80,
+          "y": 310
+        },
+        {
+          "id": "r10_b",
+          "type": "rb-boundary",
+          "label": "Halaman Validasi Tiket",
+          "x": 400,
+          "y": 310
+        },
+        {
+          "id": "r10_c1",
+          "type": "rb-control",
+          "label": "Memeriksa Kelengkapan Profil",
+          "x": 720,
+          "y": 120
+        },
+        {
+          "id": "r10_c2",
+          "type": "rb-control",
+          "label": "Memvalidasi Tiket",
+          "x": 720,
+          "y": 500
+        },
+        {
+          "id": "r10_e1",
+          "type": "rb-entity",
+          "label": "Profil Member",
+          "x": 1360,
+          "y": 120
+        },
+        {
+          "id": "r10_e2",
+          "type": "rb-entity",
+          "label": "Tiket Pesawat",
+          "x": 1360,
+          "y": 500
+        },
+        {
+          "id": "r10_note",
+          "type": "note",
+          "label": "Use case: Melakukan validasi tiket (US5-b, US5-c).\nAlur utama: Member meminta validasi tiket pada Halaman Validasi Tiket. Memeriksa Kelengkapan Profil membaca Profil Member; bila lengkap, Memvalidasi Tiket menandai Tiket Pesawat tervalidasi dan Halaman menampilkan hasilnya.\nAlternatif: profil tidak lengkap, sistem mengirim pesan \"data profil tidak lengkap\" dan menolak validasi hingga profil dinyatakan lengkap.",
+          "x": 80,
+          "y": 690,
+          "w": 1400,
+          "h": 200
+        }
+      ],
+      "edges": [
+        {
+          "id": "r10_i1",
+          "from": "r10_a",
+          "to": "r10_b",
+          "relation": "association",
+          "label": "minta validasi tiket / lihat hasil atau pesan"
+        },
+        {
+          "id": "r10_i2",
+          "from": "r10_b",
+          "to": "r10_c1",
+          "relation": "association",
+          "label": "kirim permintaan / terima pesan \"data profil tidak lengkap\""
+        },
+        {
+          "id": "r10_i3",
+          "from": "r10_c1",
+          "to": "r10_e1",
+          "relation": "association",
+          "label": "ambil data profil"
+        },
+        {
+          "id": "r10_i4",
+          "from": "r10_c1",
+          "to": "r10_c2",
+          "relation": "association",
+          "label": "profil lengkap"
+        },
+        {
+          "id": "r10_i5",
+          "from": "r10_c2",
+          "to": "r10_e2",
+          "relation": "association",
+          "label": "tandai tiket tervalidasi"
+        },
+        {
+          "id": "r10_i6",
+          "from": "r10_c2",
+          "to": "r10_b",
+          "relation": "association",
+          "label": "kirim hasil validasi tiket"
+        }
+      ]
+    },
+    {
+      "id": "rb_11",
+      "kind": "robustness",
+      "title": "Robustness - Melihat Penerbangan Sesuai Preferensi (US6-a)",
+      "level": 0,
+      "parentProcessId": null,
+      "parentDiagramId": null,
+      "nodes": [
+        {
+          "id": "r11_a0",
+          "type": "rb-actor",
+          "label": "Member Frequent Traveller",
+          "x": 80,
+          "y": 310
+        },
+        {
+          "id": "r11_b",
+          "type": "rb-boundary",
+          "label": "Halaman Preferensi Penerbangan",
+          "x": 400,
+          "y": 310
+        },
+        {
+          "id": "r11_c1",
+          "type": "rb-control",
+          "label": "Validasi Preferensi",
+          "x": 720,
+          "y": 120
+        },
+        {
+          "id": "r11_c2",
+          "type": "rb-control",
+          "label": "Mencari Penerbangan Sesuai Preferensi",
+          "x": 720,
+          "y": 500
+        },
+        {
+          "id": "r11_e",
+          "type": "rb-entity",
+          "label": "Penerbangan",
+          "x": 1360,
+          "y": 500
+        },
+        {
+          "id": "r11_note",
+          "type": "note",
+          "label": "Use case: Melihat penerbangan sesuai preferensi (US6-a).\nAlur utama: Member mengisi preferensi tujuan, tanggal, dan jam keberangkatan. Setelah Validasi Preferensi lolos, Mencari Penerbangan Sesuai Preferensi membaca Penerbangan dan Halaman menampilkan data penerbangan yang sesuai.\nAlternatif: preferensi tidak valid, Halaman menampilkan pesan kesalahan.",
+          "x": 80,
+          "y": 690,
+          "w": 1400,
+          "h": 200
+        }
+      ],
+      "edges": [
+        {
+          "id": "r11_i1",
+          "from": "r11_a0",
+          "to": "r11_b",
+          "relation": "association",
+          "label": "isi tujuan, tanggal, dan jam keberangkatan / lihat hasil pencarian"
+        },
+        {
+          "id": "r11_i2",
+          "from": "r11_b",
+          "to": "r11_c1",
+          "relation": "association",
+          "label": "kirim tujuan, tanggal, dan jam keberangkatan / tampilkan error bila input tidak valid"
+        },
+        {
+          "id": "r11_i3",
+          "from": "r11_c1",
+          "to": "r11_c2",
+          "relation": "association",
+          "label": "input valid"
+        },
+        {
+          "id": "r11_i4",
+          "from": "r11_c2",
+          "to": "r11_b",
+          "relation": "association",
+          "label": "kirim jadwal, maskapai, dan harga tiket"
+        },
+        {
+          "id": "r11_i5",
+          "from": "r11_c2",
+          "to": "r11_e",
+          "relation": "association",
+          "label": "ambil penerbangan sesuai tujuan, tanggal, dan jam keberangkatan"
+        }
+      ]
+    },
+    {
+      "id": "rb_12",
+      "kind": "robustness",
+      "title": "Robustness - Membandingkan Harga Tiket Penerbangan (US6-b)",
+      "level": 0,
+      "parentProcessId": null,
+      "parentDiagramId": null,
+      "nodes": [
+        {
+          "id": "r12_a",
+          "type": "rb-actor",
+          "label": "Member Frequent Traveller",
+          "x": 80,
+          "y": 310
+        },
+        {
+          "id": "r12_b",
+          "type": "rb-boundary",
+          "label": "Halaman Perbandingan Penerbangan",
+          "x": 400,
+          "y": 310
+        },
+        {
+          "id": "r12_c1",
+          "type": "rb-control",
+          "label": "Validasi Preferensi",
+          "x": 720,
+          "y": 120
+        },
+        {
+          "id": "r12_c2",
+          "type": "rb-control",
+          "label": "Mengambil Penerbangan Sesuai Preferensi",
+          "x": 720,
+          "y": 500
+        },
+        {
+          "id": "r12_c3",
+          "type": "rb-control",
+          "label": "Membandingkan Harga Tiket",
+          "x": 1040,
+          "y": 310
+        },
+        {
+          "id": "r12_e",
+          "type": "rb-entity",
+          "label": "Penerbangan",
+          "x": 1360,
+          "y": 500
+        },
+        {
+          "id": "r12_note",
+          "type": "note",
+          "label": "Use case: Membandingkan harga tiket penerbangan (US6-b).\nAlur utama: Member mengisi preferensi tujuan, tanggal, dan jam keberangkatan. Setelah Validasi Preferensi lolos, Mengambil Penerbangan Sesuai Preferensi membaca Penerbangan, Membandingkan Harga Tiket mengurutkan dan membandingkan harga, lalu Halaman menampilkannya.\nAlternatif: preferensi tidak valid, Halaman menampilkan pesan kesalahan. Dari hasil ini Member dapat lanjut ke use case Memesan Tiket Pesawat (US6-c).",
+          "x": 80,
+          "y": 690,
+          "w": 1400,
+          "h": 200
+        }
+      ],
+      "edges": [
+        {
+          "id": "r12_i1",
+          "from": "r12_a",
+          "to": "r12_b",
+          "relation": "association",
+          "label": "isi preferensi / lihat perbandingan harga"
+        },
+        {
+          "id": "r12_i2",
+          "from": "r12_b",
+          "to": "r12_c1",
+          "relation": "association",
+          "label": "kirim preferensi / tampilkan error bila tidak valid"
+        },
+        {
+          "id": "r12_i3",
+          "from": "r12_c1",
+          "to": "r12_c2",
+          "relation": "association",
+          "label": "preferensi valid"
+        },
+        {
+          "id": "r12_i4",
+          "from": "r12_c2",
+          "to": "r12_e",
+          "relation": "association",
+          "label": "ambil penerbangan sesuai preferensi"
+        },
+        {
+          "id": "r12_i5",
+          "from": "r12_c2",
+          "to": "r12_c3",
+          "relation": "association",
+          "label": "serahkan daftar penerbangan"
+        },
+        {
+          "id": "r12_i6",
+          "from": "r12_c3",
+          "to": "r12_b",
+          "relation": "association",
+          "label": "kirim data penerbangan terurut menurut harga"
+        }
+      ]
+    },
+    {
+      "id": "rb_13",
+      "kind": "robustness",
+      "title": "Robustness - Melihat Status Booking (US7)",
+      "level": 0,
+      "parentProcessId": null,
+      "parentDiagramId": null,
+      "nodes": [
+        {
+          "id": "r13_a",
+          "type": "rb-actor",
+          "label": "Manager Travel",
+          "x": 80,
+          "y": 310
+        },
+        {
+          "id": "r13_b",
+          "type": "rb-boundary",
+          "label": "Halaman Status Booking",
+          "x": 400,
+          "y": 310
+        },
+        {
+          "id": "r13_c1",
+          "type": "rb-control",
+          "label": "Mengambil Status Booking",
+          "x": 720,
+          "y": 120
+        },
+        {
+          "id": "r13_c2",
+          "type": "rb-control",
+          "label": "Memfilter Status Booking",
+          "x": 720,
+          "y": 500
+        },
+        {
+          "id": "r13_e",
+          "type": "rb-entity",
+          "label": "Booking",
+          "x": 1360,
+          "y": 310
+        },
+        {
+          "id": "r13_note",
+          "type": "note",
+          "label": "Use case: Memeriksa otorisasi travel / Melihat status booking (US7-a/b).\nAlur utama: Manager Travel membuka Halaman Status Booking; Mengambil Status Booking membaca semua Booking dan Halaman menampilkannya.\nAlternatif: Manager Travel memilih status confirmed, booked, atau waiting for the payment; Memfilter Status Booking membaca Booking sesuai status dan Halaman menampilkan hasil filter.",
+          "x": 80,
+          "y": 690,
+          "w": 1400,
+          "h": 200
+        }
+      ],
+      "edges": [
+        {
+          "id": "r13_i1",
+          "from": "r13_a",
+          "to": "r13_b",
+          "relation": "association",
+          "label": "buka status / pilih filter status / lihat hasil"
+        },
+        {
+          "id": "r13_i2",
+          "from": "r13_b",
+          "to": "r13_c1",
+          "relation": "association",
+          "label": "minta semua status booking / terima daftar status"
+        },
+        {
+          "id": "r13_i3",
+          "from": "r13_b",
+          "to": "r13_c2",
+          "relation": "association",
+          "label": "pilih confirmed, booked, atau waiting for the payment / terima hasil filter"
+        },
+        {
+          "id": "r13_i4",
+          "from": "r13_c1",
+          "to": "r13_e",
+          "relation": "association",
+          "label": "ambil semua booking"
+        },
+        {
+          "id": "r13_i5",
+          "from": "r13_c2",
+          "to": "r13_e",
+          "relation": "association",
+          "label": "ambil booking sesuai status terpilih"
+        }
+      ]
+    },
+    {
+      "id": "rb_14",
+      "kind": "robustness",
+      "title": "Robustness - Mencari Tiket Penerbangan (US8-a)",
+      "level": 0,
+      "parentProcessId": null,
+      "parentDiagramId": null,
+      "nodes": [
+        {
+          "id": "r14_a0",
+          "type": "rb-actor",
+          "label": "Manager Travel",
+          "x": 80,
+          "y": 310
+        },
+        {
+          "id": "r14_b",
+          "type": "rb-boundary",
+          "label": "Halaman Pencarian Tiket",
+          "x": 400,
+          "y": 310
+        },
+        {
+          "id": "r14_c1",
+          "type": "rb-control",
+          "label": "Validasi Input Pencarian",
+          "x": 720,
+          "y": 120
+        },
+        {
+          "id": "r14_c2",
+          "type": "rb-control",
+          "label": "Mencari Tiket Penerbangan",
+          "x": 720,
+          "y": 500
+        },
+        {
+          "id": "r14_e",
+          "type": "rb-entity",
+          "label": "Penerbangan",
+          "x": 1360,
+          "y": 500
+        },
+        {
+          "id": "r14_note",
+          "type": "note",
+          "label": "Use case: Mencari tiket penerbangan (US8-a).\nAlur utama: Manager Travel mengisi tujuan pada Halaman Pencarian Tiket. Setelah Validasi Input Pencarian lolos, Mencari Tiket Penerbangan membaca Penerbangan dan Halaman menampilkan tiket yang diinginkan.\nAlternatif: input tidak valid, Halaman menampilkan pesan kesalahan.",
+          "x": 80,
+          "y": 690,
+          "w": 1400,
+          "h": 200
+        }
+      ],
+      "edges": [
+        {
+          "id": "r14_i1",
+          "from": "r14_a0",
+          "to": "r14_b",
+          "relation": "association",
+          "label": "isi tujuan / lihat hasil pencarian"
+        },
+        {
+          "id": "r14_i2",
+          "from": "r14_b",
+          "to": "r14_c1",
+          "relation": "association",
+          "label": "kirim tujuan / tampilkan error bila input tidak valid"
+        },
+        {
+          "id": "r14_i3",
+          "from": "r14_c1",
+          "to": "r14_c2",
+          "relation": "association",
+          "label": "input valid"
+        },
+        {
+          "id": "r14_i4",
+          "from": "r14_c2",
+          "to": "r14_b",
+          "relation": "association",
+          "label": "kirim jadwal, maskapai, dan harga tiket"
+        },
+        {
+          "id": "r14_i5",
+          "from": "r14_c2",
+          "to": "r14_e",
+          "relation": "association",
+          "label": "ambil penerbangan sesuai tujuan"
+        }
+      ]
+    },
+    {
+      "id": "rb_15",
+      "kind": "robustness",
+      "title": "Robustness - Memesan Tiket Menggunakan Data Pengunjung (US8-b)",
+      "level": 0,
+      "parentProcessId": null,
+      "parentDiagramId": null,
+      "nodes": [
+        {
+          "id": "r15_a",
+          "type": "rb-actor",
+          "label": "Manager Travel",
+          "x": 80,
+          "y": 310
+        },
+        {
+          "id": "r15_b",
+          "type": "rb-boundary",
+          "label": "Halaman Pemesanan Pengunjung",
+          "x": 400,
+          "y": 310
+        },
+        {
+          "id": "r15_c1",
+          "type": "rb-control",
+          "label": "Validasi Data Pengunjung",
+          "x": 720,
+          "y": 120
+        },
+        {
+          "id": "r15_c2",
+          "type": "rb-control",
+          "label": "Membuat Booking Pengunjung",
+          "x": 1040,
+          "y": 310
+        },
+        {
+          "id": "r15_e1",
+          "type": "rb-entity",
+          "label": "Data Pengunjung",
+          "x": 1360,
+          "y": 120
+        },
+        {
+          "id": "r15_e2",
+          "type": "rb-entity",
+          "label": "Booking",
+          "x": 1360,
+          "y": 500
+        },
+        {
+          "id": "r15_e3",
+          "type": "rb-entity",
+          "label": "Tiket Pesawat",
+          "x": 1360,
+          "y": 690
+        },
+        {
+          "id": "r15_note",
+          "type": "note",
+          "label": "Use case: Memesan tiket menggunakan data pengunjung (US8-b).\nAlur utama: Manager Travel memilih tiket hasil pencarian dan mengisi data pengunjung pada Halaman Pemesanan Pengunjung. Validasi Data Pengunjung memeriksa Data Pengunjung; bila lengkap, Membuat Booking Pengunjung menyimpan Booking atas nama pengunjung dan menerbitkan Tiket Pesawat, lalu Halaman menampilkan konfirmasi. Pesanan ini memicu use case Menerima e-tiket dan Melihat tiket terpesan.\nAlternatif: data pengunjung tidak lengkap, Halaman menampilkan pesan kesalahan.",
+          "x": 80,
+          "y": 880,
+          "w": 1400,
+          "h": 200
+        }
+      ],
+      "edges": [
+        {
+          "id": "r15_i1",
+          "from": "r15_a",
+          "to": "r15_b",
+          "relation": "association",
+          "label": "pilih tiket & isi data pengunjung / lihat konfirmasi"
+        },
+        {
+          "id": "r15_i2",
+          "from": "r15_b",
+          "to": "r15_c1",
+          "relation": "association",
+          "label": "kirim data pengunjung / terima konfirmasi atau error"
+        },
+        {
+          "id": "r15_i3",
+          "from": "r15_c1",
+          "to": "r15_e1",
+          "relation": "association",
+          "label": "cari dan periksa data pengunjung"
+        },
+        {
+          "id": "r15_i4",
+          "from": "r15_c1",
+          "to": "r15_c2",
+          "relation": "association",
+          "label": "data lengkap"
+        },
+        {
+          "id": "r15_i5",
+          "from": "r15_c2",
+          "to": "r15_e2",
+          "relation": "association",
+          "label": "simpan booking atas nama pengunjung"
+        },
+        {
+          "id": "r15_i6",
+          "from": "r15_c2",
+          "to": "r15_e3",
+          "relation": "association",
+          "label": "terbitkan tiket"
+        }
+      ]
+    },
+    {
+      "id": "rb_16",
+      "kind": "robustness",
+      "title": "Robustness - Mengotorisasi Tiket yang Sudah Dibooking (US9)",
+      "level": 0,
+      "parentProcessId": null,
+      "parentDiagramId": null,
+      "nodes": [
+        {
+          "id": "r16_a",
+          "type": "rb-actor",
+          "label": "Manager Travel",
+          "x": 80,
+          "y": 310
+        },
+        {
+          "id": "r16_b",
+          "type": "rb-boundary",
+          "label": "Halaman Otorisasi Tiket",
+          "x": 400,
+          "y": 310
+        },
+        {
+          "id": "r16_c1",
+          "type": "rb-control",
+          "label": "Validasi Kode Booking Reference",
+          "x": 720,
+          "y": 120
+        },
+        {
+          "id": "r16_c2",
+          "type": "rb-control",
+          "label": "Mengambil Status Booking",
+          "x": 1040,
+          "y": 310
+        },
+        {
+          "id": "r16_e",
+          "type": "rb-entity",
+          "label": "Booking",
+          "x": 1360,
+          "y": 120
+        },
+        {
+          "id": "r16_note",
+          "type": "note",
+          "label": "Use case: Mengotorisasi tiket yang sudah dibooking (US9-a/b).\nAlur utama: Manager Travel mengisi kode booking reference pada Halaman Otorisasi Tiket. Validasi Kode Booking Reference mencocokkannya dengan Booking; bila sesuai, Mengambil Status Booking membaca status dan Halaman menampilkannya.\nAlternatif: kode tidak sesuai, Halaman menampilkan pesan \"kode booking reference tidak sesuai\" dan meminta Manager Travel mengulang input kode.",
+          "x": 80,
+          "y": 500,
+          "w": 1400,
+          "h": 200
+        }
+      ],
+      "edges": [
+        {
+          "id": "r16_i1",
+          "from": "r16_a",
+          "to": "r16_b",
+          "relation": "association",
+          "label": "isi kode booking reference / lihat status atau pesan"
+        },
+        {
+          "id": "r16_i2",
+          "from": "r16_b",
+          "to": "r16_c1",
+          "relation": "association",
+          "label": "kirim kode / terima pesan \"kode booking reference tidak sesuai\""
+        },
+        {
+          "id": "r16_i3",
+          "from": "r16_c1",
+          "to": "r16_e",
+          "relation": "association",
+          "label": "cocokkan kode booking reference"
+        },
+        {
+          "id": "r16_i4",
+          "from": "r16_c1",
+          "to": "r16_c2",
+          "relation": "association",
+          "label": "kode sesuai"
+        },
+        {
+          "id": "r16_i5",
+          "from": "r16_c2",
+          "to": "r16_e",
+          "relation": "association",
+          "label": "ambil status booking"
+        },
+        {
+          "id": "r16_i6",
+          "from": "r16_c2",
+          "to": "r16_b",
+          "relation": "association",
+          "label": "kirim status booking"
+        }
+      ]
+    },
+    {
+      "id": "rb_17",
+      "kind": "robustness",
+      "title": "Robustness - Melihat Tiket yang Terpesan (US8-c)",
+      "level": 0,
+      "parentProcessId": null,
+      "parentDiagramId": null,
+      "nodes": [
+        {
+          "id": "r17_a",
+          "type": "rb-actor",
+          "label": "Pengunjung",
+          "x": 80,
+          "y": 310
+        },
+        {
+          "id": "r17_b",
+          "type": "rb-boundary",
+          "label": "Halaman Tiket Saya",
+          "x": 400,
+          "y": 310
+        },
+        {
+          "id": "r17_c",
+          "type": "rb-control",
+          "label": "Mengambil Tiket Pengunjung",
+          "x": 720,
+          "y": 310
+        },
+        {
+          "id": "r17_e1",
+          "type": "rb-entity",
+          "label": "Booking",
+          "x": 1360,
+          "y": 120
+        },
+        {
+          "id": "r17_e2",
+          "type": "rb-entity",
+          "label": "Tiket Pesawat",
+          "x": 1360,
+          "y": 500
+        },
+        {
+          "id": "r17_note",
+          "type": "note",
+          "label": "Use case: Melihat tiket yang terpesan (US8-c).\nAlur utama: Pengunjung membuka Halaman Tiket Saya. Mengambil Tiket Pengunjung membaca Booking atas nama pengunjung beserta Tiket Pesawat, lalu Halaman menampilkan tiket yang telah dipesankan Manager Travel.\nAlternatif: belum ada tiket, Halaman menampilkan daftar kosong.",
+          "x": 80,
+          "y": 690,
+          "w": 1400,
+          "h": 200
+        }
+      ],
+      "edges": [
+        {
+          "id": "r17_i1",
+          "from": "r17_a",
+          "to": "r17_b",
+          "relation": "association",
+          "label": "buka tiket saya / lihat tiket terpesan"
+        },
+        {
+          "id": "r17_i2",
+          "from": "r17_b",
+          "to": "r17_c",
+          "relation": "association",
+          "label": "minta tiket / terima daftar tiket"
+        },
+        {
+          "id": "r17_i3",
+          "from": "r17_c",
+          "to": "r17_e1",
+          "relation": "association",
+          "label": "ambil booking atas nama pengunjung"
+        },
+        {
+          "id": "r17_i4",
+          "from": "r17_c",
+          "to": "r17_e2",
+          "relation": "association",
+          "label": "ambil tiket dari booking"
+        }
+      ]
+    },
+    {
+      "id": "rb_18",
+      "kind": "robustness",
+      "title": "Robustness - Menerima E-Tiket (US8-d)",
+      "level": 0,
+      "parentProcessId": null,
+      "parentDiagramId": null,
+      "nodes": [
+        {
+          "id": "r18_a",
+          "type": "rb-actor",
+          "label": "Pengunjung",
+          "x": 80,
+          "y": 310
+        },
+        {
+          "id": "r18_b",
+          "type": "rb-boundary",
+          "label": "Email E-Tiket",
+          "x": 400,
+          "y": 310
+        },
+        {
+          "id": "r18_c1",
+          "type": "rb-control",
+          "label": "Membuat E-Tiket",
+          "x": 1040,
+          "y": 120
+        },
+        {
+          "id": "r18_c2",
+          "type": "rb-control",
+          "label": "Mengirim E-Tiket",
+          "x": 720,
+          "y": 310
+        },
+        {
+          "id": "r18_e1",
+          "type": "rb-entity",
+          "label": "Tiket Pesawat",
+          "x": 1360,
+          "y": 120
+        },
+        {
+          "id": "r18_e2",
+          "type": "rb-entity",
+          "label": "Data Pengunjung",
+          "x": 1360,
+          "y": 500
+        },
+        {
+          "id": "r18_note",
+          "type": "note",
+          "label": "Use case: Menerima e-tiket (US8-d).\nAlur utama: setelah booking atas nama pengunjung tersimpan, Mengirim E-Tiket meminta Membuat E-Tiket mengambil data Tiket Pesawat, mengambil email terdaftar dari Data Pengunjung, lalu mengirim e-tiket lewat Email E-Tiket yang diterima Pengunjung.\nAlternatif: email terdaftar tidak tersedia, pengiriman gagal dan dicatat untuk dikirim ulang.",
+          "x": 80,
+          "y": 690,
+          "w": 1400,
+          "h": 200
+        }
+      ],
+      "edges": [
+        {
+          "id": "r18_i1",
+          "from": "r18_a",
+          "to": "r18_b",
+          "relation": "association",
+          "label": "terima e-tiket"
+        },
+        {
+          "id": "r18_i2",
+          "from": "r18_b",
+          "to": "r18_c2",
+          "relation": "association",
+          "label": "terima email e-tiket / hasil pengiriman"
+        },
+        {
+          "id": "r18_i3",
+          "from": "r18_c2",
+          "to": "r18_c1",
+          "relation": "association",
+          "label": "minta e-tiket dibuat"
+        },
+        {
+          "id": "r18_i4",
+          "from": "r18_c1",
+          "to": "r18_e1",
+          "relation": "association",
+          "label": "ambil data tiket"
+        },
+        {
+          "id": "r18_i5",
+          "from": "r18_c2",
+          "to": "r18_e2",
+          "relation": "association",
+          "label": "ambil email terdaftar"
+        }
+      ]
+    },
+    {
+      "id": "sq_01",
+      "kind": "sequence",
+      "title": "Sequence - Melihat Jadwal Cuti Pegawai",
+      "level": 0,
+      "parentProcessId": null,
+      "parentDiagramId": null,
+      "nodes": [
+        {
+          "id": "s01_a",
+          "type": "seq-actor",
+          "label": "HRD Manager",
+          "x": 40,
+          "y": 40,
+          "w": 100,
+          "h": 794
+        },
+        {
+          "id": "s01_b",
+          "type": "seq-lifeline",
+          "label": ":Halaman Jadwal Cuti",
+          "x": 240,
+          "y": 40,
+          "w": 140,
+          "h": 794
+        },
+        {
+          "id": "s01_c1",
+          "type": "seq-lifeline",
+          "label": ":Validasi Periode Cuti",
+          "x": 440,
+          "y": 40,
+          "w": 140,
+          "h": 794
+        },
+        {
+          "id": "s01_c2",
+          "type": "seq-lifeline",
+          "label": ":Mengambil Jadwal Cuti",
+          "x": 640,
+          "y": 40,
+          "w": 140,
+          "h": 794
+        },
+        {
+          "id": "s01_e1",
+          "type": "seq-lifeline",
+          "label": ":Permohonan Cuti",
+          "x": 840,
+          "y": 40,
+          "w": 140,
+          "h": 794
+        },
+        {
+          "id": "s01_e2",
+          "type": "seq-lifeline",
+          "label": ":Pegawai",
+          "x": 1040,
+          "y": 40,
+          "w": 140,
+          "h": 794
+        },
+        {
+          "id": "s01_f1",
+          "type": "seq-fragment",
+          "label": "alt [periode valid]",
+          "x": 10,
+          "y": 294,
+          "w": 1200,
+          "h": 348
+        },
+        {
+          "id": "s01_f2",
+          "type": "seq-fragment",
+          "label": "alt [periode tidak valid]",
+          "x": 10,
+          "y": 646,
+          "w": 600,
+          "h": 84
+        }
+      ],
+      "edges": [
+        {
+          "id": "s01_m1",
+          "from": "s01_a",
+          "to": "s01_b",
+          "relation": "sync",
+          "label": "pilihPeriode(tanggal, bulan, tahun)"
+        },
+        {
+          "id": "s01_m2",
+          "from": "s01_b",
+          "to": "s01_c1",
+          "relation": "sync",
+          "label": "validasiPeriode(tanggal, bulan, tahun)"
+        },
+        {
+          "id": "s01_m3",
+          "from": "s01_c1",
+          "to": "s01_c1",
+          "relation": "sync",
+          "label": "periksaPeriode()"
+        },
+        {
+          "id": "s01_m4",
+          "from": "s01_c1",
+          "to": "s01_c2",
+          "relation": "sync",
+          "label": "ambilJadwalCuti(periode)"
+        },
+        {
+          "id": "s01_m5",
+          "from": "s01_c2",
+          "to": "s01_e1",
+          "relation": "sync",
+          "label": "cariPermohonan(periode)"
+        },
+        {
+          "id": "s01_m6",
+          "from": "s01_e1",
+          "to": "s01_c2",
+          "relation": "reply",
+          "label": "daftarPermohonan"
+        },
+        {
+          "id": "s01_m7",
+          "from": "s01_c2",
+          "to": "s01_e2",
+          "relation": "sync",
+          "label": "ambilDataPegawai(daftarPegawai)"
+        },
+        {
+          "id": "s01_m8",
+          "from": "s01_e2",
+          "to": "s01_c2",
+          "relation": "reply",
+          "label": "dataPegawai"
+        },
+        {
+          "id": "s01_m9",
+          "from": "s01_c2",
+          "to": "s01_c1",
+          "relation": "reply",
+          "label": "jadwalCuti"
+        },
+        {
+          "id": "s01_m10",
+          "from": "s01_c1",
+          "to": "s01_b",
+          "relation": "reply",
+          "label": "jadwalCuti"
+        },
+        {
+          "id": "s01_m11",
+          "from": "s01_b",
+          "to": "s01_a",
+          "relation": "async",
+          "label": "tampilkanPegawaiCuti()"
+        },
+        {
+          "id": "s01_m12",
+          "from": "s01_c1",
+          "to": "s01_b",
+          "relation": "async",
+          "label": "kirimPesanError(pesan)"
+        },
+        {
+          "id": "s01_m13",
+          "from": "s01_b",
+          "to": "s01_a",
+          "relation": "async",
+          "label": "tampilkanError(pesan)"
+        }
+      ]
+    },
+    {
+      "id": "sq_02",
+      "kind": "sequence",
+      "title": "Sequence - Melihat Pengajuan Cuti Pegawai",
+      "level": 0,
+      "parentProcessId": null,
+      "parentDiagramId": null,
+      "nodes": [
+        {
+          "id": "s02_a",
+          "type": "seq-actor",
+          "label": "HRD Manager",
+          "x": 40,
+          "y": 40,
+          "w": 100,
+          "h": 794
+        },
+        {
+          "id": "s02_b",
+          "type": "seq-lifeline",
+          "label": ":Halaman Pengajuan Cuti",
+          "x": 240,
+          "y": 40,
+          "w": 140,
+          "h": 794
+        },
+        {
+          "id": "s02_c1",
+          "type": "seq-lifeline",
+          "label": ":Validasi Periode Cuti",
+          "x": 440,
+          "y": 40,
+          "w": 140,
+          "h": 794
+        },
+        {
+          "id": "s02_c2",
+          "type": "seq-lifeline",
+          "label": ":Mengambil Pengajuan Cuti",
+          "x": 640,
+          "y": 40,
+          "w": 140,
+          "h": 794
+        },
+        {
+          "id": "s02_e1",
+          "type": "seq-lifeline",
+          "label": ":Permohonan Cuti",
+          "x": 840,
+          "y": 40,
+          "w": 140,
+          "h": 794
+        },
+        {
+          "id": "s02_e2",
+          "type": "seq-lifeline",
+          "label": ":Pegawai",
+          "x": 1040,
+          "y": 40,
+          "w": 140,
+          "h": 794
+        },
+        {
+          "id": "s02_f1",
+          "type": "seq-fragment",
+          "label": "alt [periode valid]",
+          "x": 10,
+          "y": 294,
+          "w": 1200,
+          "h": 348
+        },
+        {
+          "id": "s02_f2",
+          "type": "seq-fragment",
+          "label": "alt [periode tidak valid]",
+          "x": 10,
+          "y": 646,
+          "w": 600,
+          "h": 84
+        }
+      ],
+      "edges": [
+        {
+          "id": "s02_m1",
+          "from": "s02_a",
+          "to": "s02_b",
+          "relation": "sync",
+          "label": "pilihPeriode(periode)"
+        },
+        {
+          "id": "s02_m2",
+          "from": "s02_b",
+          "to": "s02_c1",
+          "relation": "sync",
+          "label": "validasiPeriode(periode)"
+        },
+        {
+          "id": "s02_m3",
+          "from": "s02_c1",
+          "to": "s02_c1",
+          "relation": "sync",
+          "label": "periksaPeriode()"
+        },
+        {
+          "id": "s02_m4",
+          "from": "s02_c1",
+          "to": "s02_c2",
+          "relation": "sync",
+          "label": "ambilPengajuanCuti(periode)"
+        },
+        {
+          "id": "s02_m5",
+          "from": "s02_c2",
+          "to": "s02_e1",
+          "relation": "sync",
+          "label": "cariPermohonan(periode)"
+        },
+        {
+          "id": "s02_m6",
+          "from": "s02_e1",
+          "to": "s02_c2",
+          "relation": "reply",
+          "label": "periodeDanLamaCuti"
+        },
+        {
+          "id": "s02_m7",
+          "from": "s02_c2",
+          "to": "s02_e2",
+          "relation": "sync",
+          "label": "ambilNamaPegawai(daftarPegawai)"
+        },
+        {
+          "id": "s02_m8",
+          "from": "s02_e2",
+          "to": "s02_c2",
+          "relation": "reply",
+          "label": "namaPegawai"
+        },
+        {
+          "id": "s02_m9",
+          "from": "s02_c2",
+          "to": "s02_c1",
+          "relation": "reply",
+          "label": "daftarPengajuan"
+        },
+        {
+          "id": "s02_m10",
+          "from": "s02_c1",
+          "to": "s02_b",
+          "relation": "reply",
+          "label": "daftarPengajuan"
+        },
+        {
+          "id": "s02_m11",
+          "from": "s02_b",
+          "to": "s02_a",
+          "relation": "async",
+          "label": "tampilkanNamaPeriodeLamaCuti()"
+        },
+        {
+          "id": "s02_m12",
+          "from": "s02_c1",
+          "to": "s02_b",
+          "relation": "async",
+          "label": "kirimPesanError(pesan)"
+        },
+        {
+          "id": "s02_m13",
+          "from": "s02_b",
+          "to": "s02_a",
+          "relation": "async",
+          "label": "tampilkanError(pesan)"
+        }
+      ]
+    },
+    {
+      "id": "sq_03",
+      "kind": "sequence",
+      "title": "Sequence - Melihat Riwayat Cuti Pegawai",
+      "level": 0,
+      "parentProcessId": null,
+      "parentDiagramId": null,
+      "nodes": [
+        {
+          "id": "s03_a",
+          "type": "seq-actor",
+          "label": "HRD Manager",
+          "x": 40,
+          "y": 40,
+          "w": 100,
+          "h": 728
+        },
+        {
+          "id": "s03_b",
+          "type": "seq-lifeline",
+          "label": ":Halaman Riwayat Cuti",
+          "x": 240,
+          "y": 40,
+          "w": 140,
+          "h": 728
+        },
+        {
+          "id": "s03_c1",
+          "type": "seq-lifeline",
+          "label": ":Mengambil Riwayat Cuti",
+          "x": 440,
+          "y": 40,
+          "w": 140,
+          "h": 728
+        },
+        {
+          "id": "s03_c2",
+          "type": "seq-lifeline",
+          "label": ":Menghitung Sisa Cuti",
+          "x": 640,
+          "y": 40,
+          "w": 140,
+          "h": 728
+        },
+        {
+          "id": "s03_e1",
+          "type": "seq-lifeline",
+          "label": ":Pegawai",
+          "x": 840,
+          "y": 40,
+          "w": 140,
+          "h": 728
+        },
+        {
+          "id": "s03_e2",
+          "type": "seq-lifeline",
+          "label": ":Riwayat Cuti",
+          "x": 1040,
+          "y": 40,
+          "w": 140,
+          "h": 728
+        },
+        {
+          "id": "s03_f1",
+          "type": "seq-fragment",
+          "label": "alt [pegawai ditemukan]",
+          "x": 10,
+          "y": 316,
+          "w": 1200,
+          "h": 260
+        },
+        {
+          "id": "s03_f2",
+          "type": "seq-fragment",
+          "label": "alt [pegawai tidak ditemukan]",
+          "x": 10,
+          "y": 580,
+          "w": 600,
+          "h": 84
+        }
+      ],
+      "edges": [
+        {
+          "id": "s03_m1",
+          "from": "s03_a",
+          "to": "s03_b",
+          "relation": "sync",
+          "label": "pilihPegawai(idPegawai)"
+        },
+        {
+          "id": "s03_m2",
+          "from": "s03_b",
+          "to": "s03_c1",
+          "relation": "sync",
+          "label": "ambilRiwayatCuti(idPegawai)"
+        },
+        {
+          "id": "s03_m3",
+          "from": "s03_c1",
+          "to": "s03_e1",
+          "relation": "sync",
+          "label": "cariPegawai(idPegawai)"
+        },
+        {
+          "id": "s03_m4",
+          "from": "s03_e1",
+          "to": "s03_c1",
+          "relation": "reply",
+          "label": "dataPegawai"
+        },
+        {
+          "id": "s03_m5",
+          "from": "s03_c1",
+          "to": "s03_e2",
+          "relation": "sync",
+          "label": "ambilRiwayat(idPegawai)"
+        },
+        {
+          "id": "s03_m6",
+          "from": "s03_e2",
+          "to": "s03_c1",
+          "relation": "reply",
+          "label": "riwayatCuti"
+        },
+        {
+          "id": "s03_m7",
+          "from": "s03_c1",
+          "to": "s03_c2",
+          "relation": "sync",
+          "label": "hitungSisaCuti(riwayatCuti, tahunBerjalan)"
+        },
+        {
+          "id": "s03_m8",
+          "from": "s03_c2",
+          "to": "s03_c1",
+          "relation": "reply",
+          "label": "sisaCuti"
+        },
+        {
+          "id": "s03_m9",
+          "from": "s03_c1",
+          "to": "s03_b",
+          "relation": "reply",
+          "label": "riwayatDanSisaCuti"
+        },
+        {
+          "id": "s03_m10",
+          "from": "s03_b",
+          "to": "s03_a",
+          "relation": "async",
+          "label": "tampilkanRiwayatDanSisaCuti()"
+        },
+        {
+          "id": "s03_m11",
+          "from": "s03_c1",
+          "to": "s03_b",
+          "relation": "async",
+          "label": "kirimPesanError(pesan)"
+        },
+        {
+          "id": "s03_m12",
+          "from": "s03_b",
+          "to": "s03_a",
+          "relation": "async",
+          "label": "tampilkanError(pesan)"
+        }
+      ]
+    },
+    {
+      "id": "sq_04",
+      "kind": "sequence",
+      "title": "Sequence - Melihat Jadwal Penerbangan",
+      "level": 0,
+      "parentProcessId": null,
+      "parentDiagramId": null,
+      "nodes": [
+        {
+          "id": "s04_a",
+          "type": "seq-actor",
+          "label": "Pengguna",
+          "x": 40,
+          "y": 40,
+          "w": 100,
+          "h": 706
+        },
+        {
+          "id": "s04_b",
+          "type": "seq-lifeline",
+          "label": ":Halaman Pencarian Penerbangan",
+          "x": 240,
+          "y": 40,
+          "w": 140,
+          "h": 706
+        },
+        {
+          "id": "s04_c1",
+          "type": "seq-lifeline",
+          "label": ":Validasi Input Pencarian",
+          "x": 440,
+          "y": 40,
+          "w": 140,
+          "h": 706
+        },
+        {
+          "id": "s04_c2",
+          "type": "seq-lifeline",
+          "label": ":Mencari Penerbangan",
+          "x": 640,
+          "y": 40,
+          "w": 140,
+          "h": 706
+        },
+        {
+          "id": "s04_e",
+          "type": "seq-lifeline",
+          "label": ":Penerbangan",
+          "x": 840,
+          "y": 40,
+          "w": 140,
+          "h": 706
+        },
+        {
+          "id": "s04_f1",
+          "type": "seq-fragment",
+          "label": "alt [input valid]",
+          "x": 10,
+          "y": 294,
+          "w": 1000,
+          "h": 260
+        },
+        {
+          "id": "s04_f2",
+          "type": "seq-fragment",
+          "label": "alt [input tidak valid]",
+          "x": 10,
+          "y": 558,
+          "w": 600,
+          "h": 84
+        }
+      ],
+      "edges": [
+        {
+          "id": "s04_m1",
+          "from": "s04_a",
+          "to": "s04_b",
+          "relation": "sync",
+          "label": "isiPencarian(tujuan, tanggal)"
+        },
+        {
+          "id": "s04_m2",
+          "from": "s04_b",
+          "to": "s04_c1",
+          "relation": "sync",
+          "label": "validasiInput(tujuan, tanggal)"
+        },
+        {
+          "id": "s04_m3",
+          "from": "s04_c1",
+          "to": "s04_c1",
+          "relation": "sync",
+          "label": "periksaKelengkapanInput()"
+        },
+        {
+          "id": "s04_m4",
+          "from": "s04_c1",
+          "to": "s04_c2",
+          "relation": "sync",
+          "label": "cariPenerbangan(tujuan, tanggal)"
+        },
+        {
+          "id": "s04_m5",
+          "from": "s04_c2",
+          "to": "s04_e",
+          "relation": "sync",
+          "label": "ambilPenerbangan(tujuan, tanggal)"
+        },
+        {
+          "id": "s04_m6",
+          "from": "s04_e",
+          "to": "s04_c2",
+          "relation": "reply",
+          "label": "daftarPenerbangan"
+        },
+        {
+          "id": "s04_m7",
+          "from": "s04_c2",
+          "to": "s04_c1",
+          "relation": "reply",
+          "label": "daftarPenerbangan"
+        },
+        {
+          "id": "s04_m8",
+          "from": "s04_c1",
+          "to": "s04_b",
+          "relation": "reply",
+          "label": "daftarPenerbangan"
+        },
+        {
+          "id": "s04_m9",
+          "from": "s04_b",
+          "to": "s04_a",
+          "relation": "async",
+          "label": "tampilkanJadwalMaskapaiHarga()"
+        },
+        {
+          "id": "s04_m10",
+          "from": "s04_c1",
+          "to": "s04_b",
+          "relation": "async",
+          "label": "kirimPesanError(pesan)"
+        },
+        {
+          "id": "s04_m11",
+          "from": "s04_b",
+          "to": "s04_a",
+          "relation": "async",
+          "label": "tampilkanError(pesan)"
+        }
+      ]
+    },
+    {
+      "id": "sq_05",
+      "kind": "sequence",
+      "title": "Sequence - Mencari Penerbangan Beberapa Tujuan",
+      "level": 0,
+      "parentProcessId": null,
+      "parentDiagramId": null,
+      "nodes": [
+        {
+          "id": "s05_a",
+          "type": "seq-actor",
+          "label": "Pengguna",
+          "x": 40,
+          "y": 40,
+          "w": 100,
+          "h": 794
+        },
+        {
+          "id": "s05_b",
+          "type": "seq-lifeline",
+          "label": ":Halaman Pencarian Multi Tujuan",
+          "x": 240,
+          "y": 40,
+          "w": 140,
+          "h": 794
+        },
+        {
+          "id": "s05_c1",
+          "type": "seq-lifeline",
+          "label": ":Validasi Daftar Tujuan",
+          "x": 440,
+          "y": 40,
+          "w": 140,
+          "h": 794
+        },
+        {
+          "id": "s05_c2",
+          "type": "seq-lifeline",
+          "label": ":Mencari Penerbangan per Tujuan",
+          "x": 640,
+          "y": 40,
+          "w": 140,
+          "h": 794
+        },
+        {
+          "id": "s05_c3",
+          "type": "seq-lifeline",
+          "label": ":Menggabungkan Hasil Pencarian",
+          "x": 840,
+          "y": 40,
+          "w": 140,
+          "h": 794
+        },
+        {
+          "id": "s05_e",
+          "type": "seq-lifeline",
+          "label": ":Penerbangan",
+          "x": 1040,
+          "y": 40,
+          "w": 140,
+          "h": 794
+        },
+        {
+          "id": "s05_f1",
+          "type": "seq-fragment",
+          "label": "alt [daftar tujuan valid]",
+          "x": 10,
+          "y": 294,
+          "w": 1200,
+          "h": 348
+        },
+        {
+          "id": "s05_f2",
+          "type": "seq-fragment",
+          "label": "loop [tiap tujuan]",
+          "x": 622,
+          "y": 342,
+          "w": 576,
+          "h": 76
+        },
+        {
+          "id": "s05_f3",
+          "type": "seq-fragment",
+          "label": "alt [daftar tujuan tidak valid]",
+          "x": 10,
+          "y": 646,
+          "w": 600,
+          "h": 84
+        }
+      ],
+      "edges": [
+        {
+          "id": "s05_m1",
+          "from": "s05_a",
+          "to": "s05_b",
+          "relation": "sync",
+          "label": "isiDaftarTujuan(daftarTujuan, tanggal)"
+        },
+        {
+          "id": "s05_m2",
+          "from": "s05_b",
+          "to": "s05_c1",
+          "relation": "sync",
+          "label": "validasiDaftarTujuan(daftarTujuan)"
+        },
+        {
+          "id": "s05_m3",
+          "from": "s05_c1",
+          "to": "s05_c1",
+          "relation": "sync",
+          "label": "periksaDaftarTujuan()"
+        },
+        {
+          "id": "s05_m4",
+          "from": "s05_c1",
+          "to": "s05_c2",
+          "relation": "sync",
+          "label": "cariPenerbangan(daftarTujuan, tanggal)"
+        },
+        {
+          "id": "s05_m5",
+          "from": "s05_c2",
+          "to": "s05_e",
+          "relation": "sync",
+          "label": "ambilPenerbangan(tujuan, tanggal)"
+        },
+        {
+          "id": "s05_m6",
+          "from": "s05_e",
+          "to": "s05_c2",
+          "relation": "reply",
+          "label": "penerbanganTujuan"
+        },
+        {
+          "id": "s05_m7",
+          "from": "s05_c2",
+          "to": "s05_c3",
+          "relation": "sync",
+          "label": "gabungkanHasil(hasilPerTujuan)"
+        },
+        {
+          "id": "s05_m8",
+          "from": "s05_c3",
+          "to": "s05_c2",
+          "relation": "reply",
+          "label": "daftarGabungan"
+        },
+        {
+          "id": "s05_m9",
+          "from": "s05_c2",
+          "to": "s05_c1",
+          "relation": "reply",
+          "label": "daftarGabungan"
+        },
+        {
+          "id": "s05_m10",
+          "from": "s05_c1",
+          "to": "s05_b",
+          "relation": "reply",
+          "label": "daftarGabungan"
+        },
+        {
+          "id": "s05_m11",
+          "from": "s05_b",
+          "to": "s05_a",
+          "relation": "async",
+          "label": "tampilkanJadwalMaskapaiHarga()"
+        },
+        {
+          "id": "s05_m12",
+          "from": "s05_c1",
+          "to": "s05_b",
+          "relation": "async",
+          "label": "kirimPesanError(pesan)"
+        },
+        {
+          "id": "s05_m13",
+          "from": "s05_b",
+          "to": "s05_a",
+          "relation": "async",
+          "label": "tampilkanError(pesan)"
+        }
+      ]
+    },
+    {
+      "id": "sq_06",
+      "kind": "sequence",
+      "title": "Sequence - Mencari Penerbangan Multi-Destinasi",
+      "level": 0,
+      "parentProcessId": null,
+      "parentDiagramId": null,
+      "nodes": [
+        {
+          "id": "s06_a",
+          "type": "seq-actor",
+          "label": "Member Frequent Traveller",
+          "x": 40,
+          "y": 40,
+          "w": 100,
+          "h": 794
+        },
+        {
+          "id": "s06_b",
+          "type": "seq-lifeline",
+          "label": ":Halaman Pencarian Multi-Destinasi",
+          "x": 240,
+          "y": 40,
+          "w": 140,
+          "h": 794
+        },
+        {
+          "id": "s06_c1",
+          "type": "seq-lifeline",
+          "label": ":Validasi Kriteria Pencarian",
+          "x": 440,
+          "y": 40,
+          "w": 140,
+          "h": 794
+        },
+        {
+          "id": "s06_c2",
+          "type": "seq-lifeline",
+          "label": ":Mencari Penerbangan Multi-Destinasi",
+          "x": 640,
+          "y": 40,
+          "w": 140,
+          "h": 794
+        },
+        {
+          "id": "s06_c3",
+          "type": "seq-lifeline",
+          "label": ":Menghitung Total Harga",
+          "x": 840,
+          "y": 40,
+          "w": 140,
+          "h": 794
+        },
+        {
+          "id": "s06_e",
+          "type": "seq-lifeline",
+          "label": ":Penerbangan",
+          "x": 1040,
+          "y": 40,
+          "w": 140,
+          "h": 794
+        },
+        {
+          "id": "s06_f1",
+          "type": "seq-fragment",
+          "label": "alt [kriteria valid]",
+          "x": 10,
+          "y": 294,
+          "w": 1200,
+          "h": 348
+        },
+        {
+          "id": "s06_f2",
+          "type": "seq-fragment",
+          "label": "loop [tiap rute]",
+          "x": 622,
+          "y": 342,
+          "w": 576,
+          "h": 76
+        },
+        {
+          "id": "s06_f3",
+          "type": "seq-fragment",
+          "label": "alt [kriteria tidak valid]",
+          "x": 10,
+          "y": 646,
+          "w": 600,
+          "h": 84
+        }
+      ],
+      "edges": [
+        {
+          "id": "s06_m1",
+          "from": "s06_a",
+          "to": "s06_b",
+          "relation": "sync",
+          "label": "isiKriteria(tanggal, lokasiKeberangkatan, daftarTujuan)"
+        },
+        {
+          "id": "s06_m2",
+          "from": "s06_b",
+          "to": "s06_c1",
+          "relation": "sync",
+          "label": "validasiKriteria(tanggal, lokasiKeberangkatan, daftarTujuan)"
+        },
+        {
+          "id": "s06_m3",
+          "from": "s06_c1",
+          "to": "s06_c1",
+          "relation": "sync",
+          "label": "periksaKriteria()"
+        },
+        {
+          "id": "s06_m4",
+          "from": "s06_c1",
+          "to": "s06_c2",
+          "relation": "sync",
+          "label": "cariMultiDestinasi(tanggal, lokasiKeberangkatan, daftarTujuan)"
+        },
+        {
+          "id": "s06_m5",
+          "from": "s06_c2",
+          "to": "s06_e",
+          "relation": "sync",
+          "label": "ambilPenerbangan(asal, tujuan, tanggal)"
+        },
+        {
+          "id": "s06_m6",
+          "from": "s06_e",
+          "to": "s06_c2",
+          "relation": "reply",
+          "label": "penerbanganRute"
+        },
+        {
+          "id": "s06_m7",
+          "from": "s06_c2",
+          "to": "s06_c3",
+          "relation": "sync",
+          "label": "hitungTotal(daftarRute)"
+        },
+        {
+          "id": "s06_m8",
+          "from": "s06_c3",
+          "to": "s06_c2",
+          "relation": "reply",
+          "label": "totalHargaDanJumlah"
+        },
+        {
+          "id": "s06_m9",
+          "from": "s06_c2",
+          "to": "s06_c1",
+          "relation": "reply",
+          "label": "hasilMultiDestinasi"
+        },
+        {
+          "id": "s06_m10",
+          "from": "s06_c1",
+          "to": "s06_b",
+          "relation": "reply",
+          "label": "hasilMultiDestinasi"
+        },
+        {
+          "id": "s06_m11",
+          "from": "s06_b",
+          "to": "s06_a",
+          "relation": "async",
+          "label": "tampilkanJadwalHargaMultiDestinasi()"
+        },
+        {
+          "id": "s06_m12",
+          "from": "s06_c1",
+          "to": "s06_b",
+          "relation": "async",
+          "label": "kirimPesanError(pesan)"
+        },
+        {
+          "id": "s06_m13",
+          "from": "s06_b",
+          "to": "s06_a",
+          "relation": "async",
+          "label": "tampilkanError(pesan)"
+        }
+      ]
+    },
+    {
+      "id": "sq_07",
+      "kind": "sequence",
+      "title": "Sequence - Memesan Tiket Pesawat",
+      "level": 0,
+      "parentProcessId": null,
+      "parentDiagramId": null,
+      "nodes": [
+        {
+          "id": "s07_a",
+          "type": "seq-actor",
+          "label": "Pengguna",
+          "x": 40,
+          "y": 40,
+          "w": 100,
+          "h": 1058
+        },
+        {
+          "id": "s07_b",
+          "type": "seq-lifeline",
+          "label": ":Halaman Pemesanan",
+          "x": 240,
+          "y": 40,
+          "w": 140,
+          "h": 1058
+        },
+        {
+          "id": "s07_c1",
+          "type": "seq-lifeline",
+          "label": ":Memproses Pemesanan",
+          "x": 440,
+          "y": 40,
+          "w": 140,
+          "h": 1058
+        },
+        {
+          "id": "s07_c2",
+          "type": "seq-lifeline",
+          "label": ":Memeriksa Duplikat Booking",
+          "x": 640,
+          "y": 40,
+          "w": 140,
+          "h": 1058
+        },
+        {
+          "id": "s07_c3",
+          "type": "seq-lifeline",
+          "label": ":Membuat Booking",
+          "x": 840,
+          "y": 40,
+          "w": 140,
+          "h": 1058
+        },
+        {
+          "id": "s07_e1",
+          "type": "seq-lifeline",
+          "label": ":Penerbangan",
+          "x": 1040,
+          "y": 40,
+          "w": 140,
+          "h": 1058
+        },
+        {
+          "id": "s07_e2",
+          "type": "seq-lifeline",
+          "label": ":Booking",
+          "x": 1240,
+          "y": 40,
+          "w": 140,
+          "h": 1058
+        },
+        {
+          "id": "s07_e3",
+          "type": "seq-lifeline",
+          "label": ":Tiket Pesawat",
+          "x": 1440,
+          "y": 40,
+          "w": 140,
+          "h": 1058
+        },
+        {
+          "id": "s07_f1",
+          "type": "seq-fragment",
+          "label": "alt [input valid, tersedia, tidak duplikat]",
+          "x": 10,
+          "y": 558,
+          "w": 1600,
+          "h": 348
+        },
+        {
+          "id": "s07_f2",
+          "type": "seq-fragment",
+          "label": "alt [input tidak valid, penuh, atau duplikat]",
+          "x": 10,
+          "y": 910,
+          "w": 600,
+          "h": 84
+        }
+      ],
+      "edges": [
+        {
+          "id": "s07_m1",
+          "from": "s07_a",
+          "to": "s07_b",
+          "relation": "sync",
+          "label": "pilihPenerbangan(idPenerbangan, dataPesanan)"
+        },
+        {
+          "id": "s07_m2",
+          "from": "s07_b",
+          "to": "s07_c1",
+          "relation": "sync",
+          "label": "prosesPemesanan(idPenerbangan, dataPesanan)"
+        },
+        {
+          "id": "s07_m3",
+          "from": "s07_c1",
+          "to": "s07_c1",
+          "relation": "sync",
+          "label": "validasiInput()"
+        },
+        {
+          "id": "s07_m4",
+          "from": "s07_c1",
+          "to": "s07_e1",
+          "relation": "sync",
+          "label": "periksaKetersediaan(idPenerbangan)"
+        },
+        {
+          "id": "s07_m5",
+          "from": "s07_e1",
+          "to": "s07_c1",
+          "relation": "reply",
+          "label": "statusKetersediaan"
+        },
+        {
+          "id": "s07_m6",
+          "from": "s07_c1",
+          "to": "s07_c2",
+          "relation": "sync",
+          "label": "periksaDuplikat(idPengguna, idPenerbangan)"
+        },
+        {
+          "id": "s07_m7",
+          "from": "s07_c2",
+          "to": "s07_e2",
+          "relation": "sync",
+          "label": "cariBooking(idPengguna, idPenerbangan)"
+        },
+        {
+          "id": "s07_m8",
+          "from": "s07_e2",
+          "to": "s07_c2",
+          "relation": "reply",
+          "label": "hasilPencarian"
+        },
+        {
+          "id": "s07_m9",
+          "from": "s07_c2",
+          "to": "s07_c1",
+          "relation": "reply",
+          "label": "hasilPemeriksaan"
+        },
+        {
+          "id": "s07_m10",
+          "from": "s07_c1",
+          "to": "s07_c3",
+          "relation": "sync",
+          "label": "buatBooking(dataPesanan)"
+        },
+        {
+          "id": "s07_m11",
+          "from": "s07_c3",
+          "to": "s07_e2",
+          "relation": "sync",
+          "label": "simpanBooking(dataPesanan)"
+        },
+        {
+          "id": "s07_m12",
+          "from": "s07_e2",
+          "to": "s07_c3",
+          "relation": "reply",
+          "label": "booking"
+        },
+        {
+          "id": "s07_m13",
+          "from": "s07_c3",
+          "to": "s07_e3",
+          "relation": "sync",
+          "label": "terbitkanTiket(booking)"
+        },
+        {
+          "id": "s07_m14",
+          "from": "s07_e3",
+          "to": "s07_c3",
+          "relation": "reply",
+          "label": "tiket"
+        },
+        {
+          "id": "s07_m15",
+          "from": "s07_c3",
+          "to": "s07_c1",
+          "relation": "reply",
+          "label": "booking"
+        },
+        {
+          "id": "s07_m16",
+          "from": "s07_c1",
+          "to": "s07_b",
+          "relation": "reply",
+          "label": "dataPesanan"
+        },
+        {
+          "id": "s07_m17",
+          "from": "s07_b",
+          "to": "s07_a",
+          "relation": "async",
+          "label": "tampilkanDataPesananDanMaskapai()"
+        },
+        {
+          "id": "s07_m18",
+          "from": "s07_c1",
+          "to": "s07_b",
+          "relation": "async",
+          "label": "kirimPesanError(pesan)"
+        },
+        {
+          "id": "s07_m19",
+          "from": "s07_b",
+          "to": "s07_a",
+          "relation": "async",
+          "label": "tampilkanError(pesan)"
+        }
+      ]
+    },
+    {
+      "id": "sq_08",
+      "kind": "sequence",
+      "title": "Sequence - Membatalkan Tiket Pesawat",
+      "level": 0,
+      "parentProcessId": null,
+      "parentDiagramId": null,
+      "nodes": [
+        {
+          "id": "s08_a",
+          "type": "seq-actor",
+          "label": "Pengguna",
+          "x": 40,
+          "y": 40,
+          "w": 100,
+          "h": 992
+        },
+        {
+          "id": "s08_b1",
+          "type": "seq-lifeline",
+          "label": ":Halaman Data Pesanan",
+          "x": 240,
+          "y": 40,
+          "w": 140,
+          "h": 992
+        },
+        {
+          "id": "s08_b2",
+          "type": "seq-lifeline",
+          "label": ":Halaman Konfirmasi Pembatalan",
+          "x": 440,
+          "y": 40,
+          "w": 140,
+          "h": 992
+        },
+        {
+          "id": "s08_c1",
+          "type": "seq-lifeline",
+          "label": ":Mengambil Data Pesanan",
+          "x": 640,
+          "y": 40,
+          "w": 140,
+          "h": 992
+        },
+        {
+          "id": "s08_c2",
+          "type": "seq-lifeline",
+          "label": ":Membatalkan Pesanan",
+          "x": 840,
+          "y": 40,
+          "w": 140,
+          "h": 992
+        },
+        {
+          "id": "s08_e1",
+          "type": "seq-lifeline",
+          "label": ":Booking",
+          "x": 1040,
+          "y": 40,
+          "w": 140,
+          "h": 992
+        },
+        {
+          "id": "s08_e2",
+          "type": "seq-lifeline",
+          "label": ":Tiket Pesawat",
+          "x": 1240,
+          "y": 40,
+          "w": 140,
+          "h": 992
+        },
+        {
+          "id": "s08_f1",
+          "type": "seq-fragment",
+          "label": "alt [pesanan dapat dibatalkan]",
+          "x": 10,
+          "y": 580,
+          "w": 1400,
+          "h": 260
+        },
+        {
+          "id": "s08_f2",
+          "type": "seq-fragment",
+          "label": "alt [pesanan tidak dapat dibatalkan]",
+          "x": 10,
+          "y": 844,
+          "w": 1000,
+          "h": 84
+        }
+      ],
+      "edges": [
+        {
+          "id": "s08_m1",
+          "from": "s08_a",
+          "to": "s08_b1",
+          "relation": "sync",
+          "label": "bukaDataPesanan()"
+        },
+        {
+          "id": "s08_m2",
+          "from": "s08_b1",
+          "to": "s08_c1",
+          "relation": "sync",
+          "label": "ambilDataPesanan(idPengguna)"
+        },
+        {
+          "id": "s08_m3",
+          "from": "s08_c1",
+          "to": "s08_e1",
+          "relation": "sync",
+          "label": "cariBookingPengguna(idPengguna)"
+        },
+        {
+          "id": "s08_m4",
+          "from": "s08_e1",
+          "to": "s08_c1",
+          "relation": "reply",
+          "label": "daftarBooking"
+        },
+        {
+          "id": "s08_m5",
+          "from": "s08_c1",
+          "to": "s08_b1",
+          "relation": "reply",
+          "label": "daftarPesanan"
+        },
+        {
+          "id": "s08_m6",
+          "from": "s08_b1",
+          "to": "s08_a",
+          "relation": "async",
+          "label": "tampilkanDataPesanan()"
+        },
+        {
+          "id": "s08_m7",
+          "from": "s08_a",
+          "to": "s08_b2",
+          "relation": "sync",
+          "label": "konfirmasiPembatalan(idBooking)"
+        },
+        {
+          "id": "s08_m8",
+          "from": "s08_b2",
+          "to": "s08_c2",
+          "relation": "sync",
+          "label": "batalkanPesanan(idBooking)"
+        },
+        {
+          "id": "s08_m9",
+          "from": "s08_c2",
+          "to": "s08_e1",
+          "relation": "sync",
+          "label": "periksaStatus(idBooking)"
+        },
+        {
+          "id": "s08_m10",
+          "from": "s08_e1",
+          "to": "s08_c2",
+          "relation": "reply",
+          "label": "statusBooking"
+        },
+        {
+          "id": "s08_m11",
+          "from": "s08_c2",
+          "to": "s08_e1",
+          "relation": "sync",
+          "label": "ubahStatus(idBooking, dibatalkan)"
+        },
+        {
+          "id": "s08_m12",
+          "from": "s08_e1",
+          "to": "s08_c2",
+          "relation": "reply",
+          "label": "statusDiubah"
+        },
+        {
+          "id": "s08_m13",
+          "from": "s08_c2",
+          "to": "s08_e2",
+          "relation": "sync",
+          "label": "batalkanTiket(idBooking)"
+        },
+        {
+          "id": "s08_m14",
+          "from": "s08_e2",
+          "to": "s08_c2",
+          "relation": "reply",
+          "label": "tiketDibatalkan"
+        },
+        {
+          "id": "s08_m15",
+          "from": "s08_c2",
+          "to": "s08_b2",
+          "relation": "reply",
+          "label": "hasilPembatalan"
+        },
+        {
+          "id": "s08_m16",
+          "from": "s08_b2",
+          "to": "s08_a",
+          "relation": "async",
+          "label": "tampilkanPesananDibatalkan()"
+        },
+        {
+          "id": "s08_m17",
+          "from": "s08_c2",
+          "to": "s08_b2",
+          "relation": "async",
+          "label": "kirimPesanError(pesan)"
+        },
+        {
+          "id": "s08_m18",
+          "from": "s08_b2",
+          "to": "s08_a",
+          "relation": "async",
+          "label": "tampilkanError(pesan)"
+        }
+      ]
+    },
+    {
+      "id": "sq_09",
+      "kind": "sequence",
+      "title": "Sequence - Mengupdate Data Profil",
+      "level": 0,
+      "parentProcessId": null,
+      "parentDiagramId": null,
+      "nodes": [
+        {
+          "id": "s09_a",
+          "type": "seq-actor",
+          "label": "Member Frequent Traveller",
+          "x": 40,
+          "y": 40,
+          "w": 100,
+          "h": 706
+        },
+        {
+          "id": "s09_b",
+          "type": "seq-lifeline",
+          "label": ":Halaman Profil",
+          "x": 240,
+          "y": 40,
+          "w": 140,
+          "h": 706
+        },
+        {
+          "id": "s09_c1",
+          "type": "seq-lifeline",
+          "label": ":Validasi Input Profil",
+          "x": 440,
+          "y": 40,
+          "w": 140,
+          "h": 706
+        },
+        {
+          "id": "s09_c2",
+          "type": "seq-lifeline",
+          "label": ":Memperbarui Data Profil",
+          "x": 640,
+          "y": 40,
+          "w": 140,
+          "h": 706
+        },
+        {
+          "id": "s09_e",
+          "type": "seq-lifeline",
+          "label": ":Profil Member",
+          "x": 840,
+          "y": 40,
+          "w": 140,
+          "h": 706
+        },
+        {
+          "id": "s09_f1",
+          "type": "seq-fragment",
+          "label": "alt [data valid]",
+          "x": 10,
+          "y": 294,
+          "w": 1000,
+          "h": 260
+        },
+        {
+          "id": "s09_f2",
+          "type": "seq-fragment",
+          "label": "alt [data tidak valid]",
+          "x": 10,
+          "y": 558,
+          "w": 600,
+          "h": 84
+        }
+      ],
+      "edges": [
+        {
+          "id": "s09_m1",
+          "from": "s09_a",
+          "to": "s09_b",
+          "relation": "sync",
+          "label": "isiDataProfil(dataProfil)"
+        },
+        {
+          "id": "s09_m2",
+          "from": "s09_b",
+          "to": "s09_c1",
+          "relation": "sync",
+          "label": "validasiProfil(dataProfil)"
+        },
+        {
+          "id": "s09_m3",
+          "from": "s09_c1",
+          "to": "s09_c1",
+          "relation": "sync",
+          "label": "periksaFormat()"
+        },
+        {
+          "id": "s09_m4",
+          "from": "s09_c1",
+          "to": "s09_c2",
+          "relation": "sync",
+          "label": "simpanProfil(dataProfil)"
+        },
+        {
+          "id": "s09_m5",
+          "from": "s09_c2",
+          "to": "s09_e",
+          "relation": "sync",
+          "label": "perbaruiProfil(idMember, dataProfil)"
+        },
+        {
+          "id": "s09_m6",
+          "from": "s09_e",
+          "to": "s09_c2",
+          "relation": "reply",
+          "label": "profilTersimpan"
+        },
+        {
+          "id": "s09_m7",
+          "from": "s09_c2",
+          "to": "s09_c1",
+          "relation": "reply",
+          "label": "profilTersimpan"
+        },
+        {
+          "id": "s09_m8",
+          "from": "s09_c1",
+          "to": "s09_b",
+          "relation": "reply",
+          "label": "profilTersimpan"
+        },
+        {
+          "id": "s09_m9",
+          "from": "s09_b",
+          "to": "s09_a",
+          "relation": "async",
+          "label": "tampilkanProfilTersimpan()"
+        },
+        {
+          "id": "s09_m10",
+          "from": "s09_c1",
+          "to": "s09_b",
+          "relation": "async",
+          "label": "kirimPesanError(pesan)"
+        },
+        {
+          "id": "s09_m11",
+          "from": "s09_b",
+          "to": "s09_a",
+          "relation": "async",
+          "label": "tampilkanError(pesan)"
+        }
+      ]
+    },
+    {
+      "id": "sq_10",
+      "kind": "sequence",
+      "title": "Sequence - Melakukan Validasi Tiket",
+      "level": 0,
+      "parentProcessId": null,
+      "parentDiagramId": null,
+      "nodes": [
+        {
+          "id": "s10_a",
+          "type": "seq-actor",
+          "label": "Member Frequent Traveller",
+          "x": 40,
+          "y": 40,
+          "w": 100,
+          "h": 794
+        },
+        {
+          "id": "s10_b",
+          "type": "seq-lifeline",
+          "label": ":Halaman Validasi Tiket",
+          "x": 240,
+          "y": 40,
+          "w": 140,
+          "h": 794
+        },
+        {
+          "id": "s10_c1",
+          "type": "seq-lifeline",
+          "label": ":Memeriksa Kelengkapan Profil",
+          "x": 440,
+          "y": 40,
+          "w": 140,
+          "h": 794
+        },
+        {
+          "id": "s10_c2",
+          "type": "seq-lifeline",
+          "label": ":Memvalidasi Tiket",
+          "x": 640,
+          "y": 40,
+          "w": 140,
+          "h": 794
+        },
+        {
+          "id": "s10_e1",
+          "type": "seq-lifeline",
+          "label": ":Profil Member",
+          "x": 840,
+          "y": 40,
+          "w": 140,
+          "h": 794
+        },
+        {
+          "id": "s10_e2",
+          "type": "seq-lifeline",
+          "label": ":Tiket Pesawat",
+          "x": 1040,
+          "y": 40,
+          "w": 140,
+          "h": 794
+        },
+        {
+          "id": "s10_f1",
+          "type": "seq-fragment",
+          "label": "alt [data profil lengkap]",
+          "x": 10,
+          "y": 382,
+          "w": 1200,
+          "h": 260
+        },
+        {
+          "id": "s10_f2",
+          "type": "seq-fragment",
+          "label": "alt [data profil tidak lengkap]",
+          "x": 10,
+          "y": 646,
+          "w": 600,
+          "h": 84
+        }
+      ],
+      "edges": [
+        {
+          "id": "s10_m1",
+          "from": "s10_a",
+          "to": "s10_b",
+          "relation": "sync",
+          "label": "mintaValidasiTiket(idTiket)"
+        },
+        {
+          "id": "s10_m2",
+          "from": "s10_b",
+          "to": "s10_c1",
+          "relation": "sync",
+          "label": "periksaProfil(idMember)"
+        },
+        {
+          "id": "s10_m3",
+          "from": "s10_c1",
+          "to": "s10_e1",
+          "relation": "sync",
+          "label": "ambilProfil(idMember)"
+        },
+        {
+          "id": "s10_m4",
+          "from": "s10_e1",
+          "to": "s10_c1",
+          "relation": "reply",
+          "label": "dataProfil"
+        },
+        {
+          "id": "s10_m5",
+          "from": "s10_c1",
+          "to": "s10_c1",
+          "relation": "sync",
+          "label": "periksaKelengkapan(dataProfil)"
+        },
+        {
+          "id": "s10_m6",
+          "from": "s10_c1",
+          "to": "s10_c2",
+          "relation": "sync",
+          "label": "validasiTiket(idTiket, dataProfil)"
+        },
+        {
+          "id": "s10_m7",
+          "from": "s10_c2",
+          "to": "s10_e2",
+          "relation": "sync",
+          "label": "tandaiTervalidasi(idTiket)"
+        },
+        {
+          "id": "s10_m8",
+          "from": "s10_e2",
+          "to": "s10_c2",
+          "relation": "reply",
+          "label": "tiketTervalidasi"
+        },
+        {
+          "id": "s10_m9",
+          "from": "s10_c2",
+          "to": "s10_c1",
+          "relation": "reply",
+          "label": "hasilValidasi"
+        },
+        {
+          "id": "s10_m10",
+          "from": "s10_c1",
+          "to": "s10_b",
+          "relation": "reply",
+          "label": "hasilValidasi"
+        },
+        {
+          "id": "s10_m11",
+          "from": "s10_b",
+          "to": "s10_a",
+          "relation": "async",
+          "label": "tampilkanTiketTervalidasi()"
+        },
+        {
+          "id": "s10_m12",
+          "from": "s10_c1",
+          "to": "s10_b",
+          "relation": "async",
+          "label": "tolakValidasi(\"data profil tidak lengkap\")"
+        },
+        {
+          "id": "s10_m13",
+          "from": "s10_b",
+          "to": "s10_a",
+          "relation": "async",
+          "label": "tampilkanPesan(\"data profil tidak lengkap\")"
+        }
+      ]
+    },
+    {
+      "id": "sq_11",
+      "kind": "sequence",
+      "title": "Sequence - Melihat Penerbangan Sesuai Preferensi",
+      "level": 0,
+      "parentProcessId": null,
+      "parentDiagramId": null,
+      "nodes": [
+        {
+          "id": "s11_a",
+          "type": "seq-actor",
+          "label": "Member Frequent Traveller",
+          "x": 40,
+          "y": 40,
+          "w": 100,
+          "h": 706
+        },
+        {
+          "id": "s11_b",
+          "type": "seq-lifeline",
+          "label": ":Halaman Preferensi Penerbangan",
+          "x": 240,
+          "y": 40,
+          "w": 140,
+          "h": 706
+        },
+        {
+          "id": "s11_c1",
+          "type": "seq-lifeline",
+          "label": ":Validasi Preferensi",
+          "x": 440,
+          "y": 40,
+          "w": 140,
+          "h": 706
+        },
+        {
+          "id": "s11_c2",
+          "type": "seq-lifeline",
+          "label": ":Mencari Penerbangan Sesuai Preferensi",
+          "x": 640,
+          "y": 40,
+          "w": 140,
+          "h": 706
+        },
+        {
+          "id": "s11_e",
+          "type": "seq-lifeline",
+          "label": ":Penerbangan",
+          "x": 840,
+          "y": 40,
+          "w": 140,
+          "h": 706
+        },
+        {
+          "id": "s11_f1",
+          "type": "seq-fragment",
+          "label": "alt [input valid]",
+          "x": 10,
+          "y": 294,
+          "w": 1000,
+          "h": 260
+        },
+        {
+          "id": "s11_f2",
+          "type": "seq-fragment",
+          "label": "alt [input tidak valid]",
+          "x": 10,
+          "y": 558,
+          "w": 600,
+          "h": 84
+        }
+      ],
+      "edges": [
+        {
+          "id": "s11_m1",
+          "from": "s11_a",
+          "to": "s11_b",
+          "relation": "sync",
+          "label": "isiPencarian(tujuan, tanggal, jamKeberangkatan)"
+        },
+        {
+          "id": "s11_m2",
+          "from": "s11_b",
+          "to": "s11_c1",
+          "relation": "sync",
+          "label": "validasiInput(tujuan, tanggal, jamKeberangkatan)"
+        },
+        {
+          "id": "s11_m3",
+          "from": "s11_c1",
+          "to": "s11_c1",
+          "relation": "sync",
+          "label": "periksaKelengkapanInput()"
+        },
+        {
+          "id": "s11_m4",
+          "from": "s11_c1",
+          "to": "s11_c2",
+          "relation": "sync",
+          "label": "cariPenerbangan(tujuan, tanggal, jamKeberangkatan)"
+        },
+        {
+          "id": "s11_m5",
+          "from": "s11_c2",
+          "to": "s11_e",
+          "relation": "sync",
+          "label": "ambilPenerbangan(tujuan, tanggal, jamKeberangkatan)"
+        },
+        {
+          "id": "s11_m6",
+          "from": "s11_e",
+          "to": "s11_c2",
+          "relation": "reply",
+          "label": "daftarPenerbangan"
+        },
+        {
+          "id": "s11_m7",
+          "from": "s11_c2",
+          "to": "s11_c1",
+          "relation": "reply",
+          "label": "daftarPenerbangan"
+        },
+        {
+          "id": "s11_m8",
+          "from": "s11_c1",
+          "to": "s11_b",
+          "relation": "reply",
+          "label": "daftarPenerbangan"
+        },
+        {
+          "id": "s11_m9",
+          "from": "s11_b",
+          "to": "s11_a",
+          "relation": "async",
+          "label": "tampilkanPenerbanganSesuaiPreferensi()"
+        },
+        {
+          "id": "s11_m10",
+          "from": "s11_c1",
+          "to": "s11_b",
+          "relation": "async",
+          "label": "kirimPesanError(pesan)"
+        },
+        {
+          "id": "s11_m11",
+          "from": "s11_b",
+          "to": "s11_a",
+          "relation": "async",
+          "label": "tampilkanError(pesan)"
+        }
+      ]
+    },
+    {
+      "id": "sq_12",
+      "kind": "sequence",
+      "title": "Sequence - Membandingkan Harga Tiket Penerbangan",
+      "level": 0,
+      "parentProcessId": null,
+      "parentDiagramId": null,
+      "nodes": [
+        {
+          "id": "s12_a",
+          "type": "seq-actor",
+          "label": "Member Frequent Traveller",
+          "x": 40,
+          "y": 40,
+          "w": 100,
+          "h": 794
+        },
+        {
+          "id": "s12_b",
+          "type": "seq-lifeline",
+          "label": ":Halaman Perbandingan Penerbangan",
+          "x": 240,
+          "y": 40,
+          "w": 140,
+          "h": 794
+        },
+        {
+          "id": "s12_c1",
+          "type": "seq-lifeline",
+          "label": ":Validasi Preferensi",
+          "x": 440,
+          "y": 40,
+          "w": 140,
+          "h": 794
+        },
+        {
+          "id": "s12_c2",
+          "type": "seq-lifeline",
+          "label": ":Mengambil Penerbangan Sesuai Preferensi",
+          "x": 640,
+          "y": 40,
+          "w": 140,
+          "h": 794
+        },
+        {
+          "id": "s12_c3",
+          "type": "seq-lifeline",
+          "label": ":Membandingkan Harga Tiket",
+          "x": 840,
+          "y": 40,
+          "w": 140,
+          "h": 794
+        },
+        {
+          "id": "s12_e",
+          "type": "seq-lifeline",
+          "label": ":Penerbangan",
+          "x": 1040,
+          "y": 40,
+          "w": 140,
+          "h": 794
+        },
+        {
+          "id": "s12_f1",
+          "type": "seq-fragment",
+          "label": "alt [preferensi valid]",
+          "x": 10,
+          "y": 294,
+          "w": 1200,
+          "h": 348
+        },
+        {
+          "id": "s12_f2",
+          "type": "seq-fragment",
+          "label": "alt [preferensi tidak valid]",
+          "x": 10,
+          "y": 646,
+          "w": 600,
+          "h": 84
+        }
+      ],
+      "edges": [
+        {
+          "id": "s12_m1",
+          "from": "s12_a",
+          "to": "s12_b",
+          "relation": "sync",
+          "label": "isiPreferensi(tujuan, tanggal, jamKeberangkatan)"
+        },
+        {
+          "id": "s12_m2",
+          "from": "s12_b",
+          "to": "s12_c1",
+          "relation": "sync",
+          "label": "validasiPreferensi(tujuan, tanggal, jamKeberangkatan)"
+        },
+        {
+          "id": "s12_m3",
+          "from": "s12_c1",
+          "to": "s12_c1",
+          "relation": "sync",
+          "label": "periksaPreferensi()"
+        },
+        {
+          "id": "s12_m4",
+          "from": "s12_c1",
+          "to": "s12_c2",
+          "relation": "sync",
+          "label": "ambilPenerbangan(tujuan, tanggal, jamKeberangkatan)"
+        },
+        {
+          "id": "s12_m5",
+          "from": "s12_c2",
+          "to": "s12_e",
+          "relation": "sync",
+          "label": "cariPenerbangan(tujuan, tanggal, jamKeberangkatan)"
+        },
+        {
+          "id": "s12_m6",
+          "from": "s12_e",
+          "to": "s12_c2",
+          "relation": "reply",
+          "label": "daftarPenerbangan"
+        },
+        {
+          "id": "s12_m7",
+          "from": "s12_c2",
+          "to": "s12_c3",
+          "relation": "sync",
+          "label": "bandingkanHarga(daftarPenerbangan)"
+        },
+        {
+          "id": "s12_m8",
+          "from": "s12_c3",
+          "to": "s12_c2",
+          "relation": "reply",
+          "label": "daftarTerurutHarga"
+        },
+        {
+          "id": "s12_m9",
+          "from": "s12_c2",
+          "to": "s12_c1",
+          "relation": "reply",
+          "label": "daftarTerurutHarga"
+        },
+        {
+          "id": "s12_m10",
+          "from": "s12_c1",
+          "to": "s12_b",
+          "relation": "reply",
+          "label": "daftarTerurutHarga"
+        },
+        {
+          "id": "s12_m11",
+          "from": "s12_b",
+          "to": "s12_a",
+          "relation": "async",
+          "label": "tampilkanPerbandinganHarga()"
+        },
+        {
+          "id": "s12_m12",
+          "from": "s12_c1",
+          "to": "s12_b",
+          "relation": "async",
+          "label": "kirimPesanError(pesan)"
+        },
+        {
+          "id": "s12_m13",
+          "from": "s12_b",
+          "to": "s12_a",
+          "relation": "async",
+          "label": "tampilkanError(pesan)"
+        }
+      ]
+    },
+    {
+      "id": "sq_13",
+      "kind": "sequence",
+      "title": "Sequence - Melihat Status Booking",
+      "level": 0,
+      "parentProcessId": null,
+      "parentDiagramId": null,
+      "nodes": [
+        {
+          "id": "s13_a",
+          "type": "seq-actor",
+          "label": "Manager Travel",
+          "x": 40,
+          "y": 40,
+          "w": 100,
+          "h": 728
+        },
+        {
+          "id": "s13_b",
+          "type": "seq-lifeline",
+          "label": ":Halaman Status Booking",
+          "x": 240,
+          "y": 40,
+          "w": 140,
+          "h": 728
+        },
+        {
+          "id": "s13_c1",
+          "type": "seq-lifeline",
+          "label": ":Mengambil Status Booking",
+          "x": 440,
+          "y": 40,
+          "w": 140,
+          "h": 728
+        },
+        {
+          "id": "s13_c2",
+          "type": "seq-lifeline",
+          "label": ":Memfilter Status Booking",
+          "x": 640,
+          "y": 40,
+          "w": 140,
+          "h": 728
+        },
+        {
+          "id": "s13_e",
+          "type": "seq-lifeline",
+          "label": ":Booking",
+          "x": 840,
+          "y": 40,
+          "w": 140,
+          "h": 728
+        },
+        {
+          "id": "s13_f1",
+          "type": "seq-fragment",
+          "label": "opt [manajer memilih filter status]",
+          "x": 10,
+          "y": 404,
+          "w": 1000,
+          "h": 260
+        }
+      ],
+      "edges": [
+        {
+          "id": "s13_m1",
+          "from": "s13_a",
+          "to": "s13_b",
+          "relation": "sync",
+          "label": "bukaStatusBooking()"
+        },
+        {
+          "id": "s13_m2",
+          "from": "s13_b",
+          "to": "s13_c1",
+          "relation": "sync",
+          "label": "ambilSemuaStatus()"
+        },
+        {
+          "id": "s13_m3",
+          "from": "s13_c1",
+          "to": "s13_e",
+          "relation": "sync",
+          "label": "ambilSemuaBooking()"
+        },
+        {
+          "id": "s13_m4",
+          "from": "s13_e",
+          "to": "s13_c1",
+          "relation": "reply",
+          "label": "daftarBooking"
+        },
+        {
+          "id": "s13_m5",
+          "from": "s13_c1",
+          "to": "s13_b",
+          "relation": "reply",
+          "label": "daftarStatusBooking"
+        },
+        {
+          "id": "s13_m6",
+          "from": "s13_b",
+          "to": "s13_a",
+          "relation": "async",
+          "label": "tampilkanSemuaStatusBooking()"
+        },
+        {
+          "id": "s13_m7",
+          "from": "s13_a",
+          "to": "s13_b",
+          "relation": "sync",
+          "label": "pilihStatus(status)"
+        },
+        {
+          "id": "s13_m8",
+          "from": "s13_b",
+          "to": "s13_c2",
+          "relation": "sync",
+          "label": "filterStatus(status)"
+        },
+        {
+          "id": "s13_m9",
+          "from": "s13_c2",
+          "to": "s13_e",
+          "relation": "sync",
+          "label": "ambilBookingByStatus(status)"
+        },
+        {
+          "id": "s13_m10",
+          "from": "s13_e",
+          "to": "s13_c2",
+          "relation": "reply",
+          "label": "daftarBooking"
+        },
+        {
+          "id": "s13_m11",
+          "from": "s13_c2",
+          "to": "s13_b",
+          "relation": "reply",
+          "label": "daftarSesuaiStatus"
+        },
+        {
+          "id": "s13_m12",
+          "from": "s13_b",
+          "to": "s13_a",
+          "relation": "async",
+          "label": "tampilkanStatusSesuaiFilter()"
+        }
+      ]
+    },
+    {
+      "id": "sq_14",
+      "kind": "sequence",
+      "title": "Sequence - Mencari Tiket Penerbangan",
+      "level": 0,
+      "parentProcessId": null,
+      "parentDiagramId": null,
+      "nodes": [
+        {
+          "id": "s14_a",
+          "type": "seq-actor",
+          "label": "Manager Travel",
+          "x": 40,
+          "y": 40,
+          "w": 100,
+          "h": 706
+        },
+        {
+          "id": "s14_b",
+          "type": "seq-lifeline",
+          "label": ":Halaman Pencarian Tiket",
+          "x": 240,
+          "y": 40,
+          "w": 140,
+          "h": 706
+        },
+        {
+          "id": "s14_c1",
+          "type": "seq-lifeline",
+          "label": ":Validasi Input Pencarian",
+          "x": 440,
+          "y": 40,
+          "w": 140,
+          "h": 706
+        },
+        {
+          "id": "s14_c2",
+          "type": "seq-lifeline",
+          "label": ":Mencari Tiket Penerbangan",
+          "x": 640,
+          "y": 40,
+          "w": 140,
+          "h": 706
+        },
+        {
+          "id": "s14_e",
+          "type": "seq-lifeline",
+          "label": ":Penerbangan",
+          "x": 840,
+          "y": 40,
+          "w": 140,
+          "h": 706
+        },
+        {
+          "id": "s14_f1",
+          "type": "seq-fragment",
+          "label": "alt [input valid]",
+          "x": 10,
+          "y": 294,
+          "w": 1000,
+          "h": 260
+        },
+        {
+          "id": "s14_f2",
+          "type": "seq-fragment",
+          "label": "alt [input tidak valid]",
+          "x": 10,
+          "y": 558,
+          "w": 600,
+          "h": 84
+        }
+      ],
+      "edges": [
+        {
+          "id": "s14_m1",
+          "from": "s14_a",
+          "to": "s14_b",
+          "relation": "sync",
+          "label": "isiPencarian(tujuan, tanggal)"
+        },
+        {
+          "id": "s14_m2",
+          "from": "s14_b",
+          "to": "s14_c1",
+          "relation": "sync",
+          "label": "validasiInput(tujuan, tanggal)"
+        },
+        {
+          "id": "s14_m3",
+          "from": "s14_c1",
+          "to": "s14_c1",
+          "relation": "sync",
+          "label": "periksaKelengkapanInput()"
+        },
+        {
+          "id": "s14_m4",
+          "from": "s14_c1",
+          "to": "s14_c2",
+          "relation": "sync",
+          "label": "cariPenerbangan(tujuan, tanggal)"
+        },
+        {
+          "id": "s14_m5",
+          "from": "s14_c2",
+          "to": "s14_e",
+          "relation": "sync",
+          "label": "ambilPenerbangan(tujuan, tanggal)"
+        },
+        {
+          "id": "s14_m6",
+          "from": "s14_e",
+          "to": "s14_c2",
+          "relation": "reply",
+          "label": "daftarPenerbangan"
+        },
+        {
+          "id": "s14_m7",
+          "from": "s14_c2",
+          "to": "s14_c1",
+          "relation": "reply",
+          "label": "daftarPenerbangan"
+        },
+        {
+          "id": "s14_m8",
+          "from": "s14_c1",
+          "to": "s14_b",
+          "relation": "reply",
+          "label": "daftarPenerbangan"
+        },
+        {
+          "id": "s14_m9",
+          "from": "s14_b",
+          "to": "s14_a",
+          "relation": "async",
+          "label": "tampilkanTiketPenerbangan()"
+        },
+        {
+          "id": "s14_m10",
+          "from": "s14_c1",
+          "to": "s14_b",
+          "relation": "async",
+          "label": "kirimPesanError(pesan)"
+        },
+        {
+          "id": "s14_m11",
+          "from": "s14_b",
+          "to": "s14_a",
+          "relation": "async",
+          "label": "tampilkanError(pesan)"
+        }
+      ]
+    },
+    {
+      "id": "sq_15",
+      "kind": "sequence",
+      "title": "Sequence - Memesan Tiket Menggunakan Data Pengunjung",
+      "level": 0,
+      "parentProcessId": null,
+      "parentDiagramId": null,
+      "nodes": [
+        {
+          "id": "s15_a",
+          "type": "seq-actor",
+          "label": "Manager Travel",
+          "x": 40,
+          "y": 40,
+          "w": 100,
+          "h": 882
+        },
+        {
+          "id": "s15_b",
+          "type": "seq-lifeline",
+          "label": ":Halaman Pemesanan Pengunjung",
+          "x": 240,
+          "y": 40,
+          "w": 140,
+          "h": 882
+        },
+        {
+          "id": "s15_c1",
+          "type": "seq-lifeline",
+          "label": ":Validasi Data Pengunjung",
+          "x": 440,
+          "y": 40,
+          "w": 140,
+          "h": 882
+        },
+        {
+          "id": "s15_c2",
+          "type": "seq-lifeline",
+          "label": ":Membuat Booking Pengunjung",
+          "x": 640,
+          "y": 40,
+          "w": 140,
+          "h": 882
+        },
+        {
+          "id": "s15_e1",
+          "type": "seq-lifeline",
+          "label": ":Data Pengunjung",
+          "x": 840,
+          "y": 40,
+          "w": 140,
+          "h": 882
+        },
+        {
+          "id": "s15_e2",
+          "type": "seq-lifeline",
+          "label": ":Booking",
+          "x": 1040,
+          "y": 40,
+          "w": 140,
+          "h": 882
+        },
+        {
+          "id": "s15_e3",
+          "type": "seq-lifeline",
+          "label": ":Tiket Pesawat",
+          "x": 1240,
+          "y": 40,
+          "w": 140,
+          "h": 882
+        },
+        {
+          "id": "s15_f1",
+          "type": "seq-fragment",
+          "label": "alt [data pengunjung lengkap]",
+          "x": 10,
+          "y": 382,
+          "w": 1400,
+          "h": 348
+        },
+        {
+          "id": "s15_f2",
+          "type": "seq-fragment",
+          "label": "alt [data pengunjung tidak lengkap]",
+          "x": 10,
+          "y": 734,
+          "w": 600,
+          "h": 84
+        }
+      ],
+      "edges": [
+        {
+          "id": "s15_m1",
+          "from": "s15_a",
+          "to": "s15_b",
+          "relation": "sync",
+          "label": "isiDataPengunjung(idPenerbangan, dataPengunjung)"
+        },
+        {
+          "id": "s15_m2",
+          "from": "s15_b",
+          "to": "s15_c1",
+          "relation": "sync",
+          "label": "validasiDataPengunjung(idPenerbangan, dataPengunjung)"
+        },
+        {
+          "id": "s15_m3",
+          "from": "s15_c1",
+          "to": "s15_e1",
+          "relation": "sync",
+          "label": "cariPengunjung(dataPengunjung)"
+        },
+        {
+          "id": "s15_m4",
+          "from": "s15_e1",
+          "to": "s15_c1",
+          "relation": "reply",
+          "label": "dataPengunjung"
+        },
+        {
+          "id": "s15_m5",
+          "from": "s15_c1",
+          "to": "s15_c1",
+          "relation": "sync",
+          "label": "periksaKelengkapan(dataPengunjung)"
+        },
+        {
+          "id": "s15_m6",
+          "from": "s15_c1",
+          "to": "s15_c2",
+          "relation": "sync",
+          "label": "buatBooking(idPenerbangan, idPengunjung)"
+        },
+        {
+          "id": "s15_m7",
+          "from": "s15_c2",
+          "to": "s15_e2",
+          "relation": "sync",
+          "label": "simpanBooking(idPenerbangan, idPengunjung)"
+        },
+        {
+          "id": "s15_m8",
+          "from": "s15_e2",
+          "to": "s15_c2",
+          "relation": "reply",
+          "label": "booking"
+        },
+        {
+          "id": "s15_m9",
+          "from": "s15_c2",
+          "to": "s15_e3",
+          "relation": "sync",
+          "label": "terbitkanTiket(booking)"
+        },
+        {
+          "id": "s15_m10",
+          "from": "s15_e3",
+          "to": "s15_c2",
+          "relation": "reply",
+          "label": "tiket"
+        },
+        {
+          "id": "s15_m11",
+          "from": "s15_c2",
+          "to": "s15_c1",
+          "relation": "reply",
+          "label": "booking"
+        },
+        {
+          "id": "s15_m12",
+          "from": "s15_c1",
+          "to": "s15_b",
+          "relation": "reply",
+          "label": "booking"
+        },
+        {
+          "id": "s15_m13",
+          "from": "s15_b",
+          "to": "s15_a",
+          "relation": "async",
+          "label": "tampilkanKonfirmasiPesanan()"
+        },
+        {
+          "id": "s15_m14",
+          "from": "s15_c1",
+          "to": "s15_b",
+          "relation": "async",
+          "label": "kirimPesanError(pesan)"
+        },
+        {
+          "id": "s15_m15",
+          "from": "s15_b",
+          "to": "s15_a",
+          "relation": "async",
+          "label": "tampilkanError(pesan)"
+        }
+      ]
+    },
+    {
+      "id": "sq_16",
+      "kind": "sequence",
+      "title": "Sequence - Mengotorisasi Tiket yang Sudah Dibooking",
+      "level": 0,
+      "parentProcessId": null,
+      "parentDiagramId": null,
+      "nodes": [
+        {
+          "id": "s16_a",
+          "type": "seq-actor",
+          "label": "Manager Travel",
+          "x": 40,
+          "y": 40,
+          "w": 100,
+          "h": 772
+        },
+        {
+          "id": "s16_b",
+          "type": "seq-lifeline",
+          "label": ":Halaman Otorisasi Tiket",
+          "x": 240,
+          "y": 40,
+          "w": 140,
+          "h": 772
+        },
+        {
+          "id": "s16_c1",
+          "type": "seq-lifeline",
+          "label": ":Validasi Kode Booking Reference",
+          "x": 440,
+          "y": 40,
+          "w": 140,
+          "h": 772
+        },
+        {
+          "id": "s16_c2",
+          "type": "seq-lifeline",
+          "label": ":Mengambil Status Booking",
+          "x": 640,
+          "y": 40,
+          "w": 140,
+          "h": 772
+        },
+        {
+          "id": "s16_e",
+          "type": "seq-lifeline",
+          "label": ":Booking",
+          "x": 840,
+          "y": 40,
+          "w": 140,
+          "h": 772
+        },
+        {
+          "id": "s16_f1",
+          "type": "seq-fragment",
+          "label": "alt [kode sesuai]",
+          "x": 10,
+          "y": 316,
+          "w": 1000,
+          "h": 260
+        },
+        {
+          "id": "s16_f2",
+          "type": "seq-fragment",
+          "label": "alt [kode tidak sesuai]",
+          "x": 10,
+          "y": 580,
+          "w": 600,
+          "h": 128
+        }
+      ],
+      "edges": [
+        {
+          "id": "s16_m1",
+          "from": "s16_a",
+          "to": "s16_b",
+          "relation": "sync",
+          "label": "isiKodeBooking(kodeBookingReference)"
+        },
+        {
+          "id": "s16_m2",
+          "from": "s16_b",
+          "to": "s16_c1",
+          "relation": "sync",
+          "label": "validasiKode(kodeBookingReference)"
+        },
+        {
+          "id": "s16_m3",
+          "from": "s16_c1",
+          "to": "s16_e",
+          "relation": "sync",
+          "label": "cariBooking(kodeBookingReference)"
+        },
+        {
+          "id": "s16_m4",
+          "from": "s16_e",
+          "to": "s16_c1",
+          "relation": "reply",
+          "label": "hasilPencarian"
+        },
+        {
+          "id": "s16_m5",
+          "from": "s16_c1",
+          "to": "s16_c2",
+          "relation": "sync",
+          "label": "ambilStatusBooking(kodeBookingReference)"
+        },
+        {
+          "id": "s16_m6",
+          "from": "s16_c2",
+          "to": "s16_e",
+          "relation": "sync",
+          "label": "bacaStatus(kodeBookingReference)"
+        },
+        {
+          "id": "s16_m7",
+          "from": "s16_e",
+          "to": "s16_c2",
+          "relation": "reply",
+          "label": "statusBooking"
+        },
+        {
+          "id": "s16_m8",
+          "from": "s16_c2",
+          "to": "s16_c1",
+          "relation": "reply",
+          "label": "statusBooking"
+        },
+        {
+          "id": "s16_m9",
+          "from": "s16_c1",
+          "to": "s16_b",
+          "relation": "reply",
+          "label": "statusBooking"
+        },
+        {
+          "id": "s16_m10",
+          "from": "s16_b",
+          "to": "s16_a",
+          "relation": "async",
+          "label": "tampilkanStatusBooking()"
+        },
+        {
+          "id": "s16_m11",
+          "from": "s16_c1",
+          "to": "s16_b",
+          "relation": "async",
+          "label": "kirimPesan(\"kode booking reference tidak sesuai\")"
+        },
+        {
+          "id": "s16_m12",
+          "from": "s16_b",
+          "to": "s16_a",
+          "relation": "async",
+          "label": "tampilkanPesan(\"kode booking reference tidak sesuai\")"
+        },
+        {
+          "id": "s16_m13",
+          "from": "s16_b",
+          "to": "s16_a",
+          "relation": "async",
+          "label": "mintaInputUlangKode()"
+        }
+      ]
+    },
+    {
+      "id": "sq_17",
+      "kind": "sequence",
+      "title": "Sequence - Melihat Tiket yang Terpesan",
+      "level": 0,
+      "parentProcessId": null,
+      "parentDiagramId": null,
+      "nodes": [
+        {
+          "id": "s17_a",
+          "type": "seq-actor",
+          "label": "Pengunjung",
+          "x": 40,
+          "y": 40,
+          "w": 100,
+          "h": 552
+        },
+        {
+          "id": "s17_b",
+          "type": "seq-lifeline",
+          "label": ":Halaman Tiket Saya",
+          "x": 240,
+          "y": 40,
+          "w": 140,
+          "h": 552
+        },
+        {
+          "id": "s17_c",
+          "type": "seq-lifeline",
+          "label": ":Mengambil Tiket Pengunjung",
+          "x": 440,
+          "y": 40,
+          "w": 140,
+          "h": 552
+        },
+        {
+          "id": "s17_e1",
+          "type": "seq-lifeline",
+          "label": ":Booking",
+          "x": 640,
+          "y": 40,
+          "w": 140,
+          "h": 552
+        },
+        {
+          "id": "s17_e2",
+          "type": "seq-lifeline",
+          "label": ":Tiket Pesawat",
+          "x": 840,
+          "y": 40,
+          "w": 140,
+          "h": 552
+        }
+      ],
+      "edges": [
+        {
+          "id": "s17_m1",
+          "from": "s17_a",
+          "to": "s17_b",
+          "relation": "sync",
+          "label": "bukaTiketSaya()"
+        },
+        {
+          "id": "s17_m2",
+          "from": "s17_b",
+          "to": "s17_c",
+          "relation": "sync",
+          "label": "ambilTiketPengunjung(idPengunjung)"
+        },
+        {
+          "id": "s17_m3",
+          "from": "s17_c",
+          "to": "s17_e1",
+          "relation": "sync",
+          "label": "cariBooking(idPengunjung)"
+        },
+        {
+          "id": "s17_m4",
+          "from": "s17_e1",
+          "to": "s17_c",
+          "relation": "reply",
+          "label": "daftarBooking"
+        },
+        {
+          "id": "s17_m5",
+          "from": "s17_c",
+          "to": "s17_e2",
+          "relation": "sync",
+          "label": "ambilTiket(daftarBooking)"
+        },
+        {
+          "id": "s17_m6",
+          "from": "s17_e2",
+          "to": "s17_c",
+          "relation": "reply",
+          "label": "daftarTiket"
+        },
+        {
+          "id": "s17_m7",
+          "from": "s17_c",
+          "to": "s17_b",
+          "relation": "reply",
+          "label": "daftarTiket"
+        },
+        {
+          "id": "s17_m8",
+          "from": "s17_b",
+          "to": "s17_a",
+          "relation": "async",
+          "label": "tampilkanTiketTerpesan()"
+        }
+      ]
+    },
+    {
+      "id": "sq_18",
+      "kind": "sequence",
+      "title": "Sequence - Menerima E-Tiket",
+      "level": 0,
+      "parentProcessId": null,
+      "parentDiagramId": null,
+      "nodes": [
+        {
+          "id": "s18_a",
+          "type": "seq-actor",
+          "label": "Pengunjung",
+          "x": 40,
+          "y": 40,
+          "w": 100,
+          "h": 596
+        },
+        {
+          "id": "s18_b",
+          "type": "seq-lifeline",
+          "label": ":Email E-Tiket",
+          "x": 240,
+          "y": 40,
+          "w": 140,
+          "h": 596
+        },
+        {
+          "id": "s18_c1",
+          "type": "seq-lifeline",
+          "label": ":Membuat E-Tiket",
+          "x": 440,
+          "y": 40,
+          "w": 140,
+          "h": 596
+        },
+        {
+          "id": "s18_c2",
+          "type": "seq-lifeline",
+          "label": ":Mengirim E-Tiket",
+          "x": 640,
+          "y": 40,
+          "w": 140,
+          "h": 596
+        },
+        {
+          "id": "s18_e1",
+          "type": "seq-lifeline",
+          "label": ":Tiket Pesawat",
+          "x": 840,
+          "y": 40,
+          "w": 140,
+          "h": 596
+        },
+        {
+          "id": "s18_e2",
+          "type": "seq-lifeline",
+          "label": ":Data Pengunjung",
+          "x": 1040,
+          "y": 40,
+          "w": 140,
+          "h": 596
+        }
+      ],
+      "edges": [
+        {
+          "id": "s18_m1",
+          "from": "s18_c2",
+          "to": "s18_c1",
+          "relation": "sync",
+          "label": "buatEtiket(idBooking)"
+        },
+        {
+          "id": "s18_m2",
+          "from": "s18_c1",
+          "to": "s18_e1",
+          "relation": "sync",
+          "label": "ambilDataTiket(idBooking)"
+        },
+        {
+          "id": "s18_m3",
+          "from": "s18_e1",
+          "to": "s18_c1",
+          "relation": "reply",
+          "label": "dataTiket"
+        },
+        {
+          "id": "s18_m4",
+          "from": "s18_c1",
+          "to": "s18_c2",
+          "relation": "reply",
+          "label": "etiket"
+        },
+        {
+          "id": "s18_m5",
+          "from": "s18_c2",
+          "to": "s18_e2",
+          "relation": "sync",
+          "label": "ambilEmailTerdaftar(idPengunjung)"
+        },
+        {
+          "id": "s18_m6",
+          "from": "s18_e2",
+          "to": "s18_c2",
+          "relation": "reply",
+          "label": "email"
+        },
+        {
+          "id": "s18_m7",
+          "from": "s18_c2",
+          "to": "s18_b",
+          "relation": "sync",
+          "label": "kirimEmail(etiket, email)"
+        },
+        {
+          "id": "s18_m8",
+          "from": "s18_b",
+          "to": "s18_a",
+          "relation": "async",
+          "label": "terimaEtiket()"
+        },
+        {
+          "id": "s18_m9",
+          "from": "s18_b",
+          "to": "s18_c2",
+          "relation": "reply",
+          "label": "statusPengiriman"
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "createdAt": "2026-11-16T06:07:15.746Z",
+    "updatedAt": "2026-11-16T22:49:35.524Z",
+    "approach": "mixed"
+  }
+}

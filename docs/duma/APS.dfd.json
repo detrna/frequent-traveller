@@ -1,0 +1,3113 @@
+{
+  "schema": "dfd/1",
+  "id": "doc_mwiv2tk22cn7m",
+  "title": "Tes",
+  "notation": {
+    "dfd": "gane-sarson",
+    "erd": "crows-foot",
+    "usecase": "uml-usecase",
+    "activity": "uml-activity",
+    "flowchart": "flowchart-iso",
+    "class": "uml-class",
+    "bpmn": "bpmn-2",
+    "wireframe": "wireframe-lofi",
+    "sequence": "uml-sequence",
+    "state": "uml-state",
+    "sitemap": "sitemap",
+    "robustness": "robustness-iconix"
+  },
+  "rootId": "dg_mwiv2tk21yxh5",
+  "diagrams": [
+    {
+      "id": "dg_mwiv2tk21yxh5",
+      "kind": "class",
+      "title": "Eksprimen APS",
+      "level": 0,
+      "parentProcessId": null,
+      "parentDiagramId": null,
+      "nodes": [
+        {
+          "id": "cl_mwivkrlm7m8hoy",
+          "type": "cls-class",
+          "label": "User",
+          "number": "",
+          "x": -24,
+          "y": -756,
+          "w": 200,
+          "h": 82,
+          "childDiagramId": null,
+          "meta": {
+            "attributes": [],
+            "methods": []
+          }
+        },
+        {
+          "id": "cl_mwivl1et7niamg",
+          "type": "cls-class",
+          "label": "HRD Manager",
+          "number": "",
+          "x": -804,
+          "y": -588,
+          "w": 200,
+          "h": 82,
+          "childDiagramId": null,
+          "meta": {
+            "attributes": [],
+            "methods": []
+          }
+        },
+        {
+          "id": "cl_mwivl68k7oqh5w",
+          "type": "cls-class",
+          "label": "Pegawai",
+          "number": "",
+          "x": -492,
+          "y": -588,
+          "w": 200,
+          "h": 82,
+          "childDiagramId": null,
+          "meta": {
+            "attributes": [],
+            "methods": []
+          }
+        },
+        {
+          "id": "cl_mwivlfmf7puklq",
+          "type": "cls-class",
+          "label": "Permohonan Cuti",
+          "number": "",
+          "x": -648,
+          "y": -348,
+          "w": 200,
+          "h": 82,
+          "childDiagramId": null,
+          "meta": {
+            "attributes": [],
+            "methods": []
+          }
+        },
+        {
+          "id": "cl_mwivlr9c7qzlll",
+          "type": "cls-class",
+          "label": "Riwayat Cuti",
+          "number": "",
+          "x": -334,
+          "y": -348,
+          "w": 200,
+          "h": 82,
+          "childDiagramId": null,
+          "meta": {
+            "attributes": [],
+            "methods": []
+          }
+        },
+        {
+          "id": "cl_mwivlxaf7rwt7f",
+          "type": "cls-class",
+          "label": "Member Frequent Traveller",
+          "number": "",
+          "x": -192,
+          "y": -588,
+          "w": 228,
+          "h": 84,
+          "childDiagramId": null,
+          "meta": {
+            "attributes": [],
+            "methods": []
+          }
+        },
+        {
+          "id": "cl_mwivmmep7susrm",
+          "type": "cls-class",
+          "label": "Tiket Pesawat",
+          "number": "",
+          "x": 264,
+          "y": -348,
+          "w": 200,
+          "h": 82,
+          "childDiagramId": null,
+          "meta": {
+            "attributes": [],
+            "methods": []
+          }
+        },
+        {
+          "id": "cl_mwivmy0u7u5bay",
+          "type": "cls-class",
+          "label": "Penerbangan",
+          "number": "",
+          "x": -24,
+          "y": -348,
+          "w": 200,
+          "h": 82,
+          "childDiagramId": null,
+          "meta": {
+            "attributes": [],
+            "methods": []
+          }
+        },
+        {
+          "id": "cl_mwiwoc5x7pb94h",
+          "type": "cls-class",
+          "label": "Pengunjung",
+          "number": "",
+          "x": 132,
+          "y": -588,
+          "w": 200,
+          "h": 82,
+          "childDiagramId": null,
+          "meta": {
+            "attributes": [],
+            "methods": []
+          }
+        },
+        {
+          "id": "cl_mwiwolnb7qxv2h",
+          "type": "cls-class",
+          "label": "Manager Traveller",
+          "number": "",
+          "x": 420,
+          "y": -588,
+          "w": 200,
+          "h": 82,
+          "childDiagramId": null,
+          "meta": {
+            "attributes": [],
+            "methods": []
+          }
+        },
+        {
+          "id": "cl_mwj62yj297ydz3",
+          "type": "cls-class",
+          "label": "Pengguna",
+          "number": "",
+          "x": 720,
+          "y": -588,
+          "w": 200,
+          "h": 82,
+          "childDiagramId": null,
+          "meta": {
+            "attributes": [],
+            "methods": []
+          }
+        },
+        {
+          "id": "cl_mwj63xyv99p0ad",
+          "type": "cls-class",
+          "label": "Booking",
+          "number": "",
+          "x": 564,
+          "y": -348,
+          "w": 200,
+          "h": 82,
+          "childDiagramId": null,
+          "meta": {
+            "attributes": [],
+            "methods": []
+          }
+        }
+      ],
+      "edges": []
+    },
+    {
+      "id": "dg_mwivng3g7vsty0",
+      "kind": "usecase",
+      "title": "Use Case Diagram",
+      "level": 0,
+      "parentProcessId": null,
+      "parentDiagramId": null,
+      "nodes": [
+        {
+          "id": "uc_mwjuvcph7m0u1l",
+          "type": "uc-system",
+          "label": "",
+          "number": "",
+          "x": 204,
+          "y": -324,
+          "w": 1200,
+          "h": 1380,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwivnlsm7wpwlw",
+          "type": "uc-actor",
+          "label": "HRD Manager",
+          "number": "",
+          "x": -24,
+          "y": 408,
+          "w": 74,
+          "h": 104,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwivo7z87xt9gy",
+          "type": "uc-actor",
+          "label": "Pengguna",
+          "number": "",
+          "x": 1440,
+          "y": 552,
+          "w": 74,
+          "h": 104,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwivp0up7yz0r8",
+          "type": "uc-actor",
+          "label": "Member Frequent Traveller",
+          "number": "",
+          "x": 1440,
+          "y": 240,
+          "w": 74,
+          "h": 104,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwivq00p7zzne8",
+          "type": "uc-case",
+          "label": "Melihat jadwal cuti pegawai",
+          "number": "",
+          "x": 276,
+          "y": 328,
+          "w": 168,
+          "h": 68,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwivqzst807gdo",
+          "type": "uc-case",
+          "label": "Melihat pengajuan cuti pegawai",
+          "number": "",
+          "x": 276,
+          "y": 444,
+          "w": 168,
+          "h": 68,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwivr4ug81gfdn",
+          "type": "uc-case",
+          "label": "Melihat riwayat cuti pegawai",
+          "number": "",
+          "x": 588,
+          "y": 468,
+          "w": 168,
+          "h": 68,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwivrfeu82oo02",
+          "type": "uc-case",
+          "label": "Membatalkan tiket pesawat",
+          "number": "",
+          "x": 1140,
+          "y": 760,
+          "w": 168,
+          "h": 68,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwivtg9a8bouee",
+          "type": "uc-case",
+          "label": "Melihat jadwal penerbangan",
+          "number": "",
+          "x": 1140,
+          "y": 552,
+          "w": 168,
+          "h": 68,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwiw1uq48i20k8",
+          "type": "uc-case",
+          "label": "Mengupdate Data Profile",
+          "number": "",
+          "x": 1176,
+          "y": 322,
+          "w": 168,
+          "h": 68,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwiw2ays8lgx5v",
+          "type": "uc-case",
+          "label": "Melakukan Validasi Tiket",
+          "number": "",
+          "x": 1176,
+          "y": 120,
+          "w": 168,
+          "h": 68,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwiwcs858tcdiz",
+          "type": "uc-case",
+          "label": "Melihat penerbangan sesuai preferensi",
+          "number": "",
+          "x": 1176,
+          "y": -124,
+          "w": 168,
+          "h": 68,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwiwd0dq8vwl78",
+          "type": "uc-case",
+          "label": "Membandingkan harga tiket Penerbangan",
+          "number": "",
+          "x": 1176,
+          "y": 28,
+          "w": 168,
+          "h": 68,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwiwdc6o8x3eqe",
+          "type": "uc-case",
+          "label": "Memesan tiket pesawat",
+          "number": "",
+          "x": 1140,
+          "y": 678,
+          "w": 168,
+          "h": 68,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwiwdxsj8zcq47",
+          "type": "uc-case",
+          "label": "Memeriksa otorisasi travel",
+          "number": "",
+          "x": 288,
+          "y": 36,
+          "w": 168,
+          "h": 68,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwiweaol93i9nz",
+          "type": "uc-case",
+          "label": "Filter berdasarkan status",
+          "number": "",
+          "x": 600,
+          "y": -74,
+          "w": 168,
+          "h": 68,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwiwey8u96400j",
+          "type": "uc-case",
+          "label": "Mencari tiket penerbangan",
+          "number": "",
+          "x": 288,
+          "y": -192,
+          "w": 168,
+          "h": 68,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwiwfj6v9aygnm",
+          "type": "uc-case",
+          "label": "Memesan tiket menggunakan data pengunjung",
+          "number": "",
+          "x": 600,
+          "y": -180,
+          "w": 168,
+          "h": 68,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwiwgesu9e19og",
+          "type": "uc-actor",
+          "label": "",
+          "number": "",
+          "x": -24,
+          "y": 782,
+          "w": 74,
+          "h": 104,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwiwgfg19f76kx",
+          "type": "uc-actor",
+          "label": "Pengunjung",
+          "number": "",
+          "x": -24,
+          "y": 782,
+          "w": 74,
+          "h": 104,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwiwi7fl9gwaom",
+          "type": "uc-case",
+          "label": "Melihat tiket yang terpesan Manager Traveller",
+          "number": "",
+          "x": 288,
+          "y": 916,
+          "w": 168,
+          "h": 68,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwiwiyni9jzt1m",
+          "type": "uc-case",
+          "label": "Menerima e-tiket",
+          "number": "",
+          "x": 288,
+          "y": 804,
+          "w": 168,
+          "h": 68,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwiwjh5a9l7t4b",
+          "type": "uc-actor",
+          "label": "Manager Travell",
+          "number": "",
+          "x": -61,
+          "y": -92,
+          "w": 74,
+          "h": 104,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwiwkkw59p7ogk",
+          "type": "uc-case",
+          "label": "Mengotorisasi tiket yang sudah dibooking",
+          "number": "",
+          "x": 288,
+          "y": 124,
+          "w": 168,
+          "h": 68,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwiwkv549rk9w1",
+          "type": "uc-case",
+          "label": "Melihat status booking",
+          "number": "",
+          "x": 288,
+          "y": -74,
+          "w": 168,
+          "h": 68,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwj4yeka7ltkne",
+          "type": "uc-case",
+          "label": "Melihat jadwal cuti pegawal berdasarkan periode waktu",
+          "number": "",
+          "x": 588,
+          "y": 276,
+          "w": 168,
+          "h": 68,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwj50rb77qlu1m",
+          "type": "uc-case",
+          "label": "Melihat jadwal cuti pegawai berdasarkan nama",
+          "number": "",
+          "x": 588,
+          "y": 374,
+          "w": 168,
+          "h": 68,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwj5avfj86cygm",
+          "type": "uc-case",
+          "label": "Melihat jadwal penerbangan berdasarkan tujuan",
+          "number": "",
+          "x": 792,
+          "y": 536,
+          "w": 168,
+          "h": 68,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwj5b83a88a5vh",
+          "type": "uc-case",
+          "label": "Melihat harga tiket jadwal penerbangan",
+          "number": "",
+          "x": 792,
+          "y": 648,
+          "w": 168,
+          "h": 68,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwj5cqk38av69i",
+          "type": "uc-case",
+          "label": "Mencari jadwal penerbangan untuk beberapa tujuan penerbangan",
+          "number": "",
+          "x": 792,
+          "y": 768,
+          "w": 168,
+          "h": 68,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwj5flfy8ecfwp",
+          "type": "uc-case",
+          "label": "Mencari penerbangan multi-destinasi",
+          "number": "",
+          "x": 1176,
+          "y": 408,
+          "w": 168,
+          "h": 68,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwj5g3rh8g13o5",
+          "type": "uc-case",
+          "label": "Mencari  berdasarkan periode waktu",
+          "number": "",
+          "x": 792,
+          "y": 322,
+          "w": 168,
+          "h": 68,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwj5h7sj8i2pdt",
+          "type": "uc-case",
+          "label": "Mencari berdasarkan lokasi tujuan dan keberangatan",
+          "number": "",
+          "x": 792,
+          "y": 434,
+          "w": 168,
+          "h": 60,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwj5jwlk8kh6g2",
+          "type": "uc-case",
+          "label": "Melengkapi data personal",
+          "number": "",
+          "x": 1176,
+          "y": 240,
+          "w": 168,
+          "h": 68,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwj5wv8r8zrxgz",
+          "type": "uc-case",
+          "label": "Mencari berdasarkan tujuan",
+          "number": "",
+          "x": 600,
+          "y": -288,
+          "w": 168,
+          "h": 68,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "uc_mwj5z4zq919rxi",
+          "type": "uc-case",
+          "label": "Konfirmasi otorisasi travel",
+          "number": "",
+          "x": 600,
+          "y": 36,
+          "w": 168,
+          "h": 68,
+          "childDiagramId": null,
+          "meta": {}
+        }
+      ],
+      "edges": [
+        {
+          "id": "fl_mwivsrt885779e",
+          "from": {
+            "node": "uc_mwivnlsm7wpwlw",
+            "side": "right"
+          },
+          "to": {
+            "node": "uc_mwivq00p7zzne8",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwivst8986u57x",
+          "from": {
+            "node": "uc_mwivnlsm7wpwlw",
+            "side": "right"
+          },
+          "to": {
+            "node": "uc_mwivqzst807gdo",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwivsybr888o24",
+          "from": {
+            "node": "uc_mwivo7z87xt9gy",
+            "side": "left"
+          },
+          "to": {
+            "node": "uc_mwivrfeu82oo02",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwivu5ak8f0oes",
+          "from": {
+            "node": "uc_mwivo7z87xt9gy",
+            "side": "left"
+          },
+          "to": {
+            "node": "uc_mwivtg9a8bouee",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwiw25my8kpv2g",
+          "from": {
+            "node": "uc_mwiw1uq48i20k8",
+            "side": "right"
+          },
+          "to": {
+            "node": "uc_mwivp0up7yz0r8",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwiw2vp38opsr0",
+          "from": {
+            "node": "uc_mwiw2ays8lgx5v",
+            "side": "right"
+          },
+          "to": {
+            "node": "uc_mwivp0up7yz0r8",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwiwirke9hzxfw",
+          "from": {
+            "node": "uc_mwiwi7fl9gwaom",
+            "side": "left"
+          },
+          "to": {
+            "node": "uc_mwiwgfg19f76kx",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwiwiynj9kwb83",
+          "from": {
+            "node": "uc_mwiwgfg19f76kx",
+            "side": "right"
+          },
+          "to": {
+            "node": "uc_mwiwiyni9jzt1m",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwiwlyu09tfc4g",
+          "from": {
+            "node": "uc_mwiwjh5a9l7t4b",
+            "side": "right"
+          },
+          "to": {
+            "node": "uc_mwiwdxsj8zcq47",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwiwm4se9v46dt",
+          "from": {
+            "node": "uc_mwiwjh5a9l7t4b",
+            "side": "right"
+          },
+          "to": {
+            "node": "uc_mwiwey8u96400j",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwiwsihb7londs",
+          "from": {
+            "node": "uc_mwiwkkw59p7ogk",
+            "side": "left"
+          },
+          "to": {
+            "node": "uc_mwiwjh5a9l7t4b",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwiwsszr7n3kau",
+          "from": {
+            "node": "uc_mwiwkv549rk9w1",
+            "side": "left"
+          },
+          "to": {
+            "node": "uc_mwiwjh5a9l7t4b",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj4z1xv7pk2wx",
+          "from": {
+            "node": "uc_mwj4yeka7ltkne",
+            "side": "top"
+          },
+          "to": {
+            "node": "uc_mwivq00p7zzne8",
+            "side": "right"
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "extend",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj50rb77rdbdn",
+          "from": {
+            "node": "uc_mwj50rb77qlu1m",
+            "side": null
+          },
+          "to": {
+            "node": "uc_mwivq00p7zzne8",
+            "side": "right"
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "extend",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj57mdx80fcta",
+          "from": {
+            "node": "uc_mwivp0up7yz0r8",
+            "side": "bottom"
+          },
+          "to": {
+            "node": "uc_mwivtg9a8bouee",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj58pj8826rx7",
+          "from": {
+            "node": "uc_mwivtg9a8bouee",
+            "side": "top"
+          },
+          "to": {
+            "node": "uc_mwiwdc6o8x3eqe",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "include",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj59edb8359xt",
+          "from": {
+            "node": "uc_mwivq00p7zzne8",
+            "side": "right"
+          },
+          "to": {
+            "node": "uc_mwivr4ug81gfdn",
+            "side": "bottom"
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "include",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj5avfk87ycn3",
+          "from": {
+            "node": "uc_mwj5avfj86cygm",
+            "side": null
+          },
+          "to": {
+            "node": "uc_mwivtg9a8bouee",
+            "side": "left"
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "extend",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj5b83b895c6s",
+          "from": {
+            "node": "uc_mwj5b83a88a5vh",
+            "side": null
+          },
+          "to": {
+            "node": "uc_mwivtg9a8bouee",
+            "side": "left"
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "extend",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj5cqk38bs1ry",
+          "from": {
+            "node": "uc_mwj5cqk38av69i",
+            "side": null
+          },
+          "to": {
+            "node": "uc_mwivtg9a8bouee",
+            "side": "left"
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "extend",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj5eap78c0ye1",
+          "from": {
+            "node": "uc_mwivp0up7yz0r8",
+            "side": "top"
+          },
+          "to": {
+            "node": "uc_mwiwcs858tcdiz",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj5flfy8fml7j",
+          "from": {
+            "node": "uc_mwivp0up7yz0r8",
+            "side": "left"
+          },
+          "to": {
+            "node": "uc_mwj5flfy8ecfwp",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj5g3rh8hjpl3",
+          "from": {
+            "node": "uc_mwj5g3rh8g13o5",
+            "side": null
+          },
+          "to": {
+            "node": "uc_mwj5flfy8ecfwp",
+            "side": "left"
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "extend",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj5halr8jdjqr",
+          "from": {
+            "node": "uc_mwj5h7sj8i2pdt",
+            "side": "right"
+          },
+          "to": {
+            "node": "uc_mwj5flfy8ecfwp",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "extend",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj5jwll8lxuat",
+          "from": {
+            "node": "uc_mwivp0up7yz0r8",
+            "side": "left"
+          },
+          "to": {
+            "node": "uc_mwj5jwlk8kh6g2",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj5lc1q8m3yoz",
+          "from": {
+            "node": "uc_mwj5jwlk8kh6g2",
+            "side": "top"
+          },
+          "to": {
+            "node": "uc_mwiw2ays8lgx5v",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "include",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj5mx568pyv9q",
+          "from": {
+            "node": "uc_mwiwd0dq8vwl78",
+            "side": "right"
+          },
+          "to": {
+            "node": "uc_mwivp0up7yz0r8",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj5v81g8ve11j",
+          "from": {
+            "node": "uc_mwiweaol93i9nz",
+            "side": null
+          },
+          "to": {
+            "node": "uc_mwiwkv549rk9w1",
+            "side": "right"
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "extend",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj5wkz08yxe36",
+          "from": {
+            "node": "uc_mwiwey8u96400j",
+            "side": "right"
+          },
+          "to": {
+            "node": "uc_mwiwfj6v9aygnm",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "include",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj5wv8s90kj9d",
+          "from": {
+            "node": "uc_mwj5wv8r8zrxgz",
+            "side": null
+          },
+          "to": {
+            "node": "uc_mwiwey8u96400j",
+            "side": "right"
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "extend",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj5z4zq92ih8q",
+          "from": {
+            "node": "uc_mwiwdxsj8zcq47",
+            "side": "right"
+          },
+          "to": {
+            "node": "uc_mwj5z4zq919rxi",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "include",
+          "meta": {}
+        }
+      ]
+    },
+    {
+      "id": "dg_mwj66ai49a1oph",
+      "kind": "robustness",
+      "title": "Robustness Diagram",
+      "level": 0,
+      "parentProcessId": null,
+      "parentDiagramId": null,
+      "nodes": [
+        {
+          "id": "rb_mwj66shf9b4bzs",
+          "type": "rb-actor",
+          "label": "HRD Manager",
+          "number": "",
+          "x": 384,
+          "y": 240,
+          "w": 120,
+          "h": 120,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "rb_mwj674c69cqmwd",
+          "type": "rb-boundary",
+          "label": "Menu Jadwal Cuti",
+          "number": "",
+          "x": 576,
+          "y": 240,
+          "w": 160,
+          "h": 120,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "rb_mwj67a6t9dr926",
+          "type": "rb-control",
+          "label": "Layanan Jadwal Cuti",
+          "number": "",
+          "x": 1104,
+          "y": 216,
+          "w": 160,
+          "h": 120,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "rb_mwj6buwi9i62ff",
+          "type": "rb-control",
+          "label": "Validasi input filter",
+          "number": "",
+          "x": 1008,
+          "y": 372,
+          "w": 160,
+          "h": 120,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "rb_mwj6hl4l9pdeaa",
+          "type": "rb-entity",
+          "label": "Data jadwal cuti pegawai",
+          "number": "",
+          "x": 1008,
+          "y": 36,
+          "w": 160,
+          "h": 120,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "rb_mwj6jii59uz6js",
+          "type": "rb-control",
+          "label": "Layanan jadwal cuti",
+          "number": "",
+          "x": 864,
+          "y": 36,
+          "w": 160,
+          "h": 120,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "no_mwj70q1vahjcd6",
+          "type": "note",
+          "label": "Usecase melihat daftar jadwal cuti pegawai",
+          "number": "",
+          "x": 360,
+          "y": 144,
+          "w": 190,
+          "h": 56,
+          "childDiagramId": null,
+          "meta": {}
+        }
+      ],
+      "edges": [
+        {
+          "id": "fl_mwj67trs9e0o4f",
+          "from": {
+            "node": "rb_mwj66shf9b4bzs",
+            "side": "right"
+          },
+          "to": {
+            "node": "rb_mwj674c69cqmwd",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj69ven9gznb4",
+          "from": {
+            "node": "rb_mwj674c69cqmwd",
+            "side": "right"
+          },
+          "to": {
+            "node": "rb_mwj67a6t9dr926",
+            "side": null
+          },
+          "label": "Meminta jadwal pegawai",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj6cb9w9j073v",
+          "from": {
+            "node": "rb_mwj6buwi9i62ff",
+            "side": "left"
+          },
+          "to": {
+            "node": "rb_mwj674c69cqmwd",
+            "side": null
+          },
+          "label": "Meminta jadwal pegawai berdasarkan periode atau nama",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj6egdu9ltlty",
+          "from": {
+            "node": "rb_mwj6buwi9i62ff",
+            "side": "top"
+          },
+          "to": {
+            "node": "rb_mwj67a6t9dr926",
+            "side": null
+          },
+          "label": "Meminta jadwal pegawai berdasarkan waktu",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj6gln39m2b0f",
+          "from": {
+            "node": "rb_mwj6buwi9i62ff",
+            "side": "left"
+          },
+          "to": {
+            "node": "rb_mwj674c69cqmwd",
+            "side": null
+          },
+          "label": "Jika input tidak valid maka menampilkan error",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj6jakr9smvny",
+          "from": {
+            "node": "rb_mwj6hl4l9pdeaa",
+            "side": "bottom"
+          },
+          "to": {
+            "node": "rb_mwj67a6t9dr926",
+            "side": null
+          },
+          "label": "Mengambil rekaman jadwal cuti pegawai",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj6kl5d9xe2oz",
+          "from": {
+            "node": "rb_mwj6jii59uz6js",
+            "side": "left"
+          },
+          "to": {
+            "node": "rb_mwj674c69cqmwd",
+            "side": null
+          },
+          "label": "Mengirim data jadwal cuti pegawai",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj6l0wz9yp5yz",
+          "from": {
+            "node": "rb_mwj6hl4l9pdeaa",
+            "side": "left"
+          },
+          "to": {
+            "node": "rb_mwj6jii59uz6js",
+            "side": null
+          },
+          "label": "Memberikan rekaman jadwal cuti pegawai",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        }
+      ]
+    },
+    {
+      "id": "dg_mwj6p30z9zatl1",
+      "kind": "robustness",
+      "title": "Robustness Diagram",
+      "level": 0,
+      "parentProcessId": null,
+      "parentDiagramId": null,
+      "nodes": [
+        {
+          "id": "rb_mwj6p64ta04kks",
+          "type": "rb-actor",
+          "label": "HRD Manager",
+          "number": "",
+          "x": 168,
+          "y": 240,
+          "w": 120,
+          "h": 120,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "rb_mwj6pt1ca1f2w1",
+          "type": "rb-boundary",
+          "label": "Menu pengajuan cuti pegawai",
+          "number": "",
+          "x": 564,
+          "y": 240,
+          "w": 160,
+          "h": 120,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "rb_mwj6r1bza4kn2e",
+          "type": "rb-entity",
+          "label": "Data pengajuan cuti pegawai",
+          "number": "",
+          "x": 1428,
+          "y": 252,
+          "w": 160,
+          "h": 120,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "rb_mwj6rbd0a75479",
+          "type": "rb-control",
+          "label": "Layanan pengajuan cuti pegawai",
+          "number": "",
+          "x": 1008,
+          "y": 252,
+          "w": 160,
+          "h": 120,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "no_mwj7031lag5cjn",
+          "type": "note",
+          "label": "Use case: melihat daftar pengajuan cuti pegawai",
+          "number": "",
+          "x": 144,
+          "y": 132,
+          "w": 190,
+          "h": 56,
+          "childDiagramId": null,
+          "meta": {}
+        }
+      ],
+      "edges": [
+        {
+          "id": "fl_mwj6qssqa3qcfw",
+          "from": {
+            "node": "rb_mwj6p64ta04kks",
+            "side": "right"
+          },
+          "to": {
+            "node": "rb_mwj6pt1ca1f2w1",
+            "side": null
+          },
+          "label": "Mengakses Halaman & menampilkan data daftar pengajuan cuti pegawai",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj6t4s5a9daug",
+          "from": {
+            "node": "rb_mwj6pt1ca1f2w1",
+            "side": "right"
+          },
+          "to": {
+            "node": "rb_mwj6rbd0a75479",
+            "side": null
+          },
+          "label": "Meminta dan memberikan data daftar pengajuan cuti pegawai",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj6tp72aa04y9",
+          "from": {
+            "node": "rb_mwj6rbd0a75479",
+            "side": "right"
+          },
+          "to": {
+            "node": "rb_mwj6r1bza4kn2e",
+            "side": null
+          },
+          "label": "Mengambil dan mendapatkan daftar data pengajuan cuti pegawai",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        }
+      ]
+    },
+    {
+      "id": "dg_mwj71fgqai0krj",
+      "kind": "robustness",
+      "title": "Robustness Diagram",
+      "level": 0,
+      "parentProcessId": null,
+      "parentDiagramId": null,
+      "nodes": [
+        {
+          "id": "rb_mwj71hm3ajyxdq",
+          "type": "rb-actor",
+          "label": "HRD Manager",
+          "number": "",
+          "x": 252,
+          "y": 240,
+          "w": 120,
+          "h": 120,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "rb_mwj71m4sako9uf",
+          "type": "rb-boundary",
+          "label": "Menu jadwal cuti pegawai",
+          "number": "",
+          "x": 672,
+          "y": 240,
+          "w": 160,
+          "h": 120,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "rb_mwj72ccpamoj9t",
+          "type": "rb-control",
+          "label": "Validasi input",
+          "number": "",
+          "x": 1116,
+          "y": 396,
+          "w": 160,
+          "h": 120,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "rb_mwj7311waojhjx",
+          "type": "rb-control",
+          "label": "Layanan riwayat cuti pegawai",
+          "number": "",
+          "x": 1116,
+          "y": 564,
+          "w": 160,
+          "h": 120,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "rb_mwj747v6aqd9p9",
+          "type": "rb-boundary",
+          "label": "Riwayat cuti pegawai",
+          "number": "",
+          "x": 1596,
+          "y": 564,
+          "w": 160,
+          "h": 120,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "rb_mwj75yv2av2ju2",
+          "type": "rb-control",
+          "label": "Validasi hak akses",
+          "number": "",
+          "x": 1116,
+          "y": 240,
+          "w": 160,
+          "h": 120,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "rb_mwj78rdxax1env",
+          "type": "rb-boundary",
+          "label": "Halaman",
+          "number": "",
+          "x": 672,
+          "y": 564,
+          "w": 160,
+          "h": 120,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "no_mwj7apx2b0uqsg",
+          "type": "note",
+          "label": "Use case: melihat riwayat cuti pegawai",
+          "number": "",
+          "x": 252,
+          "y": 84,
+          "w": 190,
+          "h": 56,
+          "childDiagramId": null,
+          "meta": {}
+        }
+      ],
+      "edges": [
+        {
+          "id": "fl_mwj71yiwal8xvh",
+          "from": {
+            "node": "rb_mwj71hm3ajyxdq",
+            "side": "right"
+          },
+          "to": {
+            "node": "rb_mwj71m4sako9uf",
+            "side": null
+          },
+          "label": "Meminta riwayat cuti pegawai",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj72l8bannzye",
+          "from": {
+            "node": "rb_mwj75yv2av2ju2",
+            "side": "bottom"
+          },
+          "to": {
+            "node": "rb_mwj72ccpamoj9t",
+            "side": "top"
+          },
+          "label": "Validasi input & Menampilkan error jika input tidak valid",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {
+            "labelOffset": {
+              "x": 125.63177068316486,
+              "y": 10.585100467699874
+            }
+          }
+        },
+        {
+          "id": "fl_mwj73bm4apwoxm",
+          "from": {
+            "node": "rb_mwj72ccpamoj9t",
+            "side": "bottom"
+          },
+          "to": {
+            "node": "rb_mwj7311waojhjx",
+            "side": "top"
+          },
+          "label": "Melanjutkan permintaan jika input valid",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {
+            "labelOffset": {
+              "x": 134.39930962664198,
+              "y": -3.6431774832161636
+            }
+          }
+        },
+        {
+          "id": "fl_mwj74d67ar9rag",
+          "from": {
+            "node": "rb_mwj7311waojhjx",
+            "side": "left"
+          },
+          "to": {
+            "node": "rb_mwj78rdxax1env",
+            "side": "right"
+          },
+          "label": "Memberi data riwayat cuti pegawai",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj75lffatdpaq",
+          "from": {
+            "node": "rb_mwj7311waojhjx",
+            "side": "right"
+          },
+          "to": {
+            "node": "rb_mwj747v6aqd9p9",
+            "side": null
+          },
+          "label": "Mengambil & mendapat data riwayat cuti pegawai",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj7672iawcj4e",
+          "from": {
+            "node": "rb_mwj71m4sako9uf",
+            "side": "right"
+          },
+          "to": {
+            "node": "rb_mwj75yv2av2ju2",
+            "side": null
+          },
+          "label": "Validasi hak akses & menampilkan error jika hak ses tidak valid",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj79pxpaybvz3",
+          "from": {
+            "node": "rb_mwj78rdxax1env",
+            "side": "left"
+          },
+          "to": {
+            "node": "rb_mwj71hm3ajyxdq",
+            "side": "bottom"
+          },
+          "label": "Menampilkan riwayat cuti pegwawai",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        }
+      ]
+    },
+    {
+      "id": "dg_mwj8vmfnb1vppm",
+      "kind": "robustness",
+      "title": "Robustness Diagram",
+      "level": 0,
+      "parentProcessId": null,
+      "parentDiagramId": null,
+      "nodes": [
+        {
+          "id": "rb_mwj8vq8sb2gh7y",
+          "type": "rb-actor",
+          "label": "Pengguna",
+          "number": "",
+          "x": 360,
+          "y": 12,
+          "w": 120,
+          "h": 120,
+          "childDiagramId": null,
+          "meta": {}
+        }
+      ],
+      "edges": []
+    },
+    {
+      "id": "dg_mwj90xstb3pgs6",
+      "kind": "robustness",
+      "title": "Robustness Diagram",
+      "level": 0,
+      "parentProcessId": null,
+      "parentDiagramId": null,
+      "nodes": [
+        {
+          "id": "rb_mwj9104qb46p6u",
+          "type": "rb-actor",
+          "label": "Pengguna",
+          "number": "",
+          "x": 72,
+          "y": 132,
+          "w": 120,
+          "h": 120,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "rb_mwj911xtb53vrt",
+          "type": "rb-actor",
+          "label": "Member Frequent Traveller",
+          "number": "",
+          "x": 72,
+          "y": 300,
+          "w": 120,
+          "h": 120,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "rb_mwj9237jb7gdb8",
+          "type": "rb-boundary",
+          "label": "Menu jadwal penerbangan",
+          "number": "",
+          "x": 264,
+          "y": 216,
+          "w": 160,
+          "h": 120,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "no_mwj925nrb83b8w",
+          "type": "note",
+          "label": "Use case: Melihat jadwal penerbangan",
+          "number": "",
+          "x": 12,
+          "y": 36,
+          "w": 190,
+          "h": 56,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "rb_mwj95ycybc7squ",
+          "type": "rb-control",
+          "label": "Validasi Input",
+          "number": "",
+          "x": 408,
+          "y": 216,
+          "w": 160,
+          "h": 120,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "rb_mwj979q7bgb2fh",
+          "type": "rb-control",
+          "label": "Mengambil data penerbangan",
+          "number": "",
+          "x": 408,
+          "y": 384,
+          "w": 160,
+          "h": 120,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "rb_mwj985a1bj6bli",
+          "type": "rb-boundary",
+          "label": "Halaman",
+          "number": "",
+          "x": 636,
+          "y": 384,
+          "w": 160,
+          "h": 120,
+          "childDiagramId": null,
+          "meta": {}
+        }
+      ],
+      "edges": [
+        {
+          "id": "fl_mwj945k6b9bxdf",
+          "from": {
+            "node": "rb_mwj9104qb46p6u",
+            "side": "right"
+          },
+          "to": {
+            "node": "rb_mwj9237jb7gdb8",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj961djbefi2i",
+          "from": {
+            "node": "rb_mwj911xtb53vrt",
+            "side": "right"
+          },
+          "to": {
+            "node": "rb_mwj9237jb7gdb8",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj97uy8bh2rgb",
+          "from": {
+            "node": "rb_mwj9237jb7gdb8",
+            "side": "right"
+          },
+          "to": {
+            "node": "rb_mwj95ycybc7squ",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj97w7ebip2jw",
+          "from": {
+            "node": "rb_mwj95ycybc7squ",
+            "side": "bottom"
+          },
+          "to": {
+            "node": "rb_mwj979q7bgb2fh",
+            "side": "top"
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj989sfbkpcxq",
+          "from": {
+            "node": "rb_mwj979q7bgb2fh",
+            "side": "right"
+          },
+          "to": {
+            "node": "rb_mwj985a1bj6bli",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        }
+      ]
+    },
+    {
+      "id": "dg_mwj99tqrblc9mw",
+      "kind": "robustness",
+      "title": "Robustness Diagram",
+      "level": 0,
+      "parentProcessId": null,
+      "parentDiagramId": null,
+      "nodes": [
+        {
+          "id": "rb_mwj99wa0bml9h9",
+          "type": "rb-actor",
+          "label": "Pengguna",
+          "number": "",
+          "x": 120,
+          "y": 132,
+          "w": 120,
+          "h": 120,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "rb_mwj99xzqbnizww",
+          "type": "rb-actor",
+          "label": "Member Frequent Traveller",
+          "number": "",
+          "x": 120,
+          "y": 300,
+          "w": 120,
+          "h": 120,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "rb_mwj9a9mcbokggo",
+          "type": "rb-boundary",
+          "label": "Menu pemesanan tiket",
+          "number": "",
+          "x": 324,
+          "y": 216,
+          "w": 160,
+          "h": 120,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "rb_mwj9ajzubry0md",
+          "type": "rb-control",
+          "label": "Validasi input",
+          "number": "",
+          "x": 540,
+          "y": 216,
+          "w": 160,
+          "h": 120,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "rb_mwj9as2ybs40az",
+          "type": "rb-control",
+          "label": "Mengambil jadwal penerbangan",
+          "number": "",
+          "x": 540,
+          "y": 372,
+          "w": 160,
+          "h": 120,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "rb_mwj9b105bt2tuv",
+          "type": "rb-control",
+          "label": "Mencegah duplikat booking",
+          "number": "",
+          "x": 540,
+          "y": 552,
+          "w": 160,
+          "h": 120,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "rb_mwj9ctskby7heb",
+          "type": "rb-boundary",
+          "label": "Database jadwal penerbangan",
+          "number": "",
+          "x": 744,
+          "y": 372,
+          "w": 160,
+          "h": 120,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "rb_mwj9d276bz3dk9",
+          "type": "rb-boundary",
+          "label": "Database booking",
+          "number": "",
+          "x": 744,
+          "y": 552,
+          "w": 160,
+          "h": 120,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "rb_mwj9dk58c0kcio",
+          "type": "rb-control",
+          "label": "Membuat booking",
+          "number": "",
+          "x": 540,
+          "y": 756,
+          "w": 160,
+          "h": 120,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "rb_mwj9e1h6c5mdbf",
+          "type": "rb-boundary",
+          "label": "Database booking",
+          "number": "",
+          "x": 744,
+          "y": 756,
+          "w": 160,
+          "h": 120,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "rb_mwj9f2rrc981gf",
+          "type": "rb-boundary",
+          "label": "Menu tiket peswat",
+          "number": "",
+          "x": 108,
+          "y": 528,
+          "w": 160,
+          "h": 120,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "no_mwj9h97vcec4kl",
+          "type": "note",
+          "label": "Use case: memesan tiket pesawat",
+          "number": "",
+          "x": 78,
+          "y": 36,
+          "w": 190,
+          "h": 56,
+          "childDiagramId": null,
+          "meta": {}
+        }
+      ],
+      "edges": [
+        {
+          "id": "fl_mwj9afbnbpd798",
+          "from": {
+            "node": "rb_mwj99wa0bml9h9",
+            "side": "right"
+          },
+          "to": {
+            "node": "rb_mwj9a9mcbokggo",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj9ah88bq36iu",
+          "from": {
+            "node": "rb_mwj99xzqbnizww",
+            "side": "right"
+          },
+          "to": {
+            "node": "rb_mwj9a9mcbokggo",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj9b2kybuuwsi",
+          "from": {
+            "node": "rb_mwj9a9mcbokggo",
+            "side": "right"
+          },
+          "to": {
+            "node": "rb_mwj9ajzubry0md",
+            "side": "left"
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj9b3xbbve9af",
+          "from": {
+            "node": "rb_mwj9ajzubry0md",
+            "side": "bottom"
+          },
+          "to": {
+            "node": "rb_mwj9as2ybs40az",
+            "side": "top"
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj9ba8wbx649z",
+          "from": {
+            "node": "rb_mwj9as2ybs40az",
+            "side": "left"
+          },
+          "to": {
+            "node": "rb_mwj9a9mcbokggo",
+            "side": "bottom"
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {
+            "routeLocked": false
+          }
+        },
+        {
+          "id": "fl_mwj9dq4oc1fs71",
+          "from": {
+            "node": "rb_mwj9as2ybs40az",
+            "side": "right"
+          },
+          "to": {
+            "node": "rb_mwj9ctskby7heb",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj9drfgc24w8y",
+          "from": {
+            "node": "rb_mwj9b105bt2tuv",
+            "side": "right"
+          },
+          "to": {
+            "node": "rb_mwj9d276bz3dk9",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj9dwqic3n4it",
+          "from": {
+            "node": "rb_mwj9b105bt2tuv",
+            "side": "bottom"
+          },
+          "to": {
+            "node": "rb_mwj9dk58c0kcio",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj9e7mbc66a8y",
+          "from": {
+            "node": "rb_mwj9dk58c0kcio",
+            "side": "right"
+          },
+          "to": {
+            "node": "rb_mwj9e1h6c5mdbf",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj9eqkrc7nh04",
+          "from": {
+            "node": "rb_mwj9b105bt2tuv",
+            "side": "left"
+          },
+          "to": {
+            "node": "rb_mwj9a9mcbokggo",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj9fo8ucapqj8",
+          "from": {
+            "node": "rb_mwj9dk58c0kcio",
+            "side": "left"
+          },
+          "to": {
+            "node": "rb_mwj9f2rrc981gf",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj9fwalcbl3ac",
+          "from": {
+            "node": "rb_mwj9f2rrc981gf",
+            "side": "left"
+          },
+          "to": {
+            "node": "rb_mwj99xzqbnizww",
+            "side": "left"
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj9fzm6cc2ap6",
+          "from": {
+            "node": "rb_mwj9f2rrc981gf",
+            "side": "left"
+          },
+          "to": {
+            "node": "rb_mwj99wa0bml9h9",
+            "side": "left"
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj9gzr3cd38mi",
+          "from": {
+            "node": "rb_mwj9as2ybs40az",
+            "side": "bottom"
+          },
+          "to": {
+            "node": "rb_mwj9b105bt2tuv",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        }
+      ]
+    },
+    {
+      "id": "dg_mwj9hvfscg6xqs",
+      "kind": "robustness",
+      "title": "Robustness Diagram",
+      "level": 0,
+      "parentProcessId": null,
+      "parentDiagramId": null,
+      "nodes": [
+        {
+          "id": "no_mwj9i48rch53vx",
+          "type": "note",
+          "label": "Use case: membatalkan tiket penerbangan",
+          "number": "",
+          "x": 84,
+          "y": 144,
+          "w": 190,
+          "h": 56,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "rb_mwj9k86hcirei6",
+          "type": "rb-actor",
+          "label": "Pengguna",
+          "number": "",
+          "x": 84,
+          "y": 252,
+          "w": 120,
+          "h": 120,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "rb_mwj9kd5scjlkq1",
+          "type": "rb-boundary",
+          "label": "Menu pembatalan tiket pesawat",
+          "number": "",
+          "x": 288,
+          "y": 252,
+          "w": 160,
+          "h": 120,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "rb_mwj9kz77cld871",
+          "type": "rb-control",
+          "label": "Validasi input",
+          "number": "",
+          "x": 504,
+          "y": 252,
+          "w": 160,
+          "h": 120,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "rb_mwj9l6zncnq8s6",
+          "type": "rb-control",
+          "label": "Menemukan booking",
+          "number": "",
+          "x": 504,
+          "y": 408,
+          "w": 160,
+          "h": 120,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "rb_mwj9lyoacrmcqf",
+          "type": "rb-entity",
+          "label": "Database booking",
+          "number": "",
+          "x": 696,
+          "y": 408,
+          "w": 160,
+          "h": 120,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "rb_mwj9mdkcctf1b4",
+          "type": "rb-control",
+          "label": "Membatalkan tiket",
+          "number": "",
+          "x": 504,
+          "y": 564,
+          "w": 160,
+          "h": 120,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "rb_mwj9mso6cupaiz",
+          "type": "rb-entity",
+          "label": "Datanase booking",
+          "number": "",
+          "x": 696,
+          "y": 564,
+          "w": 160,
+          "h": 120,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "rb_mwj9n415cx52ci",
+          "type": "rb-boundary",
+          "label": "Menu data pesanan",
+          "number": "",
+          "x": 288,
+          "y": 408,
+          "w": 160,
+          "h": 120,
+          "childDiagramId": null,
+          "meta": {}
+        }
+      ],
+      "edges": [
+        {
+          "id": "fl_mwj9kjrxckeme9",
+          "from": {
+            "node": "rb_mwj9k86hcirei6",
+            "side": "right"
+          },
+          "to": {
+            "node": "rb_mwj9kd5scjlkq1",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj9l22pcm4z3g",
+          "from": {
+            "node": "rb_mwj9kd5scjlkq1",
+            "side": "right"
+          },
+          "to": {
+            "node": "rb_mwj9kz77cld871",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj9lj4qcour7r",
+          "from": {
+            "node": "rb_mwj9kz77cld871",
+            "side": "bottom"
+          },
+          "to": {
+            "node": "rb_mwj9l6zncnq8s6",
+            "side": "top"
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj9m3fqcsv0ls",
+          "from": {
+            "node": "rb_mwj9l6zncnq8s6",
+            "side": "right"
+          },
+          "to": {
+            "node": "rb_mwj9lyoacrmcqf",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj9mzsrcvk2hk",
+          "from": {
+            "node": "rb_mwj9mdkcctf1b4",
+            "side": "right"
+          },
+          "to": {
+            "node": "rb_mwj9mso6cupaiz",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj9n143cw8la9",
+          "from": {
+            "node": "rb_mwj9l6zncnq8s6",
+            "side": "bottom"
+          },
+          "to": {
+            "node": "rb_mwj9mdkcctf1b4",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj9ngvucyjk2k",
+          "from": {
+            "node": "rb_mwj9mdkcctf1b4",
+            "side": "left"
+          },
+          "to": {
+            "node": "rb_mwj9n415cx52ci",
+            "side": "bottom"
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj9nmiscz6iqe",
+          "from": {
+            "node": "rb_mwj9n415cx52ci",
+            "side": "left"
+          },
+          "to": {
+            "node": "rb_mwj9k86hcirei6",
+            "side": "left"
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        }
+      ]
+    },
+    {
+      "id": "dg_mwj9ofgkd0kb0j",
+      "kind": "robustness",
+      "title": "Robustness Diagram",
+      "level": 0,
+      "parentProcessId": null,
+      "parentDiagramId": null,
+      "nodes": [
+        {
+          "id": "rb_mwj9ozwbd12jmo",
+          "type": "rb-actor",
+          "label": "Manager Travel",
+          "number": "",
+          "x": 264,
+          "y": -480,
+          "w": 120,
+          "h": 120,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "rb_mwj9p8kdd2x6po",
+          "type": "rb-boundary",
+          "label": "Menu daftar pemesanan tiket",
+          "number": "",
+          "x": 456,
+          "y": -480,
+          "w": 160,
+          "h": 120,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "rb_mwj9pj41d4jp8m",
+          "type": "rb-control",
+          "label": "Validasi hak akses",
+          "number": "",
+          "x": 648,
+          "y": -480,
+          "w": 160,
+          "h": 120,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "rb_mwj9q9grd5jjg6",
+          "type": "rb-control",
+          "label": "Validasi input",
+          "number": "",
+          "x": 648,
+          "y": -336,
+          "w": 160,
+          "h": 120,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "rb_mwj9qum7d944j2",
+          "type": "rb-control",
+          "label": "Mengambil daftar pemesanan tiket",
+          "number": "",
+          "x": 648,
+          "y": -180,
+          "w": 160,
+          "h": 120,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "rb_mwj9rlm3db5v6e",
+          "type": "rb-entity",
+          "label": "Database booking",
+          "number": "",
+          "x": 828,
+          "y": -180,
+          "w": 160,
+          "h": 120,
+          "childDiagramId": null,
+          "meta": {}
+        }
+      ],
+      "edges": [
+        {
+          "id": "fl_mwj9pfrsd3iolw",
+          "from": {
+            "node": "rb_mwj9ozwbd12jmo",
+            "side": "right"
+          },
+          "to": {
+            "node": "rb_mwj9p8kdd2x6po",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj9qgxfd6trah",
+          "from": {
+            "node": "rb_mwj9p8kdd2x6po",
+            "side": "right"
+          },
+          "to": {
+            "node": "rb_mwj9pj41d4jp8m",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj9ql8gd7c4yv",
+          "from": {
+            "node": "rb_mwj9pj41d4jp8m",
+            "side": "bottom"
+          },
+          "to": {
+            "node": "rb_mwj9q9grd5jjg6",
+            "side": "top"
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj9qmjod8ak6f",
+          "from": {
+            "node": "rb_mwj9q9grd5jjg6",
+            "side": "left"
+          },
+          "to": {
+            "node": "rb_mwj9p8kdd2x6po",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj9ri8idafm0x",
+          "from": {
+            "node": "rb_mwj9q9grd5jjg6",
+            "side": "bottom"
+          },
+          "to": {
+            "node": "rb_mwj9qum7d944j2",
+            "side": "top"
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj9rwmmdcv6ca",
+          "from": {
+            "node": "rb_mwj9qum7d944j2",
+            "side": "right"
+          },
+          "to": {
+            "node": "rb_mwj9rlm3db5v6e",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj9s26dddby2f",
+          "from": {
+            "node": "rb_mwj9qum7d944j2",
+            "side": "left"
+          },
+          "to": {
+            "node": "rb_mwj9p8kdd2x6po",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        }
+      ]
+    },
+    {
+      "id": "dg_mwj9scgade7ovc",
+      "kind": "robustness",
+      "title": "Robustness Diagram",
+      "level": 0,
+      "parentProcessId": null,
+      "parentDiagramId": null,
+      "nodes": [
+        {
+          "id": "rb_mwj9t2b07lixh3",
+          "type": "rb-actor",
+          "label": "Member Frequent Traveller",
+          "number": "",
+          "x": -60,
+          "y": 84,
+          "w": 120,
+          "h": 120,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "rb_mwj9t9yl7mlvmt",
+          "type": "rb-boundary",
+          "label": "Menu profil",
+          "number": "",
+          "x": 120,
+          "y": 84,
+          "w": 160,
+          "h": 120,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "rb_mwj9tik57ovld4",
+          "type": "rb-control",
+          "label": "Autentikasi",
+          "number": "",
+          "x": 336,
+          "y": 84,
+          "w": 160,
+          "h": 120,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "no_mwj9tj9p7pgble",
+          "type": "note",
+          "label": "Use case: melengkapi data personal",
+          "number": "",
+          "x": -70,
+          "y": 0,
+          "w": 190,
+          "h": 56,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "rb_mwj9uehz7rbsu4",
+          "type": "rb-control",
+          "label": "Validasi input",
+          "number": "",
+          "x": 336,
+          "y": 204,
+          "w": 160,
+          "h": 120,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "rb_mwj9uscx7uek3l",
+          "type": "rb-boundary",
+          "label": "Menu autentikasi",
+          "number": "",
+          "x": 120,
+          "y": -48,
+          "w": 160,
+          "h": 120,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "rb_mwj9v2zx7wy010",
+          "type": "rb-entity",
+          "label": "Database sesi",
+          "number": "",
+          "x": 540,
+          "y": 84,
+          "w": 160,
+          "h": 120,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "rb_mwj9voyk7yp68d",
+          "type": "rb-control",
+          "label": "Memperbarui data profil",
+          "number": "",
+          "x": 336,
+          "y": 336,
+          "w": 160,
+          "h": 120,
+          "childDiagramId": null,
+          "meta": {}
+        },
+        {
+          "id": "rb_mwj9vyh07z8as4",
+          "type": "rb-entity",
+          "label": "Database pengguna",
+          "number": "",
+          "x": 540,
+          "y": 336,
+          "w": 160,
+          "h": 120,
+          "childDiagramId": null,
+          "meta": {}
+        }
+      ],
+      "edges": [
+        {
+          "id": "fl_mwj9tfkg7nlmbf",
+          "from": {
+            "node": "rb_mwj9t2b07lixh3",
+            "side": "right"
+          },
+          "to": {
+            "node": "rb_mwj9t9yl7mlvmt",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj9u2v27qrjv9",
+          "from": {
+            "node": "rb_mwj9t9yl7mlvmt",
+            "side": "right"
+          },
+          "to": {
+            "node": "rb_mwj9tik57ovld4",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj9ukuz7sayb8",
+          "from": {
+            "node": "rb_mwj9tik57ovld4",
+            "side": "bottom"
+          },
+          "to": {
+            "node": "rb_mwj9uehz7rbsu4",
+            "side": "top"
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj9uo3r7tinuo",
+          "from": {
+            "node": "rb_mwj9uehz7rbsu4",
+            "side": "left"
+          },
+          "to": {
+            "node": "rb_mwj9t9yl7mlvmt",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj9ux5h7voloz",
+          "from": {
+            "node": "rb_mwj9tik57ovld4",
+            "side": "top"
+          },
+          "to": {
+            "node": "rb_mwj9uscx7uek3l",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj9vhc67x40bg",
+          "from": {
+            "node": "rb_mwj9tik57ovld4",
+            "side": "right"
+          },
+          "to": {
+            "node": "rb_mwj9v2zx7wy010",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj9w2xw80a1sg",
+          "from": {
+            "node": "rb_mwj9voyk7yp68d",
+            "side": "right"
+          },
+          "to": {
+            "node": "rb_mwj9vyh07z8as4",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj9wb9i81r1gr",
+          "from": {
+            "node": "rb_mwj9voyk7yp68d",
+            "side": "left"
+          },
+          "to": {
+            "node": "rb_mwj9t9yl7mlvmt",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        },
+        {
+          "id": "fl_mwj9wem682a4nx",
+          "from": {
+            "node": "rb_mwj9uehz7rbsu4",
+            "side": "bottom"
+          },
+          "to": {
+            "node": "rb_mwj9voyk7yp68d",
+            "side": null
+          },
+          "label": "",
+          "waypoints": [],
+          "router": "orthogonal",
+          "bidirectional": false,
+          "relation": "association",
+          "meta": {}
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "createdAt": "2026-11-16T06:07:15.746Z",
+    "updatedAt": "2026-11-16T22:49:35.524Z",
+    "approach": "mixed"
+  }
+}
