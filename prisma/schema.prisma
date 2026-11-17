@@ -1,0 +1,219 @@
+// Model data APS — diturunkan dari class diagram ("Eksprimen APS") dan user stories US1–US9.
+// Entity robustness → model: Pegawai, Permohonan Cuti, Riwayat Cuti, Penerbangan, Booking, Tiket Pesawat,
+// Profil Member, Data Pengunjung (Pengunjung). Lihat docs/md/robustness-diagrams.md.
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  HRD_MANAGER
+  PENGGUNA
+  MEMBER
+  MANAGER_TRAVEL
+  PENGUNJUNG
+}
+
+/// US7: confirmed, booked, waiting for the payment. DIBATALKAN dipakai oleh pembatalan (US2-c) dan bukan opsi filter US7.
+enum StatusBooking {
+  BOOKED
+  WAITING_FOR_PAYMENT
+  CONFIRMED
+  DIBATALKAN
+}
+
+enum StatusTiket {
+  TERBIT
+  TERVALIDASI
+  DIBATALKAN
+}
+
+enum StatusEmail {
+  TERKIRIM
+  GAGAL
+}
+
+model User {
+  id           String   @id @default(cuid())
+  nama         String
+  email        String   @unique
+  passwordHash String
+  role         Role
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  profil          ProfilMember?
+  pengunjung      Pengunjung?
+  bookingDimiliki Booking[]     @relation("PemilikBooking")
+  bookingDibuat   Booking[]     @relation("PembuatBooking")
+}
+
+/// Data profil Member Frequent Traveller (US5). Profil "lengkap" bila semua kolom terisi.
+model ProfilMember {
+  id              String    @id @default(cuid())
+  userId          String    @unique
+  namaLengkap     String?
+  tglLahir        DateTime? @db.Date
+  nik             String?
+  noPaspor        String?
+  telepon         String?
+  kewarganegaraan String?
+  alamat          String?
+  updatedAt       DateTime  @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+/// "Data Pengunjung" (US8): data yang dipakai Manager Travel untuk memesan atas nama pengunjung.
+model Pengunjung {
+  id        String   @id @default(cuid())
+  userId    String   @unique
+  nama      String
+  email     String
+  telepon   String?
+  nik       String?
+  createdAt DateTime @default(now())
+
+  user    User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  booking Booking[]
+}
+
+model Bandara {
+  id   String @id @default(cuid())
+  kode String @unique // kode IATA, mis. CGK
+  nama String
+  kota String
+
+  berangkatDari Penerbangan[] @relation("AsalPenerbangan")
+  tujuanDari    Penerbangan[] @relation("TujuanPenerbangan")
+}
+
+model Maskapai {
+  id   String @id @default(cuid())
+  kode String @unique
+  nama String
+
+  penerbangan Penerbangan[]
+}
+
+model Penerbangan {
+  id              String   @id @default(cuid())
+  kodePenerbangan String
+  maskapaiId      String
+  asalId          String
+  tujuanId        String
+  berangkat       DateTime
+  tiba            DateTime
+  harga           Int // rupiah
+  kursiTersedia   Int
+
+  maskapai Maskapai       @relation(fields: [maskapaiId], references: [id])
+  asal     Bandara        @relation("AsalPenerbangan", fields: [asalId], references: [id])
+  tujuan   Bandara        @relation("TujuanPenerbangan", fields: [tujuanId], references: [id])
+  tiket    TiketPesawat[]
+
+  @@unique([kodePenerbangan, berangkat])
+  @@index([asalId, tujuanId, berangkat])
+  @@index([berangkat])
+}
+
+model Booking {
+  id                   String        @id @default(cuid())
+  kodeBookingReference String        @unique
+  /// Akun yang memiliki booking ini (melihat dan membatalkannya). Untuk pesanan Manager Travel = akun pengunjung.
+  pemilikId            String
+  /// Pengguna yang membuat booking (pemilik sendiri, atau Manager Travel).
+  dibuatOlehId         String
+  pengunjungId         String?
+  status               StatusBooking @default(BOOKED)
+  createdAt            DateTime      @default(now())
+  updatedAt            DateTime      @updatedAt
+
+  pemilik    User           @relation("PemilikBooking", fields: [pemilikId], references: [id])
+  dibuatOleh User           @relation("PembuatBooking", fields: [dibuatOlehId], references: [id])
+  pengunjung Pengunjung?    @relation(fields: [pengunjungId], references: [id])
+  tiket      TiketPesawat[]
+
+  @@index([pemilikId])
+  @@index([status])
+}
+
+model TiketPesawat {
+  id            String      @id @default(cuid())
+  bookingId     String
+  penerbanganId String
+  nomorTiket    String      @unique
+  namaPenumpang String
+  status        StatusTiket @default(TERBIT)
+  validatedAt   DateTime?
+  createdAt     DateTime    @default(now())
+
+  booking     Booking           @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  penerbangan Penerbangan       @relation(fields: [penerbanganId], references: [id])
+  notifikasi  NotifikasiEmail[]
+
+  @@index([bookingId])
+  @@index([penerbanganId])
+}
+
+/// Catatan pengiriman e-tiket (US8-d). Pengiriman gagal dicatat agar bisa dikirim ulang.
+model NotifikasiEmail {
+  id         String      @id @default(cuid())
+  tiketId    String
+  kepada     String
+  subjek     String
+  status     StatusEmail
+  error      String?
+  percobaan  Int         @default(1)
+  createdAt  DateTime    @default(now())
+  terkirimAt DateTime?
+
+  tiket TiketPesawat @relation(fields: [tiketId], references: [id], onDelete: Cascade)
+
+  @@index([status])
+}
+
+model Pegawai {
+  id               String   @id @default(cuid())
+  nama             String
+  nip              String   @unique
+  jabatan          String
+  jatahCutiTahunan Int      @default(12)
+  createdAt        DateTime @default(now())
+
+  permohonanCuti PermohonanCuti[]
+  riwayatCuti    RiwayatCuti[]
+}
+
+model PermohonanCuti {
+  id         String   @id @default(cuid())
+  pegawaiId  String
+  tglMulai   DateTime @db.Date
+  tglSelesai DateTime @db.Date
+  lamaHari   Int
+  alasan     String?
+  createdAt  DateTime @default(now())
+
+  pegawai Pegawai @relation(fields: [pegawaiId], references: [id], onDelete: Cascade)
+
+  @@index([tglMulai, tglSelesai])
+  @@index([pegawaiId])
+}
+
+model RiwayatCuti {
+  id         String   @id @default(cuid())
+  pegawaiId  String
+  tahun      Int
+  tglMulai   DateTime @db.Date
+  tglSelesai DateTime @db.Date
+  lamaHari   Int
+
+  pegawai Pegawai @relation(fields: [pegawaiId], references: [id], onDelete: Cascade)
+
+  @@index([pegawaiId, tahun])
+}
