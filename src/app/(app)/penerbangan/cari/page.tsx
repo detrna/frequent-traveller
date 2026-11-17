@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { BandaraSelect } from "@/components/flight/bandara-select";
 import { FormCari } from "@/components/flight/form-cari";
+import { aksiPesan } from "@/components/booking/tombol-pesan";
 import { HasilPenerbanganTabel } from "@/components/flight/hasil-penerbangan";
 import { Field } from "@/components/ui/field";
 import { PageHeader } from "@/components/ui/card";
@@ -38,7 +39,7 @@ export default async function CariPenerbanganPage({ searchParams }: { searchPara
         {hasil ? (
           <>
             <h2 className="mb-3 text-lg font-medium">{hasil.length} penerbangan ditemukan</h2>
-            <HasilPenerbanganTabel penerbangan={hasil} />
+            <HasilPenerbanganTabel penerbangan={hasil} aksi={aksiPesan} />
           </>
         ) : dikirim && Object.keys(galat).length > 0 ? (
           <Alert tone="error">Periksa kembali isian pencarian di atas.</Alert>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { aksiPesan } from "@/components/booking/tombol-pesan";
 import { HasilPenerbanganTabel } from "@/components/flight/hasil-penerbangan";
 import { Alert } from "@/components/ui/alert";
 import { Card, PageHeader } from "@/components/ui/card";
@@ -58,7 +59,7 @@ export default async function MultiDestinasiPage({ searchParams }: { searchParam
                   {i + 1}. {r.asal} → {r.tujuan} · {formatTanggal(awalHariWIB(r.tanggal))}
                   <span className="ml-2 text-sm font-normal text-zinc-500">({r.penerbangan.length} pilihan)</span>
                 </h2>
-                <HasilPenerbanganTabel penerbangan={r.penerbangan} keterangan={`Penerbangan ${r.asal} ke ${r.tujuan}`} />
+                <HasilPenerbanganTabel penerbangan={r.penerbangan} keterangan={`Penerbangan ${r.asal} ke ${r.tujuan}`} aksi={aksiPesan} />
               </div>
             ))}
           </>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { FormCari } from "@/components/flight/form-cari";
 import { BandaraSelect } from "@/components/flight/bandara-select";
+import { aksiPesan } from "@/components/booking/tombol-pesan";
 import { HasilPenerbanganTabel } from "@/components/flight/hasil-penerbangan";
 import { Alert } from "@/components/ui/alert";
 import { PageHeader } from "@/components/ui/card";
@@ -55,7 +56,7 @@ export default async function MultiTujuanPage({ searchParams }: { searchParams: 
                 <h2 className="mb-3 text-lg font-medium">
                   {namaKota.get(kelompok.tujuan) ?? kelompok.tujuan} ({kelompok.tujuan}) · {kelompok.penerbangan.length} penerbangan
                 </h2>
-                <HasilPenerbanganTabel penerbangan={kelompok.penerbangan} keterangan={`Penerbangan ke ${kelompok.tujuan}`} />
+                <HasilPenerbanganTabel penerbangan={kelompok.penerbangan} keterangan={`Penerbangan ke ${kelompok.tujuan}`} aksi={aksiPesan} />
               </div>
             ))
           : dikirim && Object.keys(galat).length > 0

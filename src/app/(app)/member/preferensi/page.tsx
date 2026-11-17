@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { FormPreferensi } from "@/components/flight/form-preferensi";
+import { aksiPesan } from "@/components/booking/tombol-pesan";
 import { HasilPenerbanganTabel } from "@/components/flight/hasil-penerbangan";
 import { Alert } from "@/components/ui/alert";
 import { PageHeader } from "@/components/ui/card";
@@ -36,7 +37,7 @@ export default async function PreferensiPage({ searchParams }: { searchParams: P
         {hasil ? (
           <>
             <h2 className="mb-3 text-lg font-medium">{hasil.length} penerbangan sesuai preferensi</h2>
-            <HasilPenerbanganTabel penerbangan={hasil} />
+            <HasilPenerbanganTabel penerbangan={hasil} aksi={aksiPesan} />
           </>
         ) : dikirim && Object.keys(galat).length > 0 ? (
           <Alert tone="error">Periksa kembali preferensi di atas.</Alert>

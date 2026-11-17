@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { FormPreferensi } from "@/components/flight/form-preferensi";
+import { aksiPesan } from "@/components/booking/tombol-pesan";
 import { HasilPenerbanganTabel } from "@/components/flight/hasil-penerbangan";
 import { Alert } from "@/components/ui/alert";
 import { Card, PageHeader } from "@/components/ui/card";
@@ -43,7 +44,7 @@ export default async function BandingkanPage({ searchParams }: { searchParams: P
               <Card><dt className="text-xs uppercase text-zinc-500">Rata-rata</dt><dd className="mt-1 text-xl font-semibold">{formatRupiah(perbandingan.rataRata)}</dd></Card>
               <Card><dt className="text-xs uppercase text-zinc-500">Termahal</dt><dd className="mt-1 text-xl font-semibold">{formatRupiah(perbandingan.termahal)}</dd></Card>
             </dl>
-            <HasilPenerbanganTabel penerbangan={perbandingan.penerbangan} tampilkanSelisih keterangan="Perbandingan harga tiket" />
+            <HasilPenerbanganTabel penerbangan={perbandingan.penerbangan} tampilkanSelisih keterangan="Perbandingan harga tiket" aksi={aksiPesan} />
           </div>
         ) : dikirim && Object.keys(galat).length > 0 ? (
           <Alert tone="error">Periksa kembali preferensi di atas.</Alert>
