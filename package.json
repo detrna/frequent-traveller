@@ -22,8 +22,11 @@
     "db:verify": "tsx scripts/db.ts verify"
   },
   "dependencies": {
+    "@prisma/composer": "0.38.0",
+    "@prisma/composer-prisma-cloud": "0.38.0",
     "@prisma/orm-postgres": "8.0.0-rc.23",
     "bcryptjs": "^3.0.3",
+    "effect": "4.0.5",
     "next": "16.4.6",
     "next-auth": "5.0.0-beta.32",
     "nodemailer": "^8.0.11",
@@ -50,5 +53,12 @@
     "tsx": "^4.23.15",
     "typescript": "^5",
     "vitest": "^5.1.0"
+  },
+  "overrides": {
+    "@effect/platform-bun": "4.0.5",
+    "@effect/platform-node": "4.0.5",
+    "@effect/platform-node-shared": "4.0.5",
+    "@effect/vitest": "4.0.5",
+    "effect": "4.0.5"
   }
 }
