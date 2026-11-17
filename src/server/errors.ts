@@ -9,6 +9,14 @@ export class GalatBisnis extends Error {
   }
 }
 
+/** Galat validasi masukan dengan pesan per kolom, mis. { nik: "NIK harus 16 digit angka." }. */
+export class GalatValidasi extends GalatBisnis {
+  constructor(public readonly galat: Record<string, string>) {
+    super(Object.values(galat)[0] ?? "Masukan tidak valid.", "VALIDASI");
+    this.name = "GalatValidasi";
+  }
+}
+
 /** Mengubah galat tak dikenal menjadi pesan umum; GalatBisnis diteruskan apa adanya. */
 export function pesanUntukPengguna(error: unknown): string {
   if (error instanceof GalatBisnis) return error.message;

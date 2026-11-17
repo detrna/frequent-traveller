@@ -85,49 +85,51 @@ async function kodeBookingBaru(tx: Tx): Promise<string> {
 }
 
 /**
- * Inti pemesanan, atomik dalam satu transaksi:
+ * Inti pemesanan di dalam transaksi `tx`:
  * penerbangan ada & belum berangkat → tidak duplikat → kursi dikurangi (atomik) → booking (booked) + tiket terbit.
- * Dipakai oleh pemesanan mandiri (US2-b/US6-c) dan pemesanan oleh Manager Travel (US8-b).
+ * Mengembalikan id booking. Dipakai bersama oleh pemesanan mandiri dan pemesanan oleh Manager Travel.
  */
-export async function buatBooking(input: BuatBookingInput): Promise<Pesanan> {
-  const id = await db.$transaction(async (tx) => {
-    // Serialkan permintaan yang sama (pemilik + penerbangan) agar pemeriksaan duplikat tidak dilewati oleh balapan.
-    await tx.$executeRaw`SELECT pg_advisory_xact_lock(hashtext(${`booking:${input.pemilikId}:${input.penerbanganId}`}))`;
+export async function buatBookingDiTransaksi(tx: Tx, input: BuatBookingInput): Promise<string> {
+  // Serialkan permintaan yang sama (pemilik + penerbangan) agar pemeriksaan duplikat tidak dilewati oleh balapan.
+  await tx.$executeRaw`SELECT pg_advisory_xact_lock(hashtext(${`booking:${input.pemilikId}:${input.penerbanganId}`}))`;
 
-    const penerbangan = await tx.penerbangan.findUnique({ where: { id: input.penerbanganId } });
-    if (!penerbangan) throw new GalatBisnis("Penerbangan tidak ditemukan.", "TIDAK_DITEMUKAN");
-    if (penerbangan.berangkat <= new Date()) throw new GalatBisnis("Penerbangan ini sudah berangkat.", "SUDAH_BERANGKAT");
+  const penerbangan = await tx.penerbangan.findUnique({ where: { id: input.penerbanganId } });
+  if (!penerbangan) throw new GalatBisnis("Penerbangan tidak ditemukan.", "TIDAK_DITEMUKAN");
+  if (penerbangan.berangkat <= new Date()) throw new GalatBisnis("Penerbangan ini sudah berangkat.", "SUDAH_BERANGKAT");
 
-    const duplikat = await tx.booking.findFirst({
-      where: { pemilikId: input.pemilikId, status: { not: "DIBATALKAN" }, tiket: { some: { penerbanganId: input.penerbanganId, status: { not: "DIBATALKAN" } } } },
-      select: { kodeBookingReference: true },
-    });
-    if (duplikat) {
-      throw new GalatBisnis(`Pesanan untuk penerbangan ini sudah ada (kode booking ${duplikat.kodeBookingReference}).`, "DUPLIKAT");
-    }
-
-    // Pengurangan atomik: hanya berhasil bila masih ada kursi, sehingga tidak mungkin terjual lebih dari kapasitas.
-    const dikurangi = await tx.penerbangan.updateMany({
-      where: { id: input.penerbanganId, kursiTersedia: { gt: 0 } },
-      data: { kursiTersedia: { decrement: 1 } },
-    });
-    if (dikurangi.count === 0) throw new GalatBisnis("Kursi pada penerbangan ini sudah penuh.", "PENUH");
-
-    const kode = await kodeBookingBaru(tx);
-    const booking = await tx.booking.create({
-      data: {
-        kodeBookingReference: kode,
-        pemilikId: input.pemilikId,
-        dibuatOlehId: input.dibuatOlehId,
-        pengunjungId: input.pengunjungId,
-        status: "BOOKED",
-        tiket: { create: { penerbanganId: input.penerbanganId, nomorTiket: `TKT-${kode}-1`, namaPenumpang: input.namaPenumpang } },
-      },
-      select: { id: true },
-    });
-    return booking.id;
+  const duplikat = await tx.booking.findFirst({
+    where: { pemilikId: input.pemilikId, status: { not: "DIBATALKAN" }, tiket: { some: { penerbanganId: input.penerbanganId, status: { not: "DIBATALKAN" } } } },
+    select: { kodeBookingReference: true },
   });
+  if (duplikat) {
+    throw new GalatBisnis(`Pesanan untuk penerbangan ini sudah ada (kode booking ${duplikat.kodeBookingReference}).`, "DUPLIKAT");
+  }
 
+  // Pengurangan atomik: hanya berhasil bila masih ada kursi, sehingga tidak mungkin terjual lebih dari kapasitas.
+  const dikurangi = await tx.penerbangan.updateMany({
+    where: { id: input.penerbanganId, kursiTersedia: { gt: 0 } },
+    data: { kursiTersedia: { decrement: 1 } },
+  });
+  if (dikurangi.count === 0) throw new GalatBisnis("Kursi pada penerbangan ini sudah penuh.", "PENUH");
+
+  const kode = await kodeBookingBaru(tx);
+  const booking = await tx.booking.create({
+    data: {
+      kodeBookingReference: kode,
+      pemilikId: input.pemilikId,
+      dibuatOlehId: input.dibuatOlehId,
+      pengunjungId: input.pengunjungId,
+      status: "BOOKED",
+      tiket: { create: { penerbanganId: input.penerbanganId, nomorTiket: `TKT-${kode}-1`, namaPenumpang: input.namaPenumpang } },
+    },
+    select: { id: true },
+  });
+  return booking.id;
+}
+
+/** Pemesanan atomik dalam satu transaksi tersendiri. */
+export async function buatBooking(input: BuatBookingInput): Promise<Pesanan> {
+  const id = await db.$transaction((tx) => buatBookingDiTransaksi(tx, input));
   return db.booking.findUniqueOrThrow({ where: { id }, include: INCLUDE_PESANAN });
 }
 

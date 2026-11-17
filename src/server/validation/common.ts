@@ -46,3 +46,8 @@ export const jamOpsional = (nama: string) =>
   z
     .union([z.literal("").transform(() => undefined), z.coerce.number({ error: `${nama} tidak valid.` }).int({ error: `${nama} tidak valid.` }).min(0, { error: `${nama} harus 0–23.` }).max(23, { error: `${nama} harus 0–23.` })])
     .optional();
+
+/** Pola yang dipakai profil member (US5) dan data pengunjung (US8). */
+export const hapusPemisah = (v: string) => v.replace(/[\s().-]/g, "");
+export const POLA_NIK = /^\d{16}$/;
+export const POLA_TELEPON = /^(\+62|62|0)8\d{8,11}$/;
