@@ -35,3 +35,6 @@ src/generated/
 
 # claude local settings
 .claude/settings.local.json
+
+# direktori build tes e2e
+.next-e2e/

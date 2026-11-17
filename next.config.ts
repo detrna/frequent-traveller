@@ -1,7 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // Tes e2e memakai direktori build sendiri (NEXT_DIST_DIR) agar dapat berjalan berdampingan dengan `next dev`.
+  distDir: process.env.NEXT_DIST_DIR || ".next",
   turbopack: {
     rules: {
       "*.css": {
