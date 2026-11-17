@@ -75,6 +75,9 @@ export interface NavItem {
 
 /** Menu navigasi. Tambahkan entri di sini saat sebuah halaman selesai dibuat. */
 export const NAV_ITEMS: readonly NavItem[] = [
+  { href: "/hrd/jadwal-cuti", label: "Jadwal Cuti", deskripsi: "Lihat siapa saja yang cuti pada periode tertentu dan berapa lama.", roles: ["HRD_MANAGER"] },
+  { href: "/hrd/pengajuan", label: "Pengajuan Cuti", deskripsi: "Nama pegawai, periode, dan lama cuti yang diajukan.", roles: ["HRD_MANAGER"] },
+  { href: "/hrd/riwayat", label: "Riwayat Cuti", deskripsi: "Riwayat cuti dan sisa cuti tahun berjalan tiap pegawai.", roles: ["HRD_MANAGER"] },
   { href: "/penerbangan/cari", label: "Cari Penerbangan", deskripsi: "Lihat jadwal, maskapai, dan harga tiket sesuai tujuan dan tanggal.", roles: ["PENGGUNA", "MEMBER"] },
   { href: "/penerbangan/multi-tujuan", label: "Beberapa Tujuan", deskripsi: "Cari penerbangan ke beberapa kota tujuan sekaligus.", roles: ["PENGGUNA", "MEMBER"] },
   { href: "/pesanan", label: "Pesanan Saya", deskripsi: "Lihat, bayar, atau batalkan pesanan tiket Anda.", roles: ["PENGGUNA", "MEMBER"] },
