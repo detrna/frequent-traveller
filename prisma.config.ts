@@ -1,5 +1,6 @@
 import { config as loadEnv } from "dotenv";
-import { defineConfig } from "prisma/config";
+import { definePrismaConfig } from "prisma/config";
+import { defineConfig as ormConfig, prisma7Schema } from "@prisma/orm-postgres/config";
 import { getDatabaseUrl } from "./src/server/db-target";
 
 // Next.js memuat .env.local sendiri, tetapi CLI Prisma tidak. dotenv tidak menimpa variabel yang sudah ada.
@@ -10,19 +11,17 @@ function resolveUrl(): string {
   try {
     return getDatabaseUrl();
   } catch {
-    // `prisma generate` (postinstall / build Vercel) tidak butuh koneksi, jadi jangan gagal bila URL cloud belum diisi.
+    // `contract emit` (postinstall / build) tidak butuh koneksi, jadi jangan gagal bila URL cloud belum diisi.
     // Perintah yang benar-benar butuh database lewat skrip `npm run db:*`, yang memvalidasi URL dengan pesan jelas.
     return "postgresql://placeholder:placeholder@localhost:5432/placeholder";
   }
 }
 
-export default defineConfig({
-  schema: "prisma/schema.prisma",
-  migrations: {
-    path: "prisma/migrations",
-    seed: "tsx prisma/seed.ts",
-  },
-  datasource: {
-    url: resolveUrl(),
-  },
+export default definePrismaConfig({
+  orm: ormConfig({
+    // Skema Prisma 7 tetap menjadi sumber kontrak; Prisma 8 membacanya dan menghasilkan contract.json + contract.d.ts.
+    contract: prisma7Schema("prisma/schema.prisma"),
+    output: "src/prisma",
+    db: { connection: resolveUrl() },
+  }),
 });

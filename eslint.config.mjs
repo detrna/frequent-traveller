@@ -10,6 +10,9 @@ const eslintConfig = defineConfig([
     // Default ignores of eslint-config-next:
     ".next/**",
     ".next-e2e/**",
+    // berkas hasil generate Prisma 8 dan migrasinya bukan kode tulisan tangan
+    "src/prisma/contract.d.ts",
+    "migrations/**",
     "out/**",
     "build/**",
     "next-env.d.ts",

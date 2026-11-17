@@ -30,8 +30,8 @@ npm-debug.log*
 # vercel
 .vercel/
 
-# prisma generated client
-src/generated/
+# ref Prisma 8 milik database tes (ref `db` ikut di-commit)
+migrations/app/refs/test.json
 
 # claude local settings
 .claude/settings.local.json
