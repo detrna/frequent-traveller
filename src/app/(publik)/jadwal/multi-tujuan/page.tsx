@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import { FormCari } from "@/components/flight/form-cari";
 import { BandaraSelect } from "@/components/flight/bandara-select";
-import { aksiPesan } from "@/components/booking/tombol-pesan";
+import { aksiPesanUntuk } from "@/components/booking/tombol-pesan";
 import { HasilPenerbanganTabel } from "@/components/flight/hasil-penerbangan";
 import { Alert } from "@/components/ui/alert";
 import { PageHeader } from "@/components/ui/card";
 import { Field } from "@/components/ui/field";
 import { adaParameter, ambilBanyak, ambilSatu, type SearchParams } from "@/lib/query";
 import { tanggalWIB } from "@/lib/waktu";
-import { wajibBisa } from "@/server/auth/session";
+import { ambilPengguna } from "@/server/auth/session";
 import { cariBeberapaTujuan, daftarBandara } from "@/server/services/penerbangan";
 import { validasi } from "@/server/validation/common";
 import { multiTujuanSkema } from "@/server/validation/penerbangan";
@@ -16,7 +16,7 @@ import { multiTujuanSkema } from "@/server/validation/penerbangan";
 export const metadata: Metadata = { title: "Cari Beberapa Tujuan" };
 
 export default async function MultiTujuanPage({ searchParams }: { searchParams: Promise<SearchParams> }) {
-  await wajibBisa("penerbangan.cari");
+  const aksi = aksiPesanUntuk((await ambilPengguna())?.role);
   const sp = await searchParams;
   const bandara = await daftarBandara();
 
@@ -31,7 +31,7 @@ export default async function MultiTujuanPage({ searchParams }: { searchParams: 
   return (
     <>
       <PageHeader title="Cari Beberapa Tujuan" description="Bandingkan penerbangan ke beberapa kota tujuan sekaligus pada tanggal yang sama." />
-      <FormCari action="/penerbangan/multi-tujuan" tombol="Cari semua tujuan">
+      <FormCari action="/jadwal/multi-tujuan" tombol="Cari semua tujuan">
         <input type="hidden" name="cari" value="1" />
         <BandaraSelect name="asal" label="Dari (opsional)" bandara={bandara} defaultValue={nilai.asal} error={galat.asal} kosong="Semua bandara" />
         <Field label="Tanggal" name="tanggal" type="date" min={tanggalWIB()} defaultValue={nilai.tanggal} error={galat.tanggal} required />
@@ -56,7 +56,7 @@ export default async function MultiTujuanPage({ searchParams }: { searchParams: 
                 <h2 className="mb-3 text-lg font-medium">
                   {namaKota.get(kelompok.tujuan) ?? kelompok.tujuan} ({kelompok.tujuan}) · {kelompok.penerbangan.length} penerbangan
                 </h2>
-                <HasilPenerbanganTabel penerbangan={kelompok.penerbangan} keterangan={`Penerbangan ke ${kelompok.tujuan}`} aksi={aksiPesan} />
+                <HasilPenerbanganTabel penerbangan={kelompok.penerbangan} keterangan={`Penerbangan ke ${kelompok.tujuan}`} aksi={aksi} />
               </div>
             ))
           : dikirim && Object.keys(galat).length > 0

@@ -13,10 +13,10 @@ Perintah dan pengaturan ada di [`README.md`](../../README.md).
 | **US1-a** jadwal cuti | RB01/SQ01 | `/hrd/jadwal-cuti` | `cuti.ambilJadwalCuti` (+ `validasiPeriode`) | `integration/cuti`, `unit/cuti`, `e2e/cuti` |
 | **US1-b** pengajuan cuti | RB02/SQ02 | `/hrd/pengajuan` | `cuti.ambilPengajuanCuti` | idem |
 | **US1-c** riwayat & sisa cuti | RB03/SQ03 | `/hrd/riwayat` | `cuti.ambilRiwayatCuti`, `lib/cuti.hitungSisaCuti` | idem |
-| **US2-a** jadwal penerbangan | RB04/SQ04 | `/penerbangan/cari` | `penerbangan.cariPenerbangan` | `integration/penerbangan`, `e2e/penerbangan` |
+| **US2-a** jadwal penerbangan | RB04/SQ04 | `/jadwal` (publik; `/penerbangan/cari` dialihkan) | `penerbangan.cariPenerbangan` | `integration/penerbangan`, `e2e/penerbangan` |
 | **US2-b** memesan tiket | RB07/SQ07 | `/pesanan/baru` → `/pesanan/[id]` | `booking.prosesPemesanan` → `buatBookingDiTransaksi` | `integration/booking`, `e2e/pesanan` |
 | **US2-c** membatalkan tiket | RB08/SQ08 | `/pesanan`, `/pesanan/[id]/batal` | `booking.ambilDataPesanan`, `batalkanPesanan` | idem |
-| **US3** beberapa tujuan | RB05/SQ05 | `/penerbangan/multi-tujuan` | `penerbangan.cariBeberapaTujuan` | `integration/penerbangan`, `e2e/penerbangan` |
+| **US3** beberapa tujuan | RB05/SQ05 | `/jadwal/multi-tujuan` (publik) | `penerbangan.cariBeberapaTujuan` | `integration/penerbangan`, `e2e/penerbangan` |
 | **US4** multi-destinasi | RB06/SQ06 | `/member/multi-destinasi` | `penerbangan.cariMultiDestinasi`, `ringkasMultiDestinasi` | idem |
 | **US5-a** update profil | RB09/SQ09 | `/member/profil` | `profil.perbaruiProfil` | `integration/profil-tiket`, `e2e/profil-validasi` |
 | **US5-b/c** validasi tiket | RB10/SQ10 | `/member/validasi` | `tiket.validasiTiket` (menolak: `data profil tidak lengkap`) | idem |
@@ -29,6 +29,9 @@ Perintah dan pengaturan ada di [`README.md`](../../README.md).
 | **US8-c** tiket terpesan | RB17/SQ17 | `/pengunjung/tiket` | `tiket.ambilTiketMilik` | idem |
 | **US8-d** e-tiket | RB18/SQ18 | email; kirim ulang di `/travel/booking/[id]` | `etiket.kirimEtiket`, `travel.kirimUlangEtiket` | `integration/travel`, `e2e/travel` (Mailpit API) |
 | **US9** otorisasi kode booking | RB16/SQ16 | `/travel/otorisasi?kode=` | `travel.otorisasiKodeBooking` (menolak: `kode booking reference tidak sesuai`) | idem |
+| **US10-a** jadwal tanpa login | RB04/SQ04 (aktor Tamu) | `/jadwal`, `/jadwal/multi-tujuan` | `penerbangan.cariPenerbangan`, `cariBeberapaTujuan` (tanpa sesi); aksi kolom: `aksiPesanUntuk(role)` | `unit/roles`, `e2e/penerbangan` (blok Tamu) |
+| **US10-b** daftar akun | RB19/SQ19 *(belum digambar)* | `/daftar` | `auth.daftarPengguna` (peran selalu `PENGGUNA`; menolak: `Email sudah terdaftar.`) | `unit/validasi-daftar`, `integration/auth`, `e2e/daftar` |
+| **US10-c** pesan sebagai tamu → login | RB07/SQ07 | tombol *Masuk untuk memesan* → `/login?callbackUrl=/pesanan/baru?penerbangan=` | `putuskanAkses` (proxy) | `e2e/penerbangan`, `e2e/daftar` |
 
 Pesan wajib (verbatim, ada konstanta dan tes): `data profil tidak lengkap` — `PESAN_PROFIL_TIDAK_LENGKAP` di `services/tiket.ts`;
 `kode booking reference tidak sesuai` — `PESAN_KODE_TIDAK_SESUAI` di `services/travel.ts`.
@@ -50,8 +53,9 @@ Pesan wajib (verbatim, ada konstanta dan tes): `data profil tidak lengkap` — `
 
 | Peran | Kemampuan (`can`) | Awalan rute |
 |---|---|---|
+| Tamu (belum login) | — | publik: `/jadwal`, `/daftar`, `/login` |
 | HRD Manager | `cuti.lihat` | `/hrd` |
-| Pengguna | `penerbangan.cari`, `booking.kelola`, `tiket.lihatMilik` | `/penerbangan`, `/pesanan` |
+| Pengguna | `penerbangan.cari`, `booking.kelola`, `tiket.lihatMilik` | `/pesanan` (+ `/jadwal` publik) |
 | Member Frequent Traveller | Pengguna + `member.fitur` | + `/member` |
 | Manager Travel | `travel.kelola` | `/travel` |
 | Pengunjung | `tiket.lihatMilik` | `/pengunjung` |

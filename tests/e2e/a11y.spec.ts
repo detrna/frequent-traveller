@@ -21,9 +21,13 @@ test("halaman login", async ({ page }) => {
   await periksa(page, "/login");
 });
 
+test("halaman daftar dan jadwal publik (tamu)", async ({ page }) => {
+  for (const url of ["/daftar", `/jadwal?asal=CGK&tujuan=DPS&tanggal=${besok}`, "/jadwal/multi-tujuan"]) await periksa(page, url);
+});
+
 test("Pengguna", async ({ page }) => {
   await masuk(page, "pengguna@aps.test");
-  for (const url of ["/dashboard", `/penerbangan/cari?asal=CGK&tujuan=DPS&tanggal=${besok}`, "/penerbangan/multi-tujuan", "/pesanan"]) await periksa(page, url);
+  for (const url of ["/dashboard", `/jadwal?asal=CGK&tujuan=DPS&tanggal=${besok}`, "/jadwal/multi-tujuan", "/pesanan"]) await periksa(page, url);
 });
 
 test("Member", async ({ page }) => {

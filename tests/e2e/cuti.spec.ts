@@ -115,7 +115,7 @@ test.describe("kontrol akses cuti", () => {
 
     await page.context().clearCookies();
     await masuk(page, "hrd@aps.test");
-    await page.goto("/penerbangan/cari");
+    await page.goto("/pesanan");
     await expect(page).toHaveURL(/\/akses-ditolak$/);
   });
 });

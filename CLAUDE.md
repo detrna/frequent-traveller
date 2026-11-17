@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project nature
 
-APS is a **design-first project** (flight ticket booking / travel management) specified through user stories and a conceptual model (use case, robustness, sequence diagrams, domain model) under `docs/`, **and implemented as a fullstack app** (Next.js App Router + Tailwind + Prisma/PostgreSQL) at the repo root. All nine stories (US1–US9) are implemented. The design artifacts stay the source of truth: change a story/diagram first, then the code.
+APS is a **design-first project** (flight ticket booking / travel management) specified through user stories and a conceptual model (use case, robustness, sequence diagrams, domain model) under `docs/`, **and implemented as a fullstack app** (Next.js App Router + Tailwind + Prisma/PostgreSQL) at the repo root. All ten stories (US1–US10) are implemented. The design artifacts stay the source of truth: change a story/diagram first, then the code.
 
 The working language of all artifacts **and of the UI** is **Indonesian** (Bahasa Indonesia). Keep new stories, diagram labels, UI copy, error messages, and identifiers (`pesanan`, `penerbangan`, `cuti`…) in Indonesian, matching existing terminology.
 
@@ -30,7 +30,7 @@ npx vitest run tests/integration/booking.test.ts -t "kapasitas"   # single file 
 
 - **Layering mirrors the robustness diagrams**: boundary → page/component in `src/app` · control → function in `src/server/services/*` · entity → model in `prisma/schema.prisma`. Service functions are named after the diagram controls (e.g. `prosesPemesanan`, `otorisasiKodeBooking`). Story → route → service → test mapping: `docs/md/implementation-map.md`.
 - **Pages are Server Components reading `searchParams`** (GET forms, shareable URLs, no-JS friendly); mutations are Server Actions that call a service. Services validate with zod (`src/server/validation`), throw `GalatBisnis`/`GalatValidasi` (`src/server/errors.ts`) for user-facing errors, and never trust the proxy alone — authorization is re-checked via `wajibBisa(ability)` (`src/server/auth/session.ts`) and ownership-scoped queries.
-- **Roles** (`src/server/auth/roles.ts`): `can(role, ability)`, `ROUTE_ACCESS` (route prefix → roles, enforced in `src/proxy.ts`), and `NAV_ITEMS` (add an entry when you add a page). Auth.js v5 (beta) credentials + JWT carrying `id` and `role`.
+- **Roles** (`src/server/auth/roles.ts`): `can(role, ability)`, `ROUTE_ACCESS` (route prefix → roles, enforced in `src/proxy.ts`), `PUBLIC_PATHS`/`PUBLIC_PREFIXES` (guest-open: `/jadwal*`, `/login`, `/daftar`; the `(publik)` route group uses `ambilPengguna()` and the shared `AppHeader`, never `wajibLogin()`), and `NAV_ITEMS` (add an entry when you add a page). Self-registration (`/daftar`, `auth.daftarPengguna`) always creates `PENGGUNA`. Auth.js v5 (beta) credentials + JWT carrying `id` and `role`.
 - **Database switch**: `src/server/db-target.ts` is the single place that picks the URL from `DB_TARGET=local|cloud`; `prisma.config.ts`, the runtime client (`src/server/db.ts`, lazy so `next build` needs no DB), seed, and `scripts/db.ts` all use it. **Prisma ORM 8 (release candidate)**, pinned exactly: `@prisma/orm-postgres@8.0.0-rc.23` + `prisma@8.0.0-rc.33` (the versions the deploy platform requires). `prisma/schema.prisma` is still a Prisma-7-syntax file and is the **contract source** (`prisma7Schema(...)` in `prisma.config.ts`); `prisma contract emit` compiles it to the committed `src/prisma/contract.json` + `contract.d.ts`; there is no generated client and no `postinstall`. After any schema edit: `npm run db:emit`, then `npm run db:migrate -- --name <slug>` (commits `migrations/app/<ts>_<slug>/`), then commit. Never reset or drop a database to fix a migration/marker problem (use `prisma db update` for local/test, author a migration otherwise).
 - **Query API (Prisma 8, not 7)**: `db.orm.public.<Model>` collections — `.where({..}|fn).include(..).orderBy(fn).limit().all()/.first()/.firstOrThrow()`, writes `create/update/updateAndCount/deleteAndCount/createAndCount/upsert`, `db.transaction(async (tx) => …)`, `.aggregate()/.groupBy()`. No `{ increment }`/`$transaction([…])`/`deleteMany()`: atomic counters and bulk wipes use the raw lane (``tx.raw.sql`…`.affectedCount()`` with `tx.execute`; no dynamic identifiers). `DATE` columns (`tglLahir`, cuti dates) are **strings** `"YYYY-MM-DD"`. Nested to-one includes are typed `T | null`: services normalize with `wajib()` (`src/lib/wajib.ts`) so pages see non-null types. Enums live in `src/lib/enums.ts` (compile-time checked against the contract). The `db` in `src/server/db.ts` is a lazy proxy; scripts/tests close it with `tutupDb()`. Client-side `cuid2`/`now()` defaults come from the contract, so `create()` needs no id/timestamps.
 - **Prisma 8 CLI gotchas**: `db update` advances the `db` ref by default — test setups pass `--advance-ref test` (its `migrations/app/refs/test.json` is gitignored) so the committed `migrations/app/refs/db.json` is not moved. The local dev DB is signed with `prisma db sign`; a fresh DB is provisioned by `db:deploy`. Docs for the exact installed version ship in `node_modules/@prisma/orm-postgres/skills/prisma-8/` and `node_modules/@prisma/orm-toolchain/dist/quick-reference-prisma7.md`.
@@ -42,7 +42,7 @@ Gotchas learned the hard way: e2e locators like `getByRole("link", { name: "Pesa
 
 ## Artifacts and how they relate
 
-- `docs/user-stories/user-stories.md` — source of truth. Nine stories (US1–US9) with a table of contents, each in the format *Sebagai … / saya ingin … / sehingga …*, followed by `Task` (a/b/c, each with a *Sistem* response) and `Acceptance Criteria`. Anchors are `#usN--slug`; keep the TOC table in sync when adding or renaming stories.
+- `docs/user-stories/user-stories.md` — source of truth. Ten stories (US1–US10) with a table of contents, each in the format *Sebagai … / saya ingin … / sehingga …*, followed by `Task` (a/b/c, each with a *Sistem* response) and `Acceptance Criteria`. Anchors are `#usN--slug`; keep the TOC table in sync when adding or renaming stories.
 - `docs/duma/APS.dfd.json` — a single multi-diagram document exported from **DUMA** (a diagramming tool; schema `dfd/1`). It holds every conceptual-model diagram in `diagrams[]`, distinguished by `kind`:
   - `class` — "Eksprimen APS": the domain model (classes such as User, HRD Manager, Pegawai, Permohonan Cuti, Riwayat Cuti; currently empty attributes/methods)
   - `usecase` — one Use Case Diagram
@@ -66,6 +66,7 @@ Traceability flow: user story → use case → robustness diagram → sequence d
 | US7 | 13 status booking + filter |
 | US8 | 14 mencari tiket, 15 memesan untuk pengunjung, 17 tiket terpesan, 18 e-tiket |
 | US9 | 16 otorisasi kode booking reference |
+| US10 | 04 jadwal penerbangan (aktor Tamu); registrasi akun = RB19/SQ19 (belum digambar) |
 
 ## Working with the DUMA JSON
 

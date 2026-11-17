@@ -3,7 +3,7 @@ import { masuk, tanggalWIB } from "./helpers";
 
 /** Membuka hasil pencarian CGK→`tujuan` pada hari ke-`hari` dan menekan "Pesan" pada penerbangan pertama. */
 async function pesanPenerbanganPertama(page: Page, tujuan: string, hari: number) {
-  await page.goto(`/penerbangan/cari?asal=CGK&tujuan=${tujuan}&tanggal=${tanggalWIB(hari)}`);
+  await page.goto(`/jadwal?asal=CGK&tujuan=${tujuan}&tanggal=${tanggalWIB(hari)}`);
   await page.getByRole("link", { name: "Pesan", exact: true }).first().click();
   await expect(page.getByRole("heading", { name: "Pemesanan Tiket" })).toBeVisible();
 }

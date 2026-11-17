@@ -19,7 +19,7 @@ export default async function DataPesananPage() {
       <PageHeader
         title="Pesanan Saya"
         description="Data pesanan tiket pesawat Anda."
-        actions={<Link href="/penerbangan/cari" className={buttonClass("primary")}>Pesan tiket baru</Link>}
+        actions={<Link href="/jadwal" className={buttonClass("primary")}>Pesan tiket baru</Link>}
       />
       {daftar.length === 0 ? (
         <p className="rounded-md border border-dashed border-zinc-300 px-4 py-10 text-center text-sm text-zinc-600 dark:border-zinc-700 dark:text-zinc-400">

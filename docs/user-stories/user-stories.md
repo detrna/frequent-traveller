@@ -13,6 +13,7 @@
 | [US7](#us7--memeriksa-otorisasi-travel) | Manajer travel | Memeriksa otorisasi travel dan status booking |
 | [US8](#us8--mencari-dan-memesan-tiket-untuk-pengunjung) | Manajer travel | Mencari dan memesan tiket untuk pengunjung |
 | [US9](#us9--otorisasi-tiket-yang-sudah-dibooking) | Manajer travel | Otorisasi tiket yang sudah dibooking |
+| [US10](#us10--melihat-jadwal-tanpa-login-dan-mendaftar-akun) | Tamu | Melihat jadwal penerbangan tanpa login dan mendaftar akun |
 
 ---
 
@@ -47,7 +48,7 @@
 
 ### Task
 
-- **a.** Pengguna dapat mencari jadwal penerbangan sesuai tujuan yang diinginkan.
+- **a.** Pengguna dapat mencari jadwal penerbangan sesuai tujuan yang diinginkan (pencarian terbuka tanpa login, lihat US10).
   - *Sistem* menampilkan jadwal penerbangan, maskapai, dan harga tiket.
 - **b.** Pengguna dapat memesan tiket pesawat yang diinginkan.
   - *Sistem* menampilkan pilihan tiket pesawat beserta maskapai.
@@ -206,3 +207,26 @@
 
 - **a.** Manajer travel dapat melakukan otorisasi tiket.
 - **b.** Manajer travel dapat melihat status booking.
+
+---
+
+## US10 — Melihat Jadwal Tanpa Login dan Mendaftar Akun
+
+> **Sebagai** seorang tamu (pengunjung situs yang belum login),
+> **saya ingin** melihat jadwal penerbangan dan mendaftar akun,
+> **sehingga** saya dapat membandingkan jadwal dan harga sebelum memutuskan memesan tiket.
+
+### Task
+
+- **a.** Tamu dapat mencari jadwal penerbangan (satu tujuan maupun beberapa tujuan) tanpa login.
+  - *Sistem* menampilkan jadwal penerbangan, maskapai, dan harga tiket yang sama seperti untuk pengguna yang login.
+- **b.** Tamu dapat mendaftarkan akun dengan nama, email, dan kata sandi.
+  - *Sistem* membuat akun berperan Pengguna, langsung memasukkan tamu ke akunnya, dan menolak email yang sudah terdaftar dengan pesan **"Email sudah terdaftar."**
+- **c.** Tamu yang memilih memesan sebuah penerbangan diminta login terlebih dahulu.
+  - *Sistem* mengarahkan tamu ke halaman login (atau daftar), lalu mengembalikannya ke formulir pemesanan penerbangan yang dipilih setelah berhasil masuk.
+
+### Acceptance Criteria
+
+- **a.** Tamu dapat melihat jadwal, maskapai, dan harga penerbangan tanpa login.
+- **b.** Tamu dapat mendaftar akun; akun baru selalu berperan Pengguna.
+- **c.** Pemesanan, pembatalan, dan seluruh halaman selain jadwal tetap hanya dapat diakses setelah login.

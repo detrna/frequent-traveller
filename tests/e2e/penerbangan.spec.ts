@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import { masuk, tanggalWIB } from "./helpers";
+import { masuk, PASSWORD, tanggalWIB } from "./helpers";
 
 const besok = tanggalWIB(1);
 const lusa = tanggalWIB(2);
@@ -8,7 +8,7 @@ test.describe("Pengguna — cari penerbangan (US2-a, US3)", () => {
   test.beforeEach(async ({ page }) => masuk(page, "pengguna@aps.test"));
 
   test("mencari menurut tujuan dan tanggal menampilkan jadwal, maskapai, dan harga", async ({ page }) => {
-    await page.goto("/penerbangan/cari");
+    await page.goto("/jadwal");
     await page.getByLabel("Dari (opsional)").selectOption("CGK");
     await page.getByLabel("Tujuan").selectOption("DPS");
     await page.getByLabel("Tanggal").fill(besok);
@@ -23,18 +23,18 @@ test.describe("Pengguna — cari penerbangan (US2-a, US3)", () => {
   });
 
   test("tanggal di masa lalu ditolak dengan pesan galat", async ({ page }) => {
-    await page.goto(`/penerbangan/cari?tujuan=DPS&tanggal=${tanggalWIB(-3)}`);
+    await page.goto(`/jadwal?tujuan=DPS&tanggal=${tanggalWIB(-3)}`);
     await expect(page.getByText("Tanggal tidak boleh di masa lalu.")).toBeVisible();
     await expect(page.getByRole("table")).toHaveCount(0);
   });
 
   test("tidak ada penerbangan → pesan kosong", async ({ page }) => {
-    await page.goto(`/penerbangan/cari?asal=DPS&tujuan=MDC&tanggal=${besok}`);
+    await page.goto(`/jadwal?asal=DPS&tujuan=MDC&tanggal=${besok}`);
     await expect(page.getByText("Tidak ada penerbangan yang sesuai.")).toBeVisible();
   });
 
   test("beberapa tujuan dikelompokkan per tujuan", async ({ page }) => {
-    await page.goto("/penerbangan/multi-tujuan");
+    await page.goto("/jadwal/multi-tujuan");
     await page.getByLabel("Dari (opsional)").selectOption("CGK");
     await page.getByLabel("Tanggal").fill(besok);
     await page.getByLabel(/^Denpasar/).check();
@@ -46,7 +46,7 @@ test.describe("Pengguna — cari penerbangan (US2-a, US3)", () => {
   });
 
   test("tanpa memilih tujuan menampilkan galat", async ({ page }) => {
-    await page.goto(`/penerbangan/multi-tujuan?cari=1&tanggal=${besok}`);
+    await page.goto(`/jadwal/multi-tujuan?cari=1&tanggal=${besok}`);
     await expect(page.getByRole("alert").filter({ hasText: "Pilih minimal satu tujuan." })).toBeVisible();
   });
 
@@ -112,5 +112,50 @@ test.describe("Member — preferensi, perbandingan, multi-destinasi (US4, US6)",
   test("multi-destinasi dengan satu ruas ditolak", async ({ page }) => {
     await page.goto(`/member/multi-destinasi?cari=1&asal=CGK&tujuan=DPS&tanggal=${besok}`);
     await expect(page.getByRole("alert").filter({ hasText: "minimal dua ruas penerbangan" })).toBeVisible();
+  });
+});
+
+test.describe("Tamu — jadwal penerbangan publik (US10)", () => {
+  test("tamu dapat mencari jadwal tanpa login dan melihat tautan masuk untuk memesan", async ({ page }) => {
+    await page.goto(`/jadwal?asal=CGK&tujuan=DPS&tanggal=${besok}`);
+    await expect(page).toHaveURL(/\/jadwal\?/);
+    await expect(page.getByRole("heading", { name: "2 penerbangan ditemukan" })).toBeVisible();
+    await expect(page.getByRole("table").locator("tbody tr").first()).toContainText(/Rp\s?[\d.]+/);
+    await expect(page.getByRole("link", { name: "Pesan", exact: true })).toHaveCount(0);
+    await expect(page.getByRole("link", { name: "Masuk untuk memesan" }).first()).toBeVisible();
+  });
+
+  test("beberapa tujuan juga terbuka untuk tamu", async ({ page }) => {
+    await page.goto(`/jadwal/multi-tujuan?cari=1&asal=CGK&tanggal=${besok}&tujuan=DPS&tujuan=SUB`);
+    await expect(page.getByRole("heading", { name: /Denpasar \(DPS\) · 2 penerbangan/ })).toBeVisible();
+  });
+
+  test("memesan sebagai tamu → login → kembali ke formulir pemesanan penerbangan itu", async ({ page }) => {
+    await page.goto(`/jadwal?asal=CGK&tujuan=DPS&tanggal=${besok}`);
+    await page.getByRole("link", { name: "Masuk untuk memesan" }).first().click();
+    await expect(page).toHaveURL(/\/login\?callbackUrl=%2Fpesanan%2Fbaru%3Fpenerbangan%3D/);
+
+    await page.getByLabel("Email").fill("pengguna@aps.test");
+    await page.getByLabel("Kata sandi").fill(PASSWORD);
+    await page.getByRole("button", { name: "Masuk" }).click();
+    await expect(page).toHaveURL(/\/pesanan\/baru\?penerbangan=/);
+    await expect(page.getByRole("heading", { name: "Pemesanan Tiket" })).toBeVisible();
+  });
+
+  test("halaman pemesanan tetap butuh login", async ({ page }) => {
+    await page.goto("/pesanan/baru?penerbangan=apa-saja");
+    await expect(page).toHaveURL(/\/login\?callbackUrl=/);
+  });
+
+  test("tautan lama /penerbangan/cari dialihkan ke /jadwal dengan query yang sama", async ({ page }) => {
+    await page.goto(`/penerbangan/cari?tujuan=DPS&tanggal=${besok}`);
+    await expect(page).toHaveURL(new RegExp(`/jadwal\\?tujuan=DPS&tanggal=${besok}`));
+  });
+
+  test("HRD yang login dapat melihat jadwal tetapi tanpa tombol pesan", async ({ page }) => {
+    await masuk(page, "hrd@aps.test");
+    await page.goto(`/jadwal?asal=CGK&tujuan=DPS&tanggal=${besok}`);
+    await expect(page.getByRole("heading", { name: "2 penerbangan ditemukan" })).toBeVisible();
+    await expect(page.getByRole("main").getByRole("link", { name: /Pesan|memesan/ })).toHaveCount(0);
   });
 });

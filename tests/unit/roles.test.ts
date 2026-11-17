@@ -40,6 +40,26 @@ describe("putuskanAkses", () => {
     expect(putuskanAkses("/login", undefined)).toBe("izinkan");
     expect(putuskanAkses("/akses-ditolak", undefined)).toBe("izinkan");
   });
+  it("jadwal penerbangan terbuka untuk tamu dan semua peran (US10-a)", () => {
+    for (const jalur of ["/jadwal", "/jadwal/multi-tujuan"]) {
+      expect(putuskanAkses(jalur, undefined)).toBe("izinkan");
+      for (const role of SEMUA_ROLE) expect(putuskanAkses(jalur, role), `${role} → ${jalur}`).toBe("izinkan");
+    }
+  });
+  it("/penerbangan tidak lagi terdaftar sebagai rute berperan", () => {
+    expect(ROUTE_ACCESS.some((a) => a.prefix === "/penerbangan")).toBe(false);
+  });
+  it("pemesanan tetap butuh login (US10-c)", () => {
+    expect(putuskanAkses("/pesanan/baru", undefined)).toBe("ke-login");
+    expect(putuskanAkses("/pesanan", null)).toBe("ke-login");
+  });
+  it("/daftar terbuka untuk tamu dan mengalihkan pengguna yang sudah login ke beranda", () => {
+    expect(putuskanAkses("/daftar", undefined)).toBe("izinkan");
+    for (const role of SEMUA_ROLE) expect(putuskanAkses("/daftar", role)).toBe("ke-beranda");
+  });
+  it("tidak salah cocok pada awalan mirip /jadwal", () => {
+    expect(putuskanAkses("/jadwalx", undefined)).toBe("ke-login");
+  });
   it("tamu diarahkan ke login untuk halaman terlindungi", () => {
     expect(putuskanAkses("/dashboard", undefined)).toBe("ke-login");
     expect(putuskanAkses("/travel/status", null)).toBe("ke-login");

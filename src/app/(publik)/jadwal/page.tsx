@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import { BandaraSelect } from "@/components/flight/bandara-select";
 import { FormCari } from "@/components/flight/form-cari";
-import { aksiPesan } from "@/components/booking/tombol-pesan";
+import { aksiPesanUntuk } from "@/components/booking/tombol-pesan";
 import { HasilPenerbanganTabel } from "@/components/flight/hasil-penerbangan";
 import { Field } from "@/components/ui/field";
 import { PageHeader } from "@/components/ui/card";
 import { adaParameter, ambilSatu, type SearchParams } from "@/lib/query";
 import { tanggalWIB } from "@/lib/waktu";
-import { wajibBisa } from "@/server/auth/session";
+import { ambilPengguna } from "@/server/auth/session";
 import { cariPenerbangan, daftarBandara } from "@/server/services/penerbangan";
 import { validasi } from "@/server/validation/common";
 import { pencarianWajibTanggalSkema } from "@/server/validation/penerbangan";
@@ -16,7 +16,7 @@ import { Alert } from "@/components/ui/alert";
 export const metadata: Metadata = { title: "Cari Penerbangan" };
 
 export default async function CariPenerbanganPage({ searchParams }: { searchParams: Promise<SearchParams> }) {
-  await wajibBisa("penerbangan.cari");
+  const aksi = aksiPesanUntuk((await ambilPengguna())?.role);
   const sp = await searchParams;
   const bandara = await daftarBandara();
 
@@ -29,7 +29,7 @@ export default async function CariPenerbanganPage({ searchParams }: { searchPara
   return (
     <>
       <PageHeader title="Cari Penerbangan" description="Lihat jadwal, maskapai, dan harga tiket sesuai tujuan dan tanggal." />
-      <FormCari action="/penerbangan/cari">
+      <FormCari action="/jadwal">
         <BandaraSelect name="asal" label="Dari (opsional)" bandara={bandara} defaultValue={nilai.asal} error={galat.asal} kosong="Semua bandara" />
         <BandaraSelect name="tujuan" label="Tujuan" bandara={bandara} defaultValue={nilai.tujuan} error={galat.tujuan} kosong="Pilih tujuan" required />
         <Field label="Tanggal" name="tanggal" type="date" min={tanggalWIB()} defaultValue={nilai.tanggal} error={galat.tanggal} required />
@@ -39,7 +39,7 @@ export default async function CariPenerbanganPage({ searchParams }: { searchPara
         {hasil ? (
           <>
             <h2 className="mb-3 text-lg font-medium">{hasil.length} penerbangan ditemukan</h2>
-            <HasilPenerbanganTabel penerbangan={hasil} aksi={aksiPesan} />
+            <HasilPenerbanganTabel penerbangan={hasil} aksi={aksi} />
           </>
         ) : dikirim && Object.keys(galat).length > 0 ? (
           <Alert tone="error">Periksa kembali isian pencarian di atas.</Alert>

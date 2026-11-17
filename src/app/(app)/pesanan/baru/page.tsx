@@ -23,7 +23,7 @@ export default async function PemesananPage({ searchParams }: { searchParams: Pr
         <PageHeader title="Pemesanan Tiket" />
         <Alert tone="error">Penerbangan tidak ditemukan. Pilih penerbangan dari hasil pencarian.</Alert>
         <p className="mt-4">
-          <Link href="/penerbangan/cari" className={buttonClass("primary")}>Cari penerbangan</Link>
+          <Link href="/jadwal" className={buttonClass("primary")}>Cari penerbangan</Link>
         </p>
       </>
     );
