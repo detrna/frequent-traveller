@@ -3,7 +3,6 @@
  * Fungsi di sini menganggap masukan SUDAH divalidasi oleh skema di src/server/validation/penerbangan.ts.
  */
 import { db } from "@/server/db";
-import type { Prisma } from "@/generated/prisma/client";
 import { akhirHariWIB, awalHariWIB, jamWIB } from "@/lib/waktu";
 import type {
   MultiDestinasiInput,
@@ -12,11 +11,8 @@ import type {
   PreferensiInput,
 } from "@/server/validation/penerbangan";
 
-const INCLUDE = { maskapai: true, asal: true, tujuan: true } satisfies Prisma.PenerbanganInclude;
-
-type PenerbanganRow = Prisma.PenerbanganGetPayload<{ include: typeof INCLUDE }>;
-
-export interface HasilPenerbangan {
+/** Bentuk minimal baris penerbangan beserta maskapai, asal, dan tujuannya (hasil `.include(...)`). */
+export interface BarisPenerbangan {
   id: string;
   kodePenerbangan: string;
   maskapai: { kode: string; nama: string };
@@ -28,7 +24,14 @@ export interface HasilPenerbangan {
   kursiTersedia: number;
 }
 
-export function keHasil(p: PenerbanganRow): HasilPenerbangan {
+export type HasilPenerbangan = BarisPenerbangan;
+
+/** Penerbangan dengan maskapai, asal, dan tujuan ter-include. */
+function kueriPenerbangan() {
+  return db.orm.public.Penerbangan.include("maskapai").include("asal").include("tujuan");
+}
+
+export function keHasil(p: BarisPenerbangan): HasilPenerbangan {
   return {
     id: p.id,
     kodePenerbangan: p.kodePenerbangan,
@@ -43,7 +46,9 @@ export function keHasil(p: PenerbanganRow): HasilPenerbangan {
 }
 
 export async function daftarBandara() {
-  return db.bandara.findMany({ orderBy: { kota: "asc" }, select: { kode: true, kota: true, nama: true } });
+  return db.orm.public.Bandara.select("kode", "kota", "nama")
+    .orderBy((b) => b.kota.asc())
+    .all();
 }
 
 interface Kriteria {
@@ -57,23 +62,30 @@ interface Kriteria {
 /** Penerbangan yang belum berangkat sesuai kriteria, urut jam berangkat. */
 async function ambilPenerbangan(k: Kriteria, batas = 200): Promise<HasilPenerbangan[]> {
   const sekarang = new Date();
-  const berangkat: Prisma.DateTimeFilter = { gt: sekarang };
-  if (k.tanggal) {
-    const awal = awalHariWIB(k.tanggal);
-    berangkat.gte = awal > sekarang ? awal : sekarang;
-    berangkat.lt = akhirHariWIB(k.tanggal);
+
+  // Kode bandara → id (tabel kecil). Bandara yang tidak ada berarti tidak ada penerbangan.
+  const tujuan = await db.orm.public.Bandara.where({ kode: k.tujuan }).select("id").first();
+  if (!tujuan) return [];
+  let asalId: string | undefined;
+  if (k.asal) {
+    const asal = await db.orm.public.Bandara.where({ kode: k.asal }).select("id").first();
+    if (!asal) return [];
+    asalId = asal.id;
   }
 
-  const baris = await db.penerbangan.findMany({
-    where: {
-      tujuan: { kode: k.tujuan },
-      ...(k.asal ? { asal: { kode: k.asal } } : {}),
-      berangkat,
-    },
-    include: INCLUDE,
-    orderBy: { berangkat: "asc" },
-    take: batas,
-  });
+  let kueri = kueriPenerbangan()
+    .where({ tujuanId: tujuan.id })
+    .where((p) => p.berangkat.gt(sekarang));
+  if (asalId) kueri = kueri.where({ asalId });
+  if (k.tanggal) {
+    const awal = awalHariWIB(k.tanggal);
+    kueri = kueri.where((p) => p.berangkat.gte(awal)).where((p) => p.berangkat.lt(akhirHariWIB(k.tanggal!)));
+  }
+
+  const baris = await kueri
+    .orderBy((p) => p.berangkat.asc())
+    .limit(batas)
+    .all();
 
   return baris
     .filter((p) => {
@@ -181,6 +193,6 @@ export async function cariMultiDestinasi(input: MultiDestinasiInput): Promise<Ha
 
 /** Satu penerbangan menurut id (untuk halaman pemesanan); null bila tidak ada. */
 export async function ambilPenerbanganById(id: string): Promise<HasilPenerbangan | null> {
-  const p = await db.penerbangan.findUnique({ where: { id }, include: INCLUDE });
+  const p = await kueriPenerbangan().where({ id }).first();
   return p ? keHasil(p) : null;
 }

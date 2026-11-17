@@ -1,14 +1,15 @@
 /** Control untuk Manager Travel: status booking (US7), otorisasi kode (US9), pesan untuk pengunjung (US8). */
 import { randomBytes } from "node:crypto";
 import bcrypt from "bcryptjs";
+import type { ResultType } from "@prisma/orm-postgres/components/runtime";
 import { db } from "@/server/db";
+import { wajib } from "@/lib/wajib";
 import { GalatBisnis, GalatValidasi } from "@/server/errors";
 import { validasi } from "@/server/validation/common";
 import { dataPengunjungSkema, filterStatusSkema, halamanSkema, kodeBookingSkema } from "@/server/validation/travel";
 import { buatBookingDiTransaksi } from "./booking";
 import { kirimEtiket, type HasilKirimEtiket } from "./etiket";
-import type { Prisma } from "@/generated/prisma/client";
-import type { StatusBooking } from "@/generated/prisma/enums";
+import type { StatusBooking } from "@/lib/enums";
 import type { EmailDriver } from "@/server/email";
 
 /** Pesan wajib dari US9-b — jangan diubah. */
@@ -16,13 +17,26 @@ export const PESAN_KODE_TIDAK_SESUAI = "kode booking reference tidak sesuai";
 
 const UKURAN_HALAMAN = 20;
 
-const INCLUDE_BOOKING = {
-  pemilik: { select: { nama: true, email: true } },
-  pengunjung: true,
-  tiket: { include: { penerbangan: { include: { maskapai: true, asal: true, tujuan: true } } }, orderBy: { createdAt: "asc" } },
-} satisfies Prisma.BookingInclude;
+/** Booking beserta pemilik, pengunjung, dan tiket (dengan penerbangan, maskapai, asal, tujuan). */
+function kueriBooking() {
+  return db.orm.public.Booking.include("pemilik", (u) => u.select("nama", "email"))
+    .include("pengunjung")
+    .include("tiket", (t) =>
+      t.orderBy((x) => x.createdAt.asc()).include("penerbangan", (p) => p.include("maskapai").include("asal").include("tujuan")),
+    );
+}
 
-export type BookingTravel = Prisma.BookingGetPayload<{ include: typeof INCLUDE_BOOKING }>;
+type BarisBooking = ResultType<ReturnType<typeof kueriBooking>>;
+
+function normalisasi(b: BarisBooking) {
+  return {
+    ...b,
+    pemilik: wajib(b.pemilik, "pemilik booking"),
+    tiket: b.tiket.map((t) => ({ ...t, penerbangan: wajib(t.penerbangan, "penerbangan pada tiket") })),
+  };
+}
+
+export type BookingTravel = ReturnType<typeof normalisasi>;
 
 // ---------- US7 ----------
 
@@ -44,28 +58,31 @@ export async function ambilStatusBooking(masukan: { status?: unknown; halaman?: 
   const halamanMinta = validasi(halamanSkema, masukan.halaman);
   const halaman = halamanMinta.ok ? halamanMinta.data : 1;
 
-  const where: Prisma.BookingWhereInput = status ? { status } : {};
-  const [total, kelompok] = await Promise.all([db.booking.count({ where }), db.booking.groupBy({ by: ["status"], _count: { _all: true } })]);
+  const dasar = () => (status ? kueriBooking().where({ status }) : kueriBooking());
+  const [hitungan, kelompok] = await Promise.all([
+    (status ? db.orm.public.Booking.where({ status }) : db.orm.public.Booking).aggregate((a) => ({ total: a.count() })),
+    db.orm.public.Booking.groupBy("status").aggregate((a) => ({ jumlah: a.count() })),
+  ]);
+  const total = hitungan.total;
   const totalHalaman = Math.max(1, Math.ceil(total / UKURAN_HALAMAN));
   const halamanAman = Math.min(halaman, totalHalaman);
 
-  const booking = await db.booking.findMany({
-    where,
-    include: INCLUDE_BOOKING,
-    orderBy: { createdAt: "desc" },
-    skip: (halamanAman - 1) * UKURAN_HALAMAN,
-    take: UKURAN_HALAMAN,
-  });
+  const baris = await dasar()
+    .orderBy((b) => b.createdAt.desc())
+    .offset((halamanAman - 1) * UKURAN_HALAMAN)
+    .limit(UKURAN_HALAMAN)
+    .all();
+  const booking = baris.map(normalisasi);
 
   const jumlahPerStatus: Record<StatusBooking, number> = { BOOKED: 0, WAITING_FOR_PAYMENT: 0, CONFIRMED: 0, DIBATALKAN: 0 };
-  for (const k of kelompok) jumlahPerStatus[k.status] = k._count._all;
+  for (const k of kelompok) jumlahPerStatus[k.status as StatusBooking] = k.jumlah;
   return { booking, filter: status, halaman: halamanAman, totalHalaman, total, jumlahPerStatus };
 }
 
 export async function ambilBookingTravel(id: string): Promise<BookingTravel> {
-  const booking = await db.booking.findUnique({ where: { id }, include: INCLUDE_BOOKING });
+  const booking = await kueriBooking().where({ id }).first();
   if (!booking) throw new GalatBisnis("Pesanan tidak ditemukan.", "TIDAK_DITEMUKAN");
-  return booking;
+  return normalisasi(booking);
 }
 
 // ---------- US9 ----------
@@ -74,9 +91,9 @@ export async function ambilBookingTravel(id: string): Promise<BookingTravel> {
 export async function otorisasiKodeBooking(masukan: unknown): Promise<BookingTravel> {
   const kode = validasi(kodeBookingSkema, typeof masukan === "string" ? masukan : "");
   const dicari = kode.ok ? kode.data : "";
-  const booking = dicari ? await db.booking.findUnique({ where: { kodeBookingReference: dicari }, include: INCLUDE_BOOKING }) : null;
+  const booking = dicari ? await kueriBooking().where({ kodeBookingReference: dicari }).first() : null;
   if (!booking) throw new GalatBisnis(PESAN_KODE_TIDAK_SESUAI, "KODE_TIDAK_SESUAI");
-  return booking;
+  return normalisasi(booking);
 }
 
 // ---------- US8-b ----------
@@ -110,23 +127,26 @@ export async function pesanUntukPengunjung(
   let kataSandiSementara: string | undefined;
   const sandiAsli = randomBytes(9).toString("base64url");
 
-  const { bookingId, pengunjung, akunBaru } = await db.$transaction(async (tx) => {
-    const user = await tx.user.findUnique({ where: { email: data.email }, include: { pengunjung: true } });
+  const { bookingId, pengunjung, akunBaru } = await db.transaction(async (tx) => {
+    const user = await tx.orm.public.User.where({ email: data.email }).include("pengunjung").first();
     if (user && (user.role !== "PENGUNJUNG" || !user.pengunjung)) {
       throw new GalatBisnis("Email ini sudah terdaftar sebagai akun lain (bukan pengunjung).", "EMAIL_DIPAKAI");
     }
 
-    let rekam = user?.pengunjung;
+    let rekam = user?.pengunjung ?? null;
     let baru = false;
     if (!rekam) {
       const passwordHash = await bcrypt.hash(sandiAsli, 10);
-      const akun = await tx.user.create({ data: { nama: data.nama, email: data.email, passwordHash, role: "PENGUNJUNG" } });
-      rekam = await tx.pengunjung.create({ data: { userId: akun.id, nama: data.nama, email: data.email, telepon: data.telepon, nik: data.nik } });
+      const akun = await tx.orm.public.User.create({ nama: data.nama, email: data.email, passwordHash, role: "PENGUNJUNG" });
+      rekam = await tx.orm.public.Pengunjung.create({ userId: akun.id, nama: data.nama, email: data.email, telepon: data.telepon, nik: data.nik });
       baru = true;
       kataSandiSementara = sandiAsli;
     } else if (!rekam.telepon || !rekam.nik) {
       // pengunjung lama dengan data kurang: lengkapi dari isian manajer, data yang sudah ada tidak ditimpa
-      rekam = await tx.pengunjung.update({ where: { id: rekam.id }, data: { telepon: rekam.telepon || data.telepon, nik: rekam.nik || data.nik } });
+      rekam = wajib(
+        await tx.orm.public.Pengunjung.where({ id: rekam.id }).update({ telepon: rekam.telepon || data.telepon, nik: rekam.nik || data.nik }),
+        "pengunjung",
+      );
     }
 
     const bookingId = await buatBookingDiTransaksi(tx, {

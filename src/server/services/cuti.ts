@@ -2,6 +2,7 @@
 import { db } from "@/server/db";
 import { GalatBisnis, GalatValidasi } from "@/server/errors";
 import { hariIrisan, hitungSisaCuti, rentangPeriode, type RentangTanggal } from "@/lib/cuti";
+import { wajib } from "@/lib/wajib";
 import { tanggalWIB } from "@/lib/waktu";
 import { validasi } from "@/server/validation/common";
 import { idPegawaiSkema, periodeSkema, type PeriodeInput } from "@/server/validation/cuti";
@@ -18,16 +19,30 @@ export function tahunBerjalan(): number {
 }
 
 export async function daftarPegawai() {
-  return db.pegawai.findMany({ orderBy: { nama: "asc" }, select: { id: true, nama: true, jabatan: true, nip: true } });
+  return db.orm.public.Pegawai.select("id", "nama", "jabatan", "nip")
+    .orderBy((p) => p.nama.asc())
+    .all();
 }
+
+/** Kolom DATE dibaca Prisma 8 sebagai string "YYYY-MM-DD"; di sini diubah ke Date (UTC 00:00) untuk hitungan hari. */
+const keTanggal = (nilai: string) => new Date(`${nilai}T00:00:00Z`);
+const keString = (d: Date) => d.toISOString().slice(0, 10);
 
 /** Permohonan cuti yang beririsan dengan rentang, urut tanggal mulai lalu nama. */
 async function cariPermohonan(rentang: RentangTanggal) {
-  return db.permohonanCuti.findMany({
-    where: { tglMulai: { lte: rentang.akhir }, tglSelesai: { gte: rentang.awal } },
-    include: { pegawai: { select: { id: true, nama: true, jabatan: true } } },
-    orderBy: [{ tglMulai: "asc" }, { pegawai: { nama: "asc" } }],
-  });
+  const awal = keString(rentang.awal);
+  const akhir = keString(rentang.akhir);
+  const baris = await db.orm.public.PermohonanCuti.where((p) => p.tglMulai.lte(akhir))
+    .where((p) => p.tglSelesai.gte(awal))
+    .include("pegawai", (g) => g.select("id", "nama", "jabatan"))
+    .orderBy([(p) => p.tglMulai.asc(), (p) => p.pegawai.nama.asc()])
+    .all();
+  return baris.map((p) => ({
+    ...p,
+    pegawai: wajib(p.pegawai, "pegawai pada permohonan cuti"),
+    tglMulai: keTanggal(p.tglMulai),
+    tglSelesai: keTanggal(p.tglSelesai),
+  }));
 }
 
 export interface PegawaiCuti {
@@ -66,9 +81,12 @@ export async function ambilRiwayatCuti(idPegawai: unknown, tahun: number = tahun
   const id = validasi(idPegawaiSkema, idPegawai);
   if (!id.ok) throw new GalatBisnis(id.galat._ ?? "Pilih pegawai terlebih dahulu.", "VALIDASI");
 
-  const pegawai = await db.pegawai.findUnique({ where: { id: id.data } });
+  const pegawai = await db.orm.public.Pegawai.where({ id: id.data }).first();
   if (!pegawai) throw new GalatBisnis("Pegawai tidak ditemukan.", "TIDAK_DITEMUKAN");
 
-  const riwayat = await db.riwayatCuti.findMany({ where: { pegawaiId: pegawai.id }, orderBy: { tglMulai: "desc" } });
+  const baris = await db.orm.public.RiwayatCuti.where({ pegawaiId: pegawai.id })
+    .orderBy((r) => r.tglMulai.desc())
+    .all();
+  const riwayat = baris.map((r) => ({ ...r, tglMulai: keTanggal(r.tglMulai), tglSelesai: keTanggal(r.tglSelesai) }));
   return { pegawai, riwayat, tahunBerjalan: tahun, ...hitungSisaCuti(pegawai.jatahCutiTahunan, riwayat, tahun) };
 }

@@ -1,7 +1,7 @@
 import bcrypt from "bcryptjs";
 import { z } from "zod";
 import { db } from "@/server/db";
-import type { Role } from "@/generated/prisma/enums";
+import type { Role } from "@/lib/enums";
 
 const kredensialSchema = z.object({
   email: z.string().trim().toLowerCase().pipe(z.email()),
@@ -26,7 +26,7 @@ export async function verifikasiKredensial(masukan: unknown): Promise<PenggunaTe
   const hasil = kredensialSchema.safeParse(masukan);
   if (!hasil.success) return null;
 
-  const user = await db.user.findUnique({ where: { email: hasil.data.email } });
+  const user = await db.orm.public.User.where({ email: hasil.data.email }).first();
   const cocok = await bcrypt.compare(hasil.data.password, user?.passwordHash ?? ambilHashPalsu());
   if (!user || !cocok) return null;
 

@@ -17,6 +17,7 @@ export const LABEL_KOLOM_PROFIL: Record<KolomProfil, string> = {
   alamat: "Alamat",
 };
 
+/** Kolom DATE (tglLahir) dibaca sebagai string "YYYY-MM-DD"; Date tetap diterima untuk kompatibilitas. */
 export type DataProfil = { [K in KolomProfil]?: string | Date | null };
 
 /** Murni: kolom yang belum diisi (kosong atau hanya spasi dianggap belum diisi). */
@@ -31,7 +32,7 @@ export function kolomBelumLengkap(profil: DataProfil | null | undefined): KolomP
 export const profilLengkap = (profil: DataProfil | null | undefined) => kolomBelumLengkap(profil).length === 0;
 
 export async function ambilProfil(userId: string) {
-  return db.profilMember.findUnique({ where: { userId } });
+  return db.orm.public.ProfilMember.where({ userId }).first();
 }
 
 export type HasilSimpanProfil = { ok: true; profil: NonNullable<Awaited<ReturnType<typeof ambilProfil>>> } | { ok: false; galat: GalatField };
@@ -41,7 +42,8 @@ export async function perbaruiProfil(userId: string, masukan: unknown): Promise<
   const cek = validasi(profilSkema, masukan);
   if (!cek.ok) return { ok: false, galat: cek.galat };
   const data: ProfilInput = cek.data;
-  const profil = await db.profilMember.upsert({ where: { userId }, create: { userId, ...data }, update: data });
+  // `conflictOn` hanya diketik untuk kunci primer; `userId` adalah unique constraint yang ada di kontrak (diuji di integrasi).
+  const profil = await db.orm.public.ProfilMember.upsert({ create: { userId, ...data }, update: data, conflictOn: { userId } as never });
   return { ok: true, profil };
 }
 

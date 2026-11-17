@@ -15,7 +15,7 @@ export default async function ProfilPage() {
 
   const awal: NilaiProfil = {
     namaLengkap: profil?.namaLengkap ?? "",
-    tglLahir: profil?.tglLahir ? profil.tglLahir.toISOString().slice(0, 10) : "",
+    tglLahir: profil?.tglLahir ?? "",
     nik: profil?.nik ?? "",
     noPaspor: profil?.noPaspor ?? "",
     telepon: profil?.telepon ?? "",

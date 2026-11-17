@@ -7,7 +7,7 @@ import { Button, buttonClass } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Field } from "@/components/ui/field";
 import { LABEL_STATUS_BOOKING } from "@/lib/status";
-import type { StatusBooking } from "@/generated/prisma/enums";
+import type { StatusBooking } from "@/lib/enums";
 import { pesanUntukPengunjungAction, type PesanPengunjungState } from "../actions";
 
 export function PesanPengunjungForm({ penerbanganId }: { penerbanganId: string }) {

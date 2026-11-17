@@ -29,7 +29,7 @@ export default async function PemesananPage({ searchParams }: { searchParams: Pr
     );
   }
 
-  const profil = await db.profilMember.findUnique({ where: { userId: pengguna.id }, select: { namaLengkap: true } });
+  const profil = await db.orm.public.ProfilMember.where({ userId: pengguna.id }).select("namaLengkap").first();
   const namaAwal = profil?.namaLengkap || pengguna.nama;
   const berangkat = penerbangan.berangkat <= new Date();
 

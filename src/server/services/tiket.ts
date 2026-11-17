@@ -1,27 +1,41 @@
 /** Control untuk tiket pesawat: validasi tiket oleh member (RB10) dan daftar tiket milik pengguna. */
+import type { ResultType } from "@prisma/orm-postgres/components/runtime";
 import { db } from "@/server/db";
 import { GalatBisnis } from "@/server/errors";
-import type { Prisma } from "@/generated/prisma/client";
+import { wajib } from "@/lib/wajib";
 import { ambilProfil, kolomBelumLengkap } from "./profil";
 
 /** Pesan wajib dari US5-c — jangan diubah. */
 export const PESAN_PROFIL_TIDAK_LENGKAP = "data profil tidak lengkap";
 
-const INCLUDE_TIKET = {
-  booking: { select: { id: true, kodeBookingReference: true, status: true } },
-  penerbangan: { include: { maskapai: true, asal: true, tujuan: true } },
-} satisfies Prisma.TiketPesawatInclude;
+/** Tiket beserta ringkasan booking-nya dan penerbangan (maskapai, asal, tujuan). */
+function kueriTiket() {
+  return db.orm.public.TiketPesawat.include("booking", (b) => b.select("id", "kodeBookingReference", "status", "pemilikId")).include(
+    "penerbangan",
+    (p) => p.include("maskapai").include("asal").include("tujuan"),
+  );
+}
 
-export type TiketDenganPenerbangan = Prisma.TiketPesawatGetPayload<{ include: typeof INCLUDE_TIKET }>;
+type BarisTiket = ResultType<ReturnType<typeof kueriTiket>>;
+
+function normalisasi(t: BarisTiket) {
+  return { ...t, booking: wajib(t.booking, "booking pada tiket"), penerbangan: wajib(t.penerbangan, "penerbangan pada tiket") };
+}
+
+export type TiketDenganPenerbangan = ReturnType<typeof normalisasi>;
 
 /** Tiket milik pengguna (di booking yang ia miliki), yang belum dibatalkan lebih dulu, terbaru dulu. */
 export async function ambilTiketMilik(pemilikId: string): Promise<TiketDenganPenerbangan[]> {
-  const tiket = await db.tiketPesawat.findMany({
-    where: { booking: { pemilikId } },
-    include: INCLUDE_TIKET,
-    orderBy: { createdAt: "desc" },
-  });
-  return [...tiket].sort((a, b) => Number(a.status === "DIBATALKAN") - Number(b.status === "DIBATALKAN"));
+  const booking = await db.orm.public.Booking.where({ pemilikId }).select("id").all();
+  if (booking.length === 0) return [];
+  const idBooking = booking.map((b) => b.id);
+
+  const baris = await kueriTiket()
+    .where((t) => t.bookingId.in(idBooking))
+    .orderBy((t) => t.createdAt.desc())
+    .all();
+  const tiket = baris.map(normalisasi);
+  return tiket.sort((a, b) => Number(a.status === "DIBATALKAN") - Number(b.status === "DIBATALKAN"));
 }
 
 export interface HasilValidasiTiket {
@@ -35,8 +49,9 @@ export interface HasilValidasiTiket {
  * Urutan sesuai SQ10: kepemilikan → kelengkapan profil (tolak dengan pesan wajib) → status tiket → tandai tervalidasi.
  */
 export async function validasiTiket(memberId: string, tiketId: string): Promise<HasilValidasiTiket> {
-  const tiket = await db.tiketPesawat.findFirst({ where: { id: tiketId, booking: { pemilikId: memberId } }, include: INCLUDE_TIKET });
-  if (!tiket) throw new GalatBisnis("Tiket tidak ditemukan.", "TIDAK_DITEMUKAN");
+  const baris = await kueriTiket().where({ id: tiketId }).first();
+  const tiket = baris ? normalisasi(baris) : null;
+  if (!tiket || tiket.booking.pemilikId !== memberId) throw new GalatBisnis("Tiket tidak ditemukan.", "TIDAK_DITEMUKAN");
 
   const profil = await ambilProfil(memberId);
   if (kolomBelumLengkap(profil).length > 0) {
@@ -51,10 +66,13 @@ export async function validasiTiket(memberId: string, tiketId: string): Promise<
   }
 
   // Syarat status TERBIT pada UPDATE menjaga dari validasi ganda yang bersamaan.
-  const diubah = await db.tiketPesawat.updateMany({ where: { id: tiketId, status: "TERBIT" }, data: { status: "TERVALIDASI", validatedAt: new Date() } });
-  if (diubah.count === 0) throw new GalatBisnis("Status tiket baru saja berubah. Muat ulang halaman.", "KONFLIK");
+  const diubah = await db.orm.public.TiketPesawat.where({ id: tiketId, status: "TERBIT" }).updateAndCount({
+    status: "TERVALIDASI",
+    validatedAt: new Date(),
+  });
+  if (diubah === 0) throw new GalatBisnis("Status tiket baru saja berubah. Muat ulang halaman.", "KONFLIK");
 
-  const terbaru = await db.tiketPesawat.findUniqueOrThrow({ where: { id: tiketId }, include: INCLUDE_TIKET });
+  const terbaru = normalisasi(await kueriTiket().where({ id: tiketId }).firstOrThrow());
   // kolom wajib sudah dipastikan terisi oleh pemeriksaan di atas
   return { tiket: terbaru, profil: { namaLengkap: profil!.namaLengkap!, nik: profil!.nik!, noPaspor: profil!.noPaspor! } };
 }
